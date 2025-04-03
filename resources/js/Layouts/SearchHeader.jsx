@@ -7,7 +7,7 @@ export default function OALHeaderLayout() {
                         className="fs-1 fw-bold"
                         style={{ fontVariant: 'small-caps' }}
                     >
-                        Gestor de Usuarios OAL
+                        Buscador de usuarios OAL
                     </span>
                 </a>
             </header>

@@ -1,6 +1,6 @@
 import ModifyUserFormSearch from '@/Components/ModifyUserFormSearch';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import OALHeaderLayout from '@/Layouts/OALHeaderLayout';
+import OALHeaderLayout from '@/Layouts/SearchHeader';
 import { Head, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { useState } from 'react';
