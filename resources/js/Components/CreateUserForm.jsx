@@ -5791,6 +5791,7 @@ export default function CreateUserForm() {
         { value: 'Turno completo', label: 'Turno completo' },
         { value: 'Noches', label: 'Noches' },
         { value: '24 horas', label: '24 horas' },
+        { value: 'Indiferente', label: 'Indiferente' },
     ];
 
     const carnetOptions = [
@@ -6141,7 +6142,7 @@ export default function CreateUserForm() {
     const actualYear = new Date().getFullYear();
 
     const regExpTlf = new RegExp(/^\d{9}$/);
-    const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}/);
+    const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
 
     return (
         <>

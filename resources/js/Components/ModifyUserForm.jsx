@@ -5796,6 +5796,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         { value: 'Turno completo', label: 'Turno completo' },
         { value: 'Noches', label: 'Noches' },
         { value: '24 horas', label: '24 horas' },
+        { value: 'Indiferente', label: 'Indiferente' },
     ];
 
     const carnetOptions = [
@@ -6146,7 +6147,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
     const [documentos, setDocumentos] = useState([]);
     const actualYear = new Date().getFullYear();
     const regExpTlf = new RegExp(/^\d{9}$/);
-    const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}/);
+    const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
 
     // Esta funcion se encarga de recoger el usuario seleccionado y preparar el formulario de modificación.
     const modificarUsuario = (idUsuario) => async () => {

@@ -5797,6 +5797,7 @@ export default function Search() {
         { value: 'Turno completo', label: 'Turno completo' },
         { value: 'Noches', label: 'Noches' },
         { value: '24 horas', label: '24 horas' },
+        { value: 'Indiferente', label: 'Indiferente' },
     ];
 
     const carnetOptions = [
