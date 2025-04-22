@@ -134,7 +134,9 @@ export default function CreateUserForm() {
                     <div className="d-flex">
                         <div className="container mx-5">
                             <Form.Group className="mb-3" controlId="formNombre">
-                                <Form.Label className="fs-4">Nombre</Form.Label>
+                                <Form.Label className="fs-4 fw-bold">
+                                    Nombre
+                                </Form.Label>
                                 <Form.Control
                                     type="text"
                                     {...register('nombre', {
@@ -151,7 +153,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formApellidos"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Apellidos
                                 </Form.Label>
                                 <Form.Control
@@ -168,7 +170,9 @@ export default function CreateUserForm() {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formSexo">
-                                <Form.Label className="fs-4">Sexo</Form.Label>
+                                <Form.Label className="fs-4 fw-bold">
+                                    Sexo
+                                </Form.Label>
                                 <Controller
                                     name="sexo"
                                     control={control}
@@ -191,7 +195,9 @@ export default function CreateUserForm() {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formEdad">
-                                <Form.Label className="fs-4">Edad</Form.Label>
+                                <Form.Label className="fs-4 fw-bold">
+                                    Edad
+                                </Form.Label>
                                 <input
                                     {...register('edad', {
                                         required:
@@ -211,7 +217,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formTelefono"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Teléfono
                                 </Form.Label>
                                 <Form.Control
@@ -233,7 +239,7 @@ export default function CreateUserForm() {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formDni">
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     DNI/NIE
                                 </Form.Label>
                                 <Form.Control
@@ -258,7 +264,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formFechaActivacion"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Fecha de activación
                                 </Form.Label>
                                 <input
@@ -280,7 +286,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formOcupacion1"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Ocupacion 1
                                 </Form.Label>
                                 <Controller
@@ -361,7 +367,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formDiscapacidad"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Discapacidad
                                 </Form.Label>
                                 <Controller
@@ -391,7 +397,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formEstudios"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Nivel de estudios
                                 </Form.Label>
                                 <Controller
@@ -422,7 +428,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formSpecialty"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Especialidad
                                 </Form.Label>
                                 <Controller
@@ -613,7 +619,7 @@ export default function CreateUserForm() {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formDispo">
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Disponibilidad
                                 </Form.Label>
                                 <Controller
@@ -639,7 +645,9 @@ export default function CreateUserForm() {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formCarnet">
-                                <Form.Label className="fs-4">Carnet</Form.Label>
+                                <Form.Label className="fs-4 fw-bold">
+                                    Carnet
+                                </Form.Label>
                                 <Controller
                                     name="carnet"
                                     control={control}
@@ -668,7 +676,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formVehiculo"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Vehículo
                                 </Form.Label>
                                 <Controller
@@ -698,7 +706,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formLocalidad"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fw-bold">
                                     Localidad
                                 </Form.Label>
                                 <Controller
