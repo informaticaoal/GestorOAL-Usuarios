@@ -310,7 +310,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formOcupacion2"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Ocupacion 2 (opcional)
                                 </Form.Label>
                                 <Controller
@@ -335,7 +335,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formOcupacion3"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Ocupacion 3 (opcional)
                                 </Form.Label>
                                 <Controller
@@ -454,7 +454,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formComplementario"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Formación complementaria (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -470,7 +470,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formExperiencia"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Experiencia laboral (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -484,7 +484,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formPrograma"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Programa (opcional)
                                 </Form.Label>
                                 <Controller
@@ -509,7 +509,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formAñoPrograma"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Año Programa (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -528,7 +528,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formPrograma2"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Programa 2 (opcional)
                                 </Form.Label>
                                 <Controller
@@ -553,7 +553,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formAñoPrograma2"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Año Programa 2 (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -572,7 +572,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formPrograma3"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Programa 3 (opcional)
                                 </Form.Label>
                                 <Controller
@@ -597,7 +597,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formAñoPrograma3"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Año Programa 3 (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -728,7 +728,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formObservaciones"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Observaciones (opcional)
                                 </Form.Label>
                                 <Form.Control
@@ -743,7 +743,7 @@ export default function CreateUserForm() {
 
                     <div className="d-flex justify-content-center">
                         <Form.Group className="mb-3" controlId="form-Files">
-                            <Form.Label className="fs-4">
+                            <Form.Label className="fs-4 fst-italic">
                                 Documentos (opcional)
                             </Form.Label>
                             <Form.Control
