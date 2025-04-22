@@ -10,7 +10,7 @@ import {
     specialtyOptions,
     vehiculoOptions,
 } from '@/Utils/optionsData';
-import { Link, router, useForm as useFormInertia } from '@inertiajs/react';
+import { router, useForm as useFormInertia } from '@inertiajs/react';
 import { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
@@ -1259,7 +1259,7 @@ export default function ModifyUserFormSearch({
                         </tr>
                     </thead>
                     <tbody>
-                        {usuariosOAL.data.map((usuario) => (
+                        {usuariosOAL.map((usuario) => (
                             <tr key={usuario.id} id={usuario.id}>
                                 <td onClick={modificarUsuario(usuario.id)}>
                                     {usuario.id}
@@ -1393,30 +1393,8 @@ export default function ModifyUserFormSearch({
                         ))}
                     </tbody>
                 </Table>
-
-                <div className="d-flex justify-content-center container">
-                    <nav>
-                        <ul className="pagination pagination-lg">
-                            {usuariosOAL.links.map((link) => (
-                                <li
-                                    key={link.url}
-                                    className={`page-item ${link.active ? 'active' : ''}`}
-                                >
-                                    <Link
-                                        preserveScroll
-                                        className="page-link"
-                                        href={link.url}
-                                        dangerouslySetInnerHTML={{
-                                            __html: link.label,
-                                        }}
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </div>
             </div>
-            <Container className="d-flex justify-content-center mb-4">
+            <Container className="d-flex justify-content-center d-none mb-4">
                 <Form
                     onSubmit={handleSubmit3(() => {
                         router.get(`/search/generatePdf`, usuariosPDF);

@@ -152,7 +152,10 @@ export default function Search() {
                                 maxEdad: data.maxEdad,
                             };
                             axios
-                                .post('/usuario/search', { newData, edadData })
+                                .post('/usuario/searchData', {
+                                    newData,
+                                    edadData,
+                                })
                                 .then((response) => {
                                     setContadorUsuarios(response.data.contador);
                                     setUsuariosOAL(response.data.usuarios);

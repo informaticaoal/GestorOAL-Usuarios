@@ -1428,7 +1428,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                 </div>
             )}
             {contadorUsuarios > 0 && (
-                <Container className="d-flex justify-content-center mb-4">
+                <Container className="d-flex justify-content-center d-none mb-4">
                     <a href="/generatePdf" className="text-decoration-none">
                         <Button variant="info" size="lg">
                             Descargar PDF
