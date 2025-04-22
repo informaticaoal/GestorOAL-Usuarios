@@ -1,5 +1,5 @@
-import CreateUserForm from '@/Components/CreateUserForm';
-import ModifyUserForm from '@/Components/ModifyUserForm';
+import CreateUserForm from '@/Components/Views/CreateUserForm';
+import ModifyUserForm from '@/Components/Views/ModifyUserForm';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 

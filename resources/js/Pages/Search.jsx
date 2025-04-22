@@ -1,4 +1,4 @@
-import ModifyUserFormSearch from '@/Components/ModifyUserFormSearch';
+import ModifyUserFormSearch from '@/Components/Views/ModifyUserFormSearch';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import OALHeaderLayout from '@/Layouts/SearchHeader';
 import {

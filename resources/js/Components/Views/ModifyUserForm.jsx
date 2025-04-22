@@ -16,7 +16,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
-import NavLink from './NavLink';
+import NavLink from '../NavLink';
 
 export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
     const {
