@@ -141,7 +141,6 @@ class UsuarioOALController extends Controller
     }
 
     public function searchUsers(Request $request){
-        if ($request->isMethod('post')) {
             $search = $request->all()['newData'];
             $edadData = $request->all()['edadData'];
             $usuarios = UsuarioOAL::query();
@@ -248,10 +247,6 @@ class UsuarioOALController extends Controller
             
             $result = $usuarios->get();
             return response()->json(['usuarios' => $result, 'contador' => $usuarios->count(), 'usuariosPDF' => $usuarios->get()]);
-            
-        } else {
-                
-            }
         }
 
         public function importExcel(Request $request) {
