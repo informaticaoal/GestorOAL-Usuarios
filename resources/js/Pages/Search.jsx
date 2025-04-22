@@ -152,7 +152,7 @@ export default function Search() {
                                 maxEdad: data.maxEdad,
                             };
                             axios
-                                .post('/usuario/searchData', {
+                                .post('/usuario/search', {
                                     newData,
                                     edadData,
                                 })

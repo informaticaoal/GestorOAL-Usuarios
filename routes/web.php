@@ -49,7 +49,7 @@ Route::get('/usuario_oal/{id}/docs', [DocumentosUsuariosController::class, 'getD
 
 Route::put('/usuario_oal/search/{id}', [UsuarioOALController::class, 'updateThroughSearch'])->middleware(['auth', 'verified']);
 
-Route::post('/usuario/searchData', [UsuarioOALController::class, 'searchUsers'])->middleware(['auth', 'verified']);
+Route::post('/usuario/search', [UsuarioOALController::class, 'searchUsers'])->middleware(['auth', 'verified']);
 
 Route::post('/usuario_oal/adddocs', [DocumentosUsuariosController::class, 'store'])->middleware(['auth', 'verified']);
 
