@@ -291,6 +291,9 @@ export default function ModifyUserFormSearch({
                 document
                     .getElementById('searchUsuarios')
                     .setAttribute('style', 'display: none !important');
+
+                window.scrollTo(0, 0);
+
                 document
                     .getElementById('editUsuario')
                     .setAttribute('style', 'display: block !important');
