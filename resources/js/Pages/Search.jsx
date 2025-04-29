@@ -689,9 +689,6 @@ export default function Search() {
                                     <Controller
                                         name="carnet"
                                         control={control}
-                                        rules={{
-                                            required: true,
-                                        }}
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
