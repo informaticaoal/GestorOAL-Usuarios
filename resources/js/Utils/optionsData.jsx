@@ -80,6 +80,7 @@ export const ocupacionOptions = [
         value: 'Cuidador/a de niños en guarderías',
         label: 'Cuidador/a de niños en guarderías',
     },
+    { value: 'Delineante', label: 'Delineante' },
     {
         value: 'Dependiente/a de carnicería y charcutería',
         label: 'Dependiente/a de carnicería y charcutería',
@@ -116,11 +117,17 @@ export const ocupacionOptions = [
         value: 'Dependiente/a de Grandes superficies',
         label: 'Dependiente/a de Grandes superficies',
     },
+    { value: 'Dietista', label: 'Dietista' },
     {
         value: 'Dinamizador/a sociocultural',
         label: 'Dinamizador/a sociocultural',
     },
-    { value: 'Diseñador web', label: 'Diseñador web' },
+    {
+        value: 'Diseñador de establecimientos y espacios comerciales',
+        label: 'Diseñador de establecimientos y espacios comerciales',
+    },
+    { value: 'Diseñador/a gráfico', label: 'Diseñador/a gráfico' },
+    { value: 'Diseñador/a web', label: 'Diseñador/a web' },
     { value: 'Educador/a social', label: 'Educador/a social' },
     {
         value: 'Electricista de mantenimiento y reparación electrodomésticos',
@@ -200,6 +207,64 @@ export const ocupacionOptions = [
         label: 'Manipulador/a de frutas y hortalizas',
     },
     { value: 'Masajista deportivo', label: 'Masajista deportivo' },
+    { value: 'Mecánico/a de automóviles', label: 'Mecánico/a de automóviles' },
+    {
+        value: 'Mecánico/a de mantenimiento',
+        label: 'Mecánico/a de mantenimiento',
+    },
+    { value: 'Mecánico/a de maquinaria', label: 'Mecánico/a de maquinaria' },
+    {
+        value: 'Mecánico/a de mantenimiento industrial',
+        label: 'Mecánico/a de mantenimiento industrial',
+    },
+    {
+        value: 'Mecánico/a de mantenimiento de vehículos',
+        label: 'Mecánico/a de mantenimiento de vehículos',
+    },
+    {
+        value: 'Mecánico/a de maquinaria agrícola',
+        label: 'Mecánico/a de maquinaria agrícola',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de obras públicas',
+        label: 'Mecánico/a de maquinaria de obras públicas',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de construcción',
+        label: 'Mecánico/a de maquinaria de construcción',
+    },
+    {
+        value: 'Mecánico/a de maquinaria industrial',
+        label: 'Mecánico/a de maquinaria industrial',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de jardinería',
+        label: 'Mecánico/a de maquinaria de jardinería',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de transporte',
+        label: 'Mecánico/a de maquinaria de transporte',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de elevación',
+        label: 'Mecánico/a de maquinaria de elevación',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de manipulación',
+        label: 'Mecánico/a de maquinaria de manipulación',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de movimiento de tierras',
+        label: 'Mecánico/a de maquinaria de movimiento de tierras',
+    },
+    {
+        value: 'Mecánico/a de maquinaria de transporte y elevación',
+        label: 'Mecánico/a de maquinaria de transporte y elevación',
+    },
+    {
+        value: 'Mecánico/a de maquinaria agrícola y ganadera',
+        label: 'Mecánico/a de maquinaria agrícola y ganadera',
+    },
     {
         value: 'Mecánico y ajustadores de maquinaria agrícola e industrial',
         label: 'Mecánico y ajustadores de maquinaria agrícola e industrial',
@@ -267,6 +332,12 @@ export const ocupacionOptions = [
         label: 'Profesor/a clases particulares',
     },
     { value: 'Psicólogo/a', label: 'Psicólogo/a' },
+    { value: 'Publicista', label: 'Publicista' },
+    { value: 'Publicista de marketing', label: 'Publicista de marketing' },
+    { value: 'Recepcionista', label: 'Recepcionista' },
+    { value: 'Recepcionista de clínica', label: 'Recepcionista de clínica' },
+    { value: 'Recepcionista de gimnasio', label: 'Recepcionista de gimnasio' },
+    { value: 'Recepcionista de oficina', label: 'Recepcionista de oficina' },
     { value: 'Recepcionista de hotel', label: 'Recepcionista de hotel' },
     { value: 'Recogedor de residuos', label: 'Recogedor de residuos' },
     { value: 'Repartidor/a', label: 'Repartidor/a' },
@@ -298,6 +369,33 @@ export const ocupacionOptions = [
     {
         value: 'Técnico/a de laboratorio sanitario en general',
         label: 'Técnico/a de laboratorio sanitario en general',
+    },
+    { value: 'Técnico/a de marketing', label: 'Técnico/a de marketing' },
+    { value: 'Técnico/a de rayos', label: 'Técnico/a de rayos' },
+    {
+        value: 'Técnico/a de recursos humanos',
+        label: 'Técnico/a de recursos humanos',
+    },
+    { value: 'Técnico/a de ventas', label: 'Técnico/a de ventas' },
+    {
+        value: 'Técnico/a de ventas en comercio',
+        label: 'Técnico/a de ventas en comercio',
+    },
+    {
+        value: 'Técnico/a de ventas en telefonía',
+        label: 'Técnico/a de ventas en telefonía',
+    },
+    {
+        value: 'Técnico/a de ventas en turismo',
+        label: 'Técnico/a de ventas en turismo',
+    },
+    {
+        value: 'Técnico/a de ventas en vehículos',
+        label: 'Técnico/a de ventas en vehículos',
+    },
+    {
+        value: 'Técnico/a de ventas en vivienda',
+        label: 'Técnico/a de ventas en vivienda',
     },
     {
         value: 'Técnico/a en integración social',
