@@ -59,13 +59,14 @@ export default function Search() {
                     <Form
                         className="border-bottom pb-4"
                         onSubmit={handleSubmit((data) => {
+                            let carnetArray = [];
                             let specialtyArray = [];
                             if (data.especialidad) {
                                 for (const element of data.especialidad) {
                                     specialtyArray.push(element.value);
                                 }
                             }
-                            let carnetArray = [];
+
                             if (data.carnet) {
                                 for (const element of data.carnet) {
                                     carnetArray.push(element.value);
@@ -688,6 +689,9 @@ export default function Search() {
                                     <Controller
                                         name="carnet"
                                         control={control}
+                                        rules={{
+                                            required: true,
+                                        }}
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
@@ -696,11 +700,14 @@ export default function Search() {
                                                 noOptionsMessage={() =>
                                                     'Se ha introducido un valor erróneo'
                                                 }
+                                                isMulti
+                                                required
                                             />
                                         )}
                                     />
                                     <Form.Text className="text-danger">
-                                        {errors.carnet?.message}
+                                        {errors.carnet &&
+                                            'Es necesario indicar el carnet que tenga, aunque no disponga de uno.'}
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group
