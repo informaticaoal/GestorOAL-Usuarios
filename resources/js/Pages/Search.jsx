@@ -701,7 +701,6 @@ export default function Search() {
                                                     'Se ha introducido un valor erróneo'
                                                 }
                                                 isMulti
-                                                required
                                             />
                                         )}
                                     />
