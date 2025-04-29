@@ -35,7 +35,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         // Devolvemos la fecha en el nuevo formato
         return `${anio}-${mes}-${dia}`;
     }
-
+    const [firstTime, setFirstTime] = useState(false);
     const [documentos, setDocumentos] = useState([]);
     const actualYear = new Date().getFullYear();
     const regExpTlf = new RegExp(/^\d{9}$/);
@@ -288,6 +288,12 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                 document
                     .getElementById('editUsuario')
                     .setAttribute('style', 'display: block !important');
+
+                if (firstTime) {
+                    window.scrollTo(0, 0);
+                } else {
+                    setFirstTime(true);
+                }
             } catch (error) {
                 console.error('Error en la función:', error);
             }
