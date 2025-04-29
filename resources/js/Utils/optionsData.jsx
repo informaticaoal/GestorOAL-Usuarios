@@ -25,12 +25,24 @@ export const ocupacionOptions = [
         label: 'Analista de agua en general',
     },
     {
+        value: 'Analista de datos',
+        label: 'Analista de datos',
+    },
+    {
         value: 'Analista de laboratorio de química industrial',
         label: 'Analista de laboratorio de química industrial',
     },
     {
         value: 'Apoyo a la gestión administrativa (aux adtvo)',
         label: 'Apoyo a la gestión administrativa (aux adtvo)',
+    },
+    {
+        value: 'Auditor/a de ciberseguridad',
+        label: 'Auditor/a de ciberseguridad',
+    },
+    {
+        value: 'Auxiliar administrativo/a',
+        label: 'Auxiliar administrativo/a',
     },
     { value: 'Auxiliar de enfermería', label: 'Auxiliar de enfermería' },
     { value: 'Auxiliar de farmacia', label: 'Auxiliar de farmacia' },
@@ -62,6 +74,10 @@ export const ocupacionOptions = [
     {
         value: 'Conductor/a maquinaria de transporte de tierras',
         label: 'Conductor/a maquinaria de transporte de tierras',
+    },
+    {
+        value: 'Consultor/a de ciberseguridad',
+        label: 'Consultor/a de ciberseguridad',
     },
     {
         value: 'Controlador/a de accesos',
@@ -117,6 +133,46 @@ export const ocupacionOptions = [
         value: 'Dependiente/a de Grandes superficies',
         label: 'Dependiente/a de Grandes superficies',
     },
+    {
+        value: 'Desarrollador/a de aplicaciones de propósito general',
+        label: 'Desarrollador/a de aplicaciones de propósito general',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones de realidad virtual, realidad aumentada y realidad mixta',
+        label: 'Desarrollador/a de aplicaciones de realidad virtual, realidad aumentada y realidad mixta',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones en el ámbito del entretenimiento y la informática móvil',
+        label: 'Desarrollador/a de aplicaciones en el ámbito del entretenimiento y la informática móvil',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones en entornos Web',
+        label: 'Desarrollador/a de aplicaciones en entornos Web',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones en Python',
+        label: 'Desarrollador/a de aplicaciones en Python',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones informáticas en escritorio',
+        label: 'Desarrollador/a de aplicaciones informáticas en escritorio',
+    },
+    {
+        value: 'Desarrollador/a de aplicaciones informáticas para la gestión empresarial y de negocio',
+        label: 'Desarrollador/a de aplicaciones informáticas para la gestión empresarial y de negocio',
+    },
+    {
+        value: 'Desarrollador/a de Inteligencia Artificial y Big Data',
+        label: 'Desarrollador/a de Inteligencia Artificial y Big Data',
+    },
+    {
+        value: 'Desarrollador/a independiente de videojuegos (Indie Game Developer)',
+        label: 'Desarrollador/a independiente de videojuegos (Indie Game Developer)',
+    },
+    {
+        value: 'Desarrollador/a web',
+        label: 'Desarrollador/a web',
+    },
     { value: 'Dietista', label: 'Dietista' },
     {
         value: 'Dinamizador/a sociocultural',
@@ -126,7 +182,19 @@ export const ocupacionOptions = [
         value: 'Diseñador de establecimientos y espacios comerciales',
         label: 'Diseñador de establecimientos y espacios comerciales',
     },
+    {
+        value: 'Diseñador/a de interiores',
+        label: 'Diseñador/a de interiores',
+    },
+    {
+        value: 'Diseñador/a de moda',
+        label: 'Diseñador/a de moda',
+    },
     { value: 'Diseñador/a gráfico', label: 'Diseñador/a gráfico' },
+    {
+        value: 'Diseñador/a gráfico 2D y 3D de videojuegos (Game Artist)',
+        label: 'Diseñador/a gráfico 2D y 3D de videojuegos (Game Artist)',
+    },
     { value: 'Diseñador/a web', label: 'Diseñador/a web' },
     { value: 'Educador/a social', label: 'Educador/a social' },
     {
@@ -160,6 +228,18 @@ export const ocupacionOptions = [
         value: 'Expendedor/a de combustible',
         label: 'Expendedor/a de combustible',
     },
+    {
+        value: 'Experto/a en ciberseguridad',
+        label: 'Experto/a en ciberseguridad',
+    },
+    {
+        value: 'Experto/a en inteligencia artificial para videojuegos',
+        label: 'Experto/a en inteligencia artificial para videojuegos',
+    },
+    {
+        value: 'Experto/a en Inteligencia Artificial y Big Data',
+        label: 'Experto/a en Inteligencia Artificial y Big Data',
+    },
     { value: 'Ferrallistas', label: 'Ferrallistas' },
     {
         value: 'Fisioterapeúta en general',
@@ -171,6 +251,14 @@ export const ocupacionOptions = [
     { value: 'Gerocultor/a', label: 'Gerocultor/a' },
     { value: 'Guía de turismo', label: 'Guía de turismo' },
     {
+        value: 'Hacker ético',
+        label: 'Hacker ético',
+    },
+    {
+        value: 'Instalador/a de electrodomésticos',
+        label: 'Instalador/a de electrodomésticos',
+    },
+    {
         value: 'Instalador de telecomunicaciones',
         label: 'Instalador de telecomunicaciones',
     },
@@ -181,6 +269,14 @@ export const ocupacionOptions = [
     {
         value: 'Instalador fontanero/electricista',
         label: 'Instalador fontanero/electricista',
+    },
+    {
+        value: 'Instalador y reparador de equipos informáticos',
+        label: 'Instalador y reparador de equipos informáticos',
+    },
+    {
+        value: 'Instalador y reparador de sistemas de climatización',
+        label: 'Instalador y reparador de sistemas de climatización',
     },
     { value: 'Interno/a', label: 'Interno/a' },
     { value: 'Jardinero/a en general', label: 'Jardinero/a en general' },
@@ -269,7 +365,6 @@ export const ocupacionOptions = [
         value: 'Mecánico y ajustadores de maquinaria agrícola e industrial',
         label: 'Mecánico y ajustadores de maquinaria agrícola e industrial',
     },
-    { value: 'Mecánico/a de vehículos', label: 'Mecánico/a de vehículos' },
     {
         value: 'Monitor/a de aparatos de gimnasio',
         label: 'Monitor/a de aparatos de gimnasio',
@@ -296,7 +391,23 @@ export const ocupacionOptions = [
         value: 'Operador/a de maquinaria de lavandería y tintorería',
         label: 'Operador/a de maquinaria de lavandería y tintorería',
     },
+    {
+        value: 'Operador/a de planta química',
+        label: 'Operador/a de planta química',
+    },
+    {
+        value: 'Operador/a de sistemas informáticos',
+        label: 'Operador/a de sistemas informáticos',
+    },
     { value: 'Operario/a de sondeos', label: 'Operario/a de sondeos' },
+    {
+        value: 'Operador/a de tele-asistencia',
+        label: 'Operador/a de tele-asistencia',
+    },
+    {
+        value: 'Operador/a de telemarketing',
+        label: 'Operador/a de telemarketing',
+    },
     {
         value: 'Orientador/a para la inserción',
         label: 'Orientador/a para la inserción',
@@ -318,6 +429,10 @@ export const ocupacionOptions = [
         label: 'Peón en la industria textil',
     },
     {
+        value: 'Personal de apoyo y soporte técnico',
+        label: 'Personal de apoyo y soporte técnico',
+    },
+    {
         value: 'Personal de limpieza en general',
         label: 'Personal de limpieza en general',
     },
@@ -331,6 +446,34 @@ export const ocupacionOptions = [
         value: 'Profesor/a clases particulares',
         label: 'Profesor/a clases particulares',
     },
+    {
+        value: 'Programador/a de aplicaciones informáticas',
+        label: 'Programador/a de aplicaciones informáticas',
+    },
+    {
+        value: 'Programador/a multimedia',
+        label: 'Programador/a multimedia',
+    },
+    {
+        value: 'Programador/a de sistemas expertos',
+        label: 'Programador/a de sistemas expertos',
+    },
+    {
+        value: 'Programador/a de videojuegos (Game Developer)',
+        label: 'Programador/a de videojuegos (Game Developer)',
+    },
+    {
+        value: 'Programador/a DevOps',
+        label: 'Programador/a DevOps',
+    },
+    {
+        value: 'Programador/a en lenguaje Python',
+        label: 'Programador/a en lenguaje Python',
+    },
+    {
+        value: 'Programador/a web',
+        label: 'Programador/a web',
+    },
     { value: 'Psicólogo/a', label: 'Psicólogo/a' },
     { value: 'Publicista', label: 'Publicista' },
     { value: 'Publicista de marketing', label: 'Publicista de marketing' },
@@ -341,7 +484,23 @@ export const ocupacionOptions = [
     { value: 'Recepcionista de hotel', label: 'Recepcionista de hotel' },
     { value: 'Recogedor de residuos', label: 'Recogedor de residuos' },
     { value: 'Repartidor/a', label: 'Repartidor/a' },
+    {
+        value: 'Reparador de periféricos de sistemas microinformáticos',
+        label: 'Reparador de periféricos de sistemas microinformáticos',
+    },
     { value: 'Reponedor/a', label: 'Reponedor/a' },
+    {
+        value: 'Responsable de informática',
+        label: 'Responsable de informática',
+    },
+    {
+        value: 'Responsable del proceso de creación del videojuego (Game Designer)',
+        label: 'Responsable del proceso de creación del videojuego (Game Designer)',
+    },
+    {
+        value: 'Responsable de pruebas de videojuegos (Game Tester)',
+        label: 'Responsable de pruebas de videojuegos (Game Tester)',
+    },
     { value: 'Sastre', label: 'Sastre' },
     { value: 'Secretario/a', label: 'Secretario/a' },
     { value: 'Socorrista', label: 'Socorrista' },
@@ -354,6 +513,10 @@ export const ocupacionOptions = [
         label: 'Soldador/a de estructuras metálicas pesadas',
     },
     { value: 'Soldadores/as', label: 'Soldadores/as' },
+    {
+        value: 'Supervisor/a de sistemas',
+        label: 'Supervisor/a de sistemas',
+    },
     {
         value: 'Técnico/a administrativo',
         label: 'Técnico/a administrativo',
@@ -375,6 +538,19 @@ export const ocupacionOptions = [
     {
         value: 'Técnico/a de recursos humanos',
         label: 'Técnico/a de recursos humanos',
+    },
+    { value: 'Técnico/a de sonido', label: 'Técnico/a de sonido' },
+    {
+        value: 'Técnico/a de soporte informático',
+        label: 'Técnico/a de soporte informático',
+    },
+    {
+        value: 'Técnico/a de redes',
+        label: 'Técnico/a de redes',
+    },
+    {
+        value: 'Técnico/a de redes de datos',
+        label: 'Técnico/a de redes de datos',
     },
     { value: 'Técnico/a de ventas', label: 'Técnico/a de ventas' },
     {
@@ -398,15 +574,51 @@ export const ocupacionOptions = [
         label: 'Técnico/a de ventas en vivienda',
     },
     {
+        value: 'Técnico/a en administración de bases de datos',
+        label: 'Técnico/a en administración de bases de datos',
+    },
+    {
+        value: 'Técnico/a en administración de sistemas',
+        label: 'Técnico/a en administración de sistemas',
+    },
+    {
+        value: 'Técnico/a en control de calidad en industrias alimentarias',
+        label: 'Técnico/a en control de calidad en industrias alimentarias',
+    },
+    {
+        value: 'Técnico/a en entornos web',
+        label: 'Técnico/a en entornos web',
+    },
+    {
         value: 'Técnico/a en integración social',
         label: 'Técnico/a en integración social',
     },
     {
-        value: 'Téncico/a en control de calidad en industrias alimentarias',
-        label: 'Téncico/a en control de calidad en industrias alimentarias',
+        value: 'Técnico/a en servicios de comunicaciones',
+        label: 'Técnico/a en servicios de comunicaciones',
+    },
+    {
+        value: 'Técnico/a en servicios de Internet',
+        label: 'Técnico/a en servicios de Internet',
+    },
+    {
+        value: 'Técnico/a en sistemas de mensajería electrónica',
+        label: 'Técnico/a en sistemas de mensajería electrónica',
+    },
+    {
+        value: 'Técnico/a en sistemas de telecomunicaciones',
+        label: 'Técnico/a en sistemas de telecomunicaciones',
+    },
+    {
+        value: 'Técnico/a en teleasistencia',
+        label: 'Técnico/a en teleasistencia',
     },
     { value: 'Tractoristas', label: 'Tractoristas' },
     { value: 'Trabajador/a social', label: 'Trabajador/a social' },
+    {
+        value: 'Verificador/a - Depurador/a de código',
+        label: 'Verificador/a - Depurador/a de código',
+    },
     { value: 'Vigilante de seguridad', label: 'Vigilante de seguridad' },
     { value: 'Webmaster', label: 'Webmaster' },
     { value: 'Otro', label: 'Otro' },
