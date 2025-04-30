@@ -635,6 +635,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -672,6 +673,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -859,6 +861,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                         <Select
                                             {...field}
                                             options={programaOptions}
+                                            isClearable={true}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
                                                 'No existe el programa introducido'
@@ -915,6 +918,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                         <Select
                                             {...field}
                                             options={programaOptions}
+                                            isClearable={true}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
                                                 'No existe el programa introducido'
@@ -970,6 +974,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>

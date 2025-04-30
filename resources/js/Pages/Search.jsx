@@ -219,6 +219,7 @@ export default function Search() {
                                             <Select
                                                 {...field}
                                                 options={sexoOptions}
+                                                isClearable={true}
                                                 placeholder="Selecciona un sexo"
                                                 noOptionsMessage={() =>
                                                     'No se ha encontrado dicha opción'
@@ -245,6 +246,7 @@ export default function Search() {
                                                 <Select
                                                     {...field}
                                                     options={edadOptions}
+                                                    isClearable={true}
                                                     placeholder="Selecciona una opción."
                                                     noOptionsMessage={() =>
                                                         'No se ha encontrado dicha opción.'
@@ -360,6 +362,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={ocupacionOptions}
                                                 placeholder="Selecciona una profesión"
                                                 noOptionsMessage={() =>
@@ -385,6 +388,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={ocupacionOptions}
                                                 placeholder="Selecciona una profesión"
                                                 noOptionsMessage={() =>
@@ -411,6 +415,7 @@ export default function Search() {
                                             <Select
                                                 id="ocupacion1"
                                                 {...field}
+                                                isClearable={true}
                                                 options={ocupacionOptions}
                                                 placeholder="Selecciona una profesión"
                                                 noOptionsMessage={() =>
@@ -436,6 +441,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={discaOptions}
                                                 placeholder="Seleccione una opción"
                                                 noOptionsMessage={() =>
@@ -461,6 +467,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={estudiosOptions}
                                                 placeholder="Selecciona tu nivel de estudios más alto"
                                                 noOptionsMessage={() =>
@@ -483,6 +490,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={specialtyOptions}
                                                 placeholder="Selecciona tu especialidad"
                                                 noOptionsMessage={() =>
@@ -536,6 +544,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={programaOptions}
                                                 placeholder="Selecciona un programa"
                                                 noOptionsMessage={() =>
@@ -580,6 +589,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={programaOptions}
                                                 placeholder="Selecciona un programa"
                                                 noOptionsMessage={() =>
@@ -624,6 +634,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={programaOptions}
                                                 placeholder="Selecciona un programa"
                                                 noOptionsMessage={() =>
@@ -667,6 +678,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={disponibilidadOptions}
                                                 placeholder="Selecciona su disponibilidad"
                                                 noOptionsMessage={() =>
@@ -692,6 +704,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={carnetOptions}
                                                 placeholder="Selecciona el carnet que posea"
                                                 noOptionsMessage={() =>
@@ -719,6 +732,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={vehiculoOptions}
                                                 placeholder="¿Cuenta con vehículo propio?"
                                                 noOptionsMessage={() =>
@@ -741,6 +755,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={localidadOptions}
                                                 placeholder="Selecciona una localidad"
                                                 noOptionsMessage={() =>
@@ -780,6 +795,7 @@ export default function Search() {
                                         render={({ field }) => (
                                             <Select
                                                 {...field}
+                                                isClearable={true}
                                                 options={usersOptions}
                                                 placeholder="Quién ha añadido el usuario"
                                                 noOptionsMessage={() =>

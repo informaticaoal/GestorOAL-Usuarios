@@ -325,6 +325,7 @@ export default function CreateUserForm() {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -351,6 +352,7 @@ export default function CreateUserForm() {
                                         <Select
                                             id="ocupacion3"
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -499,6 +501,7 @@ export default function CreateUserForm() {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
@@ -543,6 +546,7 @@ export default function CreateUserForm() {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
@@ -587,6 +591,7 @@ export default function CreateUserForm() {
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>

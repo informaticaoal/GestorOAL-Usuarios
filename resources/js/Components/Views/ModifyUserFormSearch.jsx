@@ -623,7 +623,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formOcupacion2"
                             >
                                 <Form.Label className="fs-4">
-                                    Ocupacion 2
+                                    Ocupacion 2 (opcional)
                                 </Form.Label>
                                 <Controller
                                     name="ocupacion2"
@@ -631,6 +631,7 @@ export default function ModifyUserFormSearch({
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -660,7 +661,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formOcupacion3"
                             >
                                 <Form.Label className="fs-4">
-                                    Ocupacion 3
+                                    Ocupacion 3 (opcional)
                                 </Form.Label>
                                 <Controller
                                     name="ocupacion3"
@@ -668,6 +669,7 @@ export default function ModifyUserFormSearch({
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={ocupacionOptions}
                                             placeholder="Selecciona una profesión"
                                             noOptionsMessage={() =>
@@ -816,7 +818,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formComplementario"
                             >
                                 <Form.Label className="fs-4">
-                                    Formación complementaria
+                                    Formación complementaria (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     {...register2('formacion_comp')}
@@ -832,7 +834,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formExperiencia"
                             >
                                 <Form.Label className="fs-4">
-                                    Experiencia laboral
+                                    Experiencia laboral (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     {...register2('experiencia')}
@@ -846,7 +848,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formPrograma"
                             >
                                 <Form.Label className="fs-4">
-                                    Programa
+                                    Programa (opcional)
                                 </Form.Label>
                                 <Controller
                                     name="programa_oal"
@@ -854,6 +856,7 @@ export default function ModifyUserFormSearch({
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
@@ -883,7 +886,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formAñoPrograma"
                             >
                                 <Form.Label className="fs-4">
-                                    Año Programa
+                                    Año Programa (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     type="number"
@@ -902,7 +905,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formPrograma2"
                             >
                                 <Form.Label className="fs-4">
-                                    Programa 2
+                                    Programa 2 (opcional)
                                 </Form.Label>
                                 <Controller
                                     name="programa_oal_2"
@@ -910,6 +913,7 @@ export default function ModifyUserFormSearch({
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
@@ -939,7 +943,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formAñoPrograma2"
                             >
                                 <Form.Label className="fs-4">
-                                    Año Programa 2
+                                    Año Programa 2 (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     type="number"
@@ -958,7 +962,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formPrograma3"
                             >
                                 <Form.Label className="fs-4">
-                                    Programa 3
+                                    Programa 3 (opcional)
                                 </Form.Label>
                                 <Controller
                                     name="programa_oal_3"
@@ -966,6 +970,7 @@ export default function ModifyUserFormSearch({
                                     render={({ field }) => (
                                         <Select
                                             {...field}
+                                            isClearable={true}
                                             options={programaOptions}
                                             placeholder="Selecciona un programa"
                                             noOptionsMessage={() =>
@@ -995,7 +1000,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formAñoPrograma3"
                             >
                                 <Form.Label className="fs-4">
-                                    Año Programa 3
+                                    Año Programa 3 (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     type="number"
@@ -1146,7 +1151,7 @@ export default function ModifyUserFormSearch({
                                 controlId="formObservaciones"
                             >
                                 <Form.Label className="fs-4">
-                                    Observaciones
+                                    Observaciones (opcional)
                                 </Form.Label>
                                 <Form.Control
                                     {...register2('observaciones')}
@@ -1166,7 +1171,9 @@ export default function ModifyUserFormSearch({
 
                     <div className="d-flex justify-content-center">
                         <Form.Group className="mb-3" controlId="form-Files">
-                            <Form.Label className="fs-4">Documentos</Form.Label>
+                            <Form.Label className="fs-4">
+                                Documentos (opcional)
+                            </Form.Label>
                             <Form.Control
                                 {...register2('documentos')}
                                 type="file"
