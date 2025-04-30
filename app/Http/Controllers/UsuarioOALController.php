@@ -159,20 +159,22 @@ class UsuarioOALController extends Controller
             if (isset($search['edad']) && !empty($search['edad'])) {
                 switch ($search['edad']) {
                     case 'menor':
-                        $usuarios->where(function($query) use ($edadData) {
-                            $query->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') >= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [$edadData['edadNumero']]);
-                        });
+                        if (isset($edadData['edadNumero']) && is_numeric($edadData['edadNumero'])) {
+                            $usuarios->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') >= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['edadNumero']]);
+                        }
                         break;
                     case 'mayor':
-                        $usuarios->where(function($query) use ($edadData) {
-                            $query->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') <= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [$edadData['edadNumero']]);
-                        });
+                        if (isset($edadData['edadNumero']) && is_numeric($edadData['edadNumero'])) {
+                            $usuarios->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') <= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['edadNumero']]);
+                        }
                         break;
                     case 'entre':
-                        $usuarios->where(function($query) use ($edadData) {
-                            $query->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') <= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [$edadData['minEdad']])
-                                ->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') >= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [$edadData['maxEdad']]);
-                        });
+                        if (isset($edadData['minEdad'], $edadData['maxEdad']) && 
+                            is_numeric($edadData['minEdad']) && 
+                            is_numeric($edadData['maxEdad'])) {
+                            $usuarios->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') <= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['minEdad']])
+                                   ->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') >= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['maxEdad']]);
+                        }
                         break;
                     default:
                         break;
