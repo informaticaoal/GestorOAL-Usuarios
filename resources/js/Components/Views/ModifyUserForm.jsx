@@ -336,7 +336,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
     const { delete: destroy } = useFormInertia();
 
     function handleEliminarUsuario(idUsuario) {
-        destroy(`/usuario_oal/${idUsuario}`);
+        destroy(`/usuario_oal/${idUsuario}`, { preserveScroll: true });
     }
 
     function handleEliminarDocumento(idDoc) {

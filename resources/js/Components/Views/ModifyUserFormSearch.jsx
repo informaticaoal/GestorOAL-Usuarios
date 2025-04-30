@@ -339,7 +339,7 @@ export default function ModifyUserFormSearch({
     const { delete: destroy } = useFormInertia();
 
     function handleEliminarUsuario(idUsuario) {
-        destroy(`/usuario_oal/${idUsuario}`);
+        destroy(`/usuario_oal/${idUsuario}`, { preserveScroll: true });
     }
 
     function handleEliminarDocumento(idDoc) {
