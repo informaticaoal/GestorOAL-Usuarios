@@ -65,6 +65,10 @@ export const ocupacionOptions = [
     { value: 'Cocinero/a', label: 'Cocinero/a' },
     { value: 'Community Manager', label: 'Community Manager' },
     {
+        value: 'Conductor/a',
+        label: 'Conductor/a',
+    },
+    {
         value: 'Conductor/a de ambulancia',
         label: 'Conductor/a de ambulancia',
     },
@@ -518,6 +522,14 @@ export const ocupacionOptions = [
         label: 'Supervisor/a de sistemas',
     },
     {
+        value: 'Tanatopractores y embalsamadores',
+        label: 'Tanatopractores y embalsamadores',
+    },
+    {
+        value: 'Taxista',
+        label: 'Taxista',
+    },
+    {
         value: 'Técnico/a administrativo',
         label: 'Técnico/a administrativo',
     },
@@ -528,6 +540,18 @@ export const ocupacionOptions = [
     {
         value: 'Técnico/a de información turística',
         label: 'Técnico/a de información turística',
+    },
+    {
+        value: 'Técnico/a de laboratorio de análisis y control',
+        label: 'Técnico/a de laboratorio de análisis y control',
+    },
+    {
+        value: 'Técnico/a de laboratorio de diagnóstico clínico',
+        label: 'Técnico/a de laboratorio de diagnóstico clínico',
+    },
+    {
+        value: 'Técnico/a de laboratorio químico',
+        label: 'Técnico/a de laboratorio químico',
     },
     {
         value: 'Técnico/a de laboratorio sanitario en general',
