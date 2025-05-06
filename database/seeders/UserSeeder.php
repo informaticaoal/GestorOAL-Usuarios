@@ -19,15 +19,21 @@ class UserSeeder extends Seeder
         //     'password' => bcrypt('OAL_1234'),
         // ]);
 
-        DB::table('users')->insert([
-            'name' => 'Yolanda',
-            'email' => 'orienta1@oalhuetortajar.com',
-            'password' => bcrypt('OAL_12345'),
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'Yolanda',
+        //     'email' => 'orienta1@oalhuetortajar.com',
+        //     'password' => bcrypt('OAL_12345'),
+        // ]);
+
+        // DB::table('users')->insert([
+        //     'name' => 'AiramSandra',
+        //     'email' => 'a@a.com',
+        //     'password' => bcrypt('OAL_12345'),
+        // ]);
 
         DB::table('users')->insert([
-            'name' => 'AiramSandra',
-            'email' => 'a@a.com',
+            'name' => 'Carolina',
+            'email' => 'carolina.oalht@gmail.com',
             'password' => bcrypt('OAL_12345'),
         ]);
     }
