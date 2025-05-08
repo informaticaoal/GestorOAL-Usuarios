@@ -6512,24 +6512,28 @@ export const vehiculoOptions = [
 
 export const programaOptions = [
     {
-        value: 'Proyectos integrales vulnerables',
-        label: 'Proyectos integrales vulnerables',
-    },
-    {
-        value: 'Proyectos integrales jóvenes',
-        label: 'Proyectos integrales jóvenes',
+        value: 'Andalucía orienta',
+        label: 'Andalucía orienta',
     },
     {
         value: 'EPES',
         label: 'EPES',
     },
     {
-        value: 'Andalucía orienta',
-        label: 'Andalucía orienta',
-    },
-    {
         value: 'FPE',
         label: 'FPE',
+    },
+    {
+        value: 'Programas de formación y empleo',
+        label: 'Programas de formación y empleo',
+    },
+    {
+        value: 'Proyectos integrales jóvenes',
+        label: 'Proyectos integrales jóvenes',
+    },
+    {
+        value: 'Proyectos integrales vulnerables',
+        label: 'Proyectos integrales vulnerables',
     },
 ];
 
