@@ -44,20 +44,69 @@ export const ocupacionOptions = [
         value: 'Auxiliar administrativo/a',
         label: 'Auxiliar administrativo/a',
     },
+    {
+        value: 'Auxiliar de almacén',
+        label: 'Auxiliar de almacén',
+    },
     { value: 'Auxiliar de enfermería', label: 'Auxiliar de enfermería' },
     { value: 'Auxiliar de farmacia', label: 'Auxiliar de farmacia' },
+    {
+        value: 'Auxiliar de geriatría',
+        label: 'Auxiliar de geriatría',
+    },
+    { value: 'Auxiliar de hogar', label: 'Auxiliar de hogar' },
+    {
+        value: 'Auxiliar de laboratorio de diagnóstico clínico',
+        label: 'Auxiliar de laboratorio de diagnóstico clínico',
+    },
+    {
+        value: 'Auxiliar de laboratorio químico',
+        label: 'Auxiliar de laboratorio químico',
+    },
+    {
+        value: 'Auxiliar de limpieza y desinfección de instalaciones, aparatos y material de laboratorio',
+        label: 'Auxiliar de limpieza y desinfección de instalaciones, aparatos y material de laboratorio',
+    },
+    {
+        value: 'Auxiliar de línea de producción',
+        label: 'Auxiliar de línea de producción',
+    },
+    {
+        value: 'Auxiliar de mantenimiento en industria alimentaria',
+        label: 'Auxiliar de mantenimiento en industria alimentaria',
+    },
+    {
+        value: 'Auxiliar de planta alimentaria',
+        label: 'Auxiliar de planta alimentaria',
+    },
     {
         value: 'Auxiliar de vigilante de seguridad no habitado para ir armado',
         label: 'Auxiliar de vigilante de seguridad no habitado para ir armado',
     },
     { value: 'Ayuda a domicilio', label: 'Ayuda a domicilio' },
     { value: 'Ayudante de cocina', label: 'Ayudante de cocina' },
+    {
+        value: 'Ayudante de plantas residuales',
+        label: 'Ayudante de plantas residuales',
+    },
+    {
+        value: 'Ayudante de plantas de tratamiento de aguas',
+        label: 'Ayudante de plantas de tratamiento de aguas',
+    },
     { value: 'Barrendero/a', label: 'Barrendero/a' },
     { value: 'Biologo/a', label: 'Biologo/a' },
     { value: 'Cajero/a de comercio', label: 'Cajero/a de comercio' },
     { value: 'Camarero/a de piso', label: 'Camarero/a de piso' },
     { value: 'Camarero/a general', label: 'Camarero/a general' },
     { value: 'Carpinero de aluminio', label: 'Carpinero de aluminio' },
+    {
+        value: 'Carpinero de madera',
+        label: 'Carpinero de madera',
+    },
+    {
+        value: 'Carretillero',
+        label: 'Carretillero',
+    },
     {
         value: 'Chapista y pintores de vehículos',
         label: 'Chapista y pintores de vehículos',
@@ -396,6 +445,10 @@ export const ocupacionOptions = [
         label: 'Operador/a de maquinaria de lavandería y tintorería',
     },
     {
+        value: 'Operador/a de máquinas para elaborar y envasar productos alimentarios',
+        label: 'Operador/a de máquinas para elaborar y envasar productos alimentarios',
+    },
+    {
         value: 'Operador/a de planta química',
         label: 'Operador/a de planta química',
     },
@@ -429,6 +482,14 @@ export const ocupacionOptions = [
     },
     { value: 'Peón de fábrica', label: 'Peón de fábrica' },
     {
+        value: 'Peón de la industria de la alimentación y bebidas',
+        label: 'Peón de la industria de la alimentación y bebidas',
+    },
+    {
+        value: 'Peón de jardinería',
+        label: 'Peón de jardinería',
+    },
+    {
         value: 'Peón en la industria textil',
         label: 'Peón en la industria textil',
     },
@@ -442,6 +503,10 @@ export const ocupacionOptions = [
     },
     { value: 'Pinche de cocina', label: 'Pinche de cocina' },
     { value: 'Podadores', label: 'Podadores' },
+    {
+        value: 'Preparados de materias primas',
+        label: 'Preparados de materias primas',
+    },
     {
         value: 'Profesionales de la acupuntura, naturopatía, medicina tradicional china',
         label: 'Profesionales de la acupuntura, naturopatía, medicina tradicional china',
@@ -637,8 +702,20 @@ export const ocupacionOptions = [
         value: 'Técnico/a en teleasistencia',
         label: 'Técnico/a en teleasistencia',
     },
-    { value: 'Tractoristas', label: 'Tractoristas' },
     { value: 'Trabajador/a social', label: 'Trabajador/a social' },
+    { value: 'Tractoristas', label: 'Tractoristas' },
+    {
+        value: 'Traductor/a de textos',
+        label: 'Traductor/a de textos',
+    },
+    {
+        value: 'Traductor/a e intérprete',
+        label: 'Traductor/a e intérprete',
+    },
+    {
+        value: 'Traductor/a e intérprete de lengua de signos',
+        label: 'Traductor/a e intérprete de lengua de signos',
+    },
     {
         value: 'Verificador/a - Depurador/a de código',
         label: 'Verificador/a - Depurador/a de código',
@@ -6118,6 +6195,10 @@ export const carnetOptions = [
     {
         value: 'Sin carnet',
         label: 'Sin carnet',
+    },
+    {
+        value: 'No sabe, no contesta',
+        label: 'No sabe, no contesta',
     },
     { value: 'Moto AM (ciclomotores)', label: 'Moto AM (ciclomotores)' },
     { value: 'Moto A1 (-125 cc)', label: 'Moto A1 (-125 cc)' },
