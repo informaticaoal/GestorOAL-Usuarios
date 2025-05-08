@@ -55,6 +55,10 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     `/usuario/${idUsuario}/fecha-activacion`,
                 );
                 const fechaActDB = responseFechaAct.data.fecha_activacion;
+
+                // Al pasarse al listado de usuarios sin [], hay que hacer una llamada a la base de datos
+                // y que nos devuelva el array en string, y luego hacerle un JSON.parse
+                // para que se pueda usar como un array.
                 const specialtyResponse = await axios.get(
                     `/usuario_oal/${idUsuario}/specialties`,
                 );
@@ -66,6 +70,12 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                 );
 
                 const carnetDB = JSON.parse(carnetResponse.data.carnet);
+                const necesidadFormativaResponse = await axios.get(
+                    `/usuario_oal/${idUsuario}/necesidad-formativa`,
+                );
+                const necesidadFormativaDB = JSON.parse(
+                    necesidadFormativaResponse.data.necesidad_formativa,
+                );
                 let usuario = document.getElementById(idUsuario);
                 let form = document.getElementById('editUsuario').children[1];
 
@@ -99,6 +109,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     'carnet',
                     'vehiculo',
                     'localidad',
+                    'necesidad_formativa',
                     'observaciones',
                     'usuarioId',
                     'documentos',
@@ -125,6 +136,25 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             break;
                         case 'localidad':
                             setValue2('localidad', elementText);
+                            break;
+                        case 'necesidad_formativa':
+                            // eslint-disable-next-line prettier/prettier, no-case-declarations
+                            const necesidadFormativaArray = necesidadFormativaDB;
+                            // eslint-disable-next-line no-case-declarations
+                            let selectedNecesidades = [];
+
+                            // Recorre el array de necesidades formativas del usuario
+                            necesidadFormativaArray.forEach((necesidad) => {
+                                // Busca la opción correspondiente en ocupacionOptions
+                                const option = ocupacionOptions.find(
+                                    (opt) => opt.value == necesidad,
+                                );
+                                if (option) {
+                                    selectedNecesidades.push(option);
+                                }
+                            });
+
+                            setValue2('necesidades', selectedNecesidades);
                             break;
                         case 'carnet':
                             // eslint-disable-next-line no-case-declarations
@@ -370,6 +400,10 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                         for (const element of data.carnet) {
                             carnetArray.push(element.value);
                         }
+                        let necesidadesArray = [];
+                        for (const element of data.necesidades) {
+                            necesidadesArray.push(element.value);
+                        }
 
                         let newData = {
                             nombre: data.nombre,
@@ -393,6 +427,8 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             carnet: JSON.stringify(carnetArray),
                             vehiculo: data.vehiculo,
                             localidad: data.localidad,
+                            necesidad_formativa:
+                                JSON.stringify(necesidadesArray),
                             observaciones: data.observaciones
                                 ? data.observaciones
                                 : '',
@@ -1154,6 +1190,35 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             </Form.Group>
                             <Form.Group
                                 className="mb-3"
+                                controlId="formNecesidades"
+                            >
+                                <Form.Label className="fs-4">
+                                    Necesidades formativas (opcional)
+                                </Form.Label>
+                                <Controller
+                                    name="necesidades"
+                                    control={control2}
+                                    render={({ field }) => (
+                                        <Select
+                                            {...field}
+                                            options={ocupacionOptions}
+                                            placeholder="Selecciona las profesiones que sean del interes del usuario"
+                                            noOptionsMessage={() =>
+                                                'Se ha introducido un valor erróneo'
+                                            }
+                                            value={field.value || []}
+                                            onChange={(selectedOptions) => {
+                                                field.onChange(
+                                                    selectedOptions || [],
+                                                );
+                                            }}
+                                            isMulti
+                                        />
+                                    )}
+                                />
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
                                 controlId="formObservaciones"
                             >
                                 <Form.Label className="fs-4 fst-italic">
@@ -1267,6 +1332,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 <th>Carnet</th>
                                 <th>Vehículo</th>
                                 <th>Localidad</th>
+                                <th>Necesidad formativa</th>
                                 <th>Observaciones</th>
                                 <th>Añadido por</th>
                                 <th>¿Eliminar?</th>
@@ -1370,6 +1436,19 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                     </td>
                                     <td onClick={modificarUsuario(usuario.id)}>
                                         {usuario.localidad}
+                                    </td>
+                                    <td onClick={modificarUsuario(usuario.id)}>
+                                        {usuario.necesidad_formativa &&
+                                            JSON.parse(
+                                                usuario.necesidad_formativa,
+                                            ).map((necesidad, index, array) => (
+                                                <span key={necesidad}>
+                                                    {array.length - 1 == index
+                                                        ? necesidad
+                                                        : necesidad + ','}
+                                                    <br />
+                                                </span>
+                                            ))}
                                     </td>
                                     <td onClick={modificarUsuario(usuario.id)}>
                                         {usuario.observaciones}

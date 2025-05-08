@@ -80,6 +80,10 @@ export default function CreateUserForm() {
                         for (const element of data.carnet) {
                             carnetArray.push(element.value);
                         }
+                        let necesidadesArray = [];
+                        for (const element of data.necesidades) {
+                            necesidadesArray.push(element.value);
+                        }
                         //Formateo en JSON para enviarlo al backend con la estructura del model UsuarioOAL
                         let newData = {
                             nombre: data.nombre,
@@ -103,6 +107,8 @@ export default function CreateUserForm() {
                             carnet: JSON.stringify(carnetArray),
                             vehiculo: data.vehiculo.value,
                             localidad: data.localidad.value,
+                            necesidad_formativa:
+                                JSON.stringify(necesidadesArray),
                             observaciones: data.observaciones
                                 ? data.observaciones
                                 : '',
@@ -736,6 +742,29 @@ export default function CreateUserForm() {
                                     {errors.localidad &&
                                         'Es necesario indicar de qué localidad proviene.'}
                                 </Form.Text>
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="formNecesidades"
+                            >
+                                <Form.Label className="fs-4">
+                                    Necesidades formativas (opcional)
+                                </Form.Label>
+                                <Controller
+                                    name="necesidades"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Select
+                                            {...field}
+                                            options={ocupacionOptions}
+                                            placeholder="Selecciona las profesiones que sean del interes del usuario"
+                                            noOptionsMessage={() =>
+                                                'No se encuentra opción parecida'
+                                            }
+                                            isMulti
+                                        />
+                                    )}
+                                />
                             </Form.Group>
                             <Form.Group
                                 className="mb-3"

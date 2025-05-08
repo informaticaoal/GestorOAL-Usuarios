@@ -30,6 +30,7 @@ class UsuarioOAL extends Model
         'carnet',
         'vehiculo',
         'localidad',
+        'necesidad_formativa',
         'observaciones',
         'programa_oal',
         'año_programa_oal',

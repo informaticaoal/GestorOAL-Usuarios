@@ -72,7 +72,12 @@ export default function Search() {
                                     carnetArray.push(element.value);
                                 }
                             }
-
+                            let necesidadesArray = [];
+                            if (data.necesidades) {
+                                for (const element of data.necesidades) {
+                                    necesidadesArray.push(element.value);
+                                }
+                            }
                             let newData = {
                                 nombre: data.nombre ? data.nombre : null,
                                 apellidos: data.apellidos
@@ -138,6 +143,9 @@ export default function Search() {
                                     : null,
                                 localidad: data.localidad
                                     ? data.localidad.value
+                                    : null,
+                                necesidad_formativa: data.necesidades
+                                    ? necesidadesArray
                                     : null,
                                 observaciones: data.observaciones
                                     ? data.observaciones
@@ -767,6 +775,29 @@ export default function Search() {
                                     <Form.Text className="text-danger">
                                         {errors.localidad?.message}
                                     </Form.Text>
+                                </Form.Group>
+                                <Form.Group
+                                    className="mb-3"
+                                    controlId="formNecesidades"
+                                >
+                                    <Form.Label className="fs-4">
+                                        Necesidades formativas (opcional)
+                                    </Form.Label>
+                                    <Controller
+                                        name="necesidades"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                {...field}
+                                                options={ocupacionOptions}
+                                                placeholder="Selecciona las profesiones que sean del interes del usuario"
+                                                noOptionsMessage={() =>
+                                                    'No se encuentra opción parecida'
+                                                }
+                                                isMulti
+                                            />
+                                        )}
+                                    />
                                 </Form.Group>
                                 <Form.Group
                                     className="mb-3"

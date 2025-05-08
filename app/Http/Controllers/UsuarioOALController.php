@@ -128,6 +128,12 @@ class UsuarioOALController extends Controller
         return response()->json(['carnet' => $carnet]);
     }
 
+    public function getNecesidadFormativa($id) {
+        $necesidad_formativa = \DB::table('usuario_o_a_l_s')->where('id', $id)->value('necesidad_formativa');
+
+        return response()->json(['necesidad_formativa' => $necesidad_formativa]);
+    }
+
     public function createPDF(){
         $usuarios = UsuarioOAL::latest()->get();
         $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => false]);
@@ -243,6 +249,11 @@ class UsuarioOALController extends Controller
             }
             if (isset($search['added_by_user']) && !empty($search['added_by_user'])) {
                 $usuarios->where('added_by_user', 'like', $search['added_by_user']);
+            }
+            if (isset($search['necesidad_formativa']) && !empty($search['necesidad_formativa'])) {
+                foreach ($search['necesidad_formativa'] as $key => $value) {
+                    $usuarios->where('necesidad_formativa', 'like', '%'.$value.'%');
+                }
             }
             $usuarios->orderBy('created_at', 'desc');
 
