@@ -143,17 +143,18 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             // eslint-disable-next-line no-case-declarations
                             let selectedNecesidades = [];
 
-                            // Recorre el array de necesidades formativas del usuario
-                            necesidadFormativaArray.forEach((necesidad) => {
-                                // Busca la opción correspondiente en ocupacionOptions
-                                const option = ocupacionOptions.find(
-                                    (opt) => opt.value == necesidad,
-                                );
-                                if (option) {
-                                    selectedNecesidades.push(option);
-                                }
-                            });
-
+                            if (necesidadFormativaArray) {
+                                // Recorre el array de necesidades formativas del usuario
+                                necesidadFormativaArray.forEach((necesidad) => {
+                                    // Busca la opción correspondiente en ocupacionOptions
+                                    const option = ocupacionOptions.find(
+                                        (opt) => opt.value == necesidad,
+                                    );
+                                    if (option) {
+                                        selectedNecesidades.push(option);
+                                    }
+                                });
+                            }
                             setValue2('necesidades', selectedNecesidades);
                             break;
                         case 'carnet':
