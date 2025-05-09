@@ -80,9 +80,11 @@ export default function CreateUserForm() {
                         for (const element of data.carnet) {
                             carnetArray.push(element.value);
                         }
-                        let necesidadesArray = [];
-                        for (const element of data.necesidades) {
-                            necesidadesArray.push(element.value);
+                        if (data.necesidades) {
+                            let necesidadesArray = [];
+                            for (const element of data.necesidades) {
+                                necesidadesArray.push(element.value);
+                            }
                         }
                         //Formateo en JSON para enviarlo al backend con la estructura del model UsuarioOAL
                         let newData = {
@@ -107,8 +109,9 @@ export default function CreateUserForm() {
                             carnet: JSON.stringify(carnetArray),
                             vehiculo: data.vehiculo.value,
                             localidad: data.localidad.value,
-                            necesidad_formativa:
-                                JSON.stringify(necesidadesArray),
+                            necesidad_formativa: data.necesidades
+                                ? JSON.stringify(necesidadesArray)
+                                : '[]',
                             observaciones: data.observaciones
                                 ? data.observaciones
                                 : '',
