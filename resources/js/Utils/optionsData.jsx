@@ -21,6 +21,10 @@ export const ocupacionOptions = [
     { value: 'Albañil', label: 'Albañil' },
     { value: 'Alfarero/a - ceramista', label: 'Alfarero/a - ceramista' },
     {
+        value: 'Almacenero',
+        label: 'Almacenero',
+    },
+    {
         value: 'Analista de agua en general',
         label: 'Analista de agua en general',
     },
@@ -56,6 +60,10 @@ export const ocupacionOptions = [
     },
     { value: 'Auxiliar de hogar', label: 'Auxiliar de hogar' },
     {
+        value: 'Auxiliar de inspección veterinaria',
+        label: 'Auxiliar de inspección veterinaria',
+    },
+    {
         value: 'Auxiliar de laboratorio de diagnóstico clínico',
         label: 'Auxiliar de laboratorio de diagnóstico clínico',
     },
@@ -84,6 +92,10 @@ export const ocupacionOptions = [
         label: 'Auxiliar de vigilante de seguridad no habitado para ir armado',
     },
     { value: 'Ayuda a domicilio', label: 'Ayuda a domicilio' },
+    {
+        value: 'Ayudante de biblioteca',
+        label: 'Ayudante de biblioteca',
+    },
     { value: 'Ayudante de cocina', label: 'Ayudante de cocina' },
     {
         value: 'Ayudante de plantas residuales',
@@ -98,6 +110,7 @@ export const ocupacionOptions = [
     { value: 'Cajero/a de comercio', label: 'Cajero/a de comercio' },
     { value: 'Camarero/a de piso', label: 'Camarero/a de piso' },
     { value: 'Camarero/a general', label: 'Camarero/a general' },
+    { value: 'Carnicero/a', label: 'Carnicero/a' },
     { value: 'Carpinero de aluminio', label: 'Carpinero de aluminio' },
     {
         value: 'Carpinero de madera',
@@ -110,6 +123,14 @@ export const ocupacionOptions = [
     {
         value: 'Chapista y pintores de vehículos',
         label: 'Chapista y pintores de vehículos',
+    },
+    {
+        value: 'Charcutero/a',
+        label: 'Charcutero/a',
+    },
+    {
+        value: 'Clasificador de canales y piezas',
+        label: 'Clasificador de canales y piezas',
     },
     { value: 'Cocinero/a', label: 'Cocinero/a' },
     { value: 'Community Manager', label: 'Community Manager' },
@@ -226,10 +247,18 @@ export const ocupacionOptions = [
         value: 'Desarrollador/a web',
         label: 'Desarrollador/a web',
     },
+    {
+        value: 'Despiecero/a deshuesador',
+        label: 'Despiecero/a deshuesador',
+    },
     { value: 'Dietista', label: 'Dietista' },
     {
         value: 'Dinamizador/a sociocultural',
         label: 'Dinamizador/a sociocultural',
+    },
+    {
+        value: 'Director de biblioteca',
+        label: 'Director de biblioteca',
     },
     {
         value: 'Diseñador de establecimientos y espacios comerciales',
@@ -441,12 +470,20 @@ export const ocupacionOptions = [
     },
     { value: 'Mozo/a de almacén', label: 'Mozo/a de almacén' },
     {
+        value: 'Operador/a de línea de matadero',
+        label: 'Operador/a de línea de matadero',
+    },
+    {
         value: 'Operador/a de maquinaria de lavandería y tintorería',
         label: 'Operador/a de maquinaria de lavandería y tintorería',
     },
     {
         value: 'Operador/a de máquinas para elaborar y envasar productos alimentarios',
         label: 'Operador/a de máquinas para elaborar y envasar productos alimentarios',
+    },
+    {
+        value: 'Operador/a de obrador',
+        label: 'Operador/a de obrador',
     },
     {
         value: 'Operador/a de planta química',
@@ -504,6 +541,10 @@ export const ocupacionOptions = [
     { value: 'Pinche de cocina', label: 'Pinche de cocina' },
     { value: 'Podadores', label: 'Podadores' },
     {
+        value: 'Preparador de despojos',
+        label: 'Preparador de despojos',
+    },
+    {
         value: 'Preparados de materias primas',
         label: 'Preparados de materias primas',
     },
@@ -514,6 +555,10 @@ export const ocupacionOptions = [
     {
         value: 'Profesor/a clases particulares',
         label: 'Profesor/a clases particulares',
+    },
+    {
+        value: 'Profesor/a de idiomas',
+        label: 'Profesor/a de idiomas',
     },
     {
         value: 'Programador/a de aplicaciones informáticas',
@@ -597,6 +642,10 @@ export const ocupacionOptions = [
     {
         value: 'Técnico/a administrativo',
         label: 'Técnico/a administrativo',
+    },
+    {
+        value: 'Técnico/a auxiliar de biblioteca',
+        label: 'Técnico/a auxiliar de biblioteca',
     },
     {
         value: 'Técnico/a de educación infantil',
