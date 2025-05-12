@@ -111,10 +111,10 @@ export const ocupacionOptions = [
     { value: 'Camarero/a de piso', label: 'Camarero/a de piso' },
     { value: 'Camarero/a general', label: 'Camarero/a general' },
     { value: 'Carnicero/a', label: 'Carnicero/a' },
-    { value: 'Carpinero de aluminio', label: 'Carpinero de aluminio' },
+    { value: 'Carpintero de aluminio', label: 'Carpintero de aluminio' },
     {
-        value: 'Carpinero de madera',
-        label: 'Carpinero de madera',
+        value: 'Carpintero de madera',
+        label: 'Carpintero de madera',
     },
     {
         value: 'Carretillero',
@@ -465,8 +465,8 @@ export const ocupacionOptions = [
     },
     { value: 'Montador/a de muebles', label: 'Montador/a de muebles' },
     {
-        value: 'Montardor de placas de energía solar o renovables',
-        label: 'Montardor de placas de energía solar o renovables',
+        value: 'Montador de placas de energía solar o renovables',
+        label: 'Montador de placas de energía solar o renovables',
     },
     { value: 'Mozo/a de almacén', label: 'Mozo/a de almacén' },
     {
