@@ -71,6 +71,7 @@ export default function CreateUserForm() {
                     autoComplete="off"
                     encType="multipart/form-data"
                     onSubmit={handleSubmit((data) => {
+                        console.log(data);
                         //Formateo en arrays de especialidades y carnets (selects multiples)
                         let specialtyArray = [];
                         for (const element of data.especialidad) {
@@ -80,8 +81,8 @@ export default function CreateUserForm() {
                         for (const element of data.carnet) {
                             carnetArray.push(element.value);
                         }
+                        let necesidadesArray = [];
                         if (data.necesidades) {
-                            let necesidadesArray = [];
                             for (const element of data.necesidades) {
                                 necesidadesArray.push(element.value);
                             }
