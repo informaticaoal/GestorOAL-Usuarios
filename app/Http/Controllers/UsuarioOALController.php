@@ -134,6 +134,15 @@ class UsuarioOALController extends Controller
         return response()->json(['necesidad_formativa' => $necesidad_formativa]);
     }
 
+    public function checkDNI($dni) {
+        $dni = \DB::table('usuario_o_a_l_s')->where('dni', $dni)->value('dni');
+        if ($dni) {
+            return response()->json(['exists' => true]);
+        } else {
+            return response()->json(['exists' => false]);
+        }
+    }
+
     public function createPDF(){
         $usuarios = UsuarioOAL::latest()->get();
         $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => false]);

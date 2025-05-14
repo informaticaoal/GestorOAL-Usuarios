@@ -70,8 +70,17 @@ export default function CreateUserForm() {
                     className="border-bottom pb-4"
                     autoComplete="off"
                     encType="multipart/form-data"
-                    onSubmit={handleSubmit((data) => {
-                        console.log(data);
+                    onSubmit={handleSubmit(async (data) => {
+                        await axios
+                            .get(`/usuario_oal/checkdni/${data.dni}`)
+                            .then((response) => {
+                                if (response.data.exists) {
+                                    alert(
+                                        'El DNI introducido ya existe en la base de datos. Si desea modificarlo, por favor, vaya al buscador y seleccionelo.',
+                                    );
+                                    return;
+                                }
+                            });
                         //Formateo en arrays de especialidades y carnets (selects multiples)
                         let specialtyArray = [];
                         for (const element of data.especialidad) {

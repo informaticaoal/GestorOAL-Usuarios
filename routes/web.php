@@ -47,6 +47,8 @@ Route::get('/usuario_oal/{id}/carnet', [UsuarioOALController::class, 'getCarnet'
 
 Route::get('/usuario_oal/{id}/docs', [DocumentosUsuariosController::class, 'getDocsByUser'])->middleware(['auth', 'verified']);
 
+Route::get('/usuario_oal/checkdni/{dni}', [UsuarioOALController::class, 'checkDNI'])->middleware(['auth', 'verified']);
+
 Route::get('/usuario_oal/{id}/necesidad-formativa', [UsuarioOALController::class, 'getNecesidadFormativa'])->middleware(['auth', 'verified']);
 
 Route::put('/usuario_oal/search/{id}', [UsuarioOALController::class, 'updateThroughSearch'])->middleware(['auth', 'verified']);
