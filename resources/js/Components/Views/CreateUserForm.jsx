@@ -79,74 +79,83 @@ export default function CreateUserForm() {
                                         'El DNI introducido ya existe en la base de datos. Si desea modificarlo, por favor, vaya al buscador y seleccionelo.',
                                     );
                                     return;
+                                } else {
+                                    //Formateo en arrays de especialidades y carnets (selects multiples)
+                                    let specialtyArray = [];
+                                    for (const element of data.especialidad) {
+                                        specialtyArray.push(element.value);
+                                    }
+                                    let carnetArray = [];
+                                    for (const element of data.carnet) {
+                                        carnetArray.push(element.value);
+                                    }
+                                    let necesidadesArray = [];
+                                    if (data.necesidades) {
+                                        for (const element of data.necesidades) {
+                                            necesidadesArray.push(
+                                                element.value,
+                                            );
+                                        }
+                                    }
+                                    //Formateo en JSON para enviarlo al backend con la estructura del model UsuarioOAL
+                                    let newData = {
+                                        nombre: data.nombre,
+                                        apellidos: data.apellidos,
+                                        sexo: data.sexo.value,
+                                        edad: formatoFechaSimple(data.edad),
+                                        telefono: data.telefono,
+                                        dni: data.dni,
+                                        fecha_activacion: formatoFechaSimple(
+                                            data.fecha_activacion,
+                                        ),
+                                        ocupacion: data.ocupacion1.value,
+                                        ocupacion2: data.ocupacion2?.value,
+                                        ocupacion3: data.ocupacion3?.value,
+                                        discapacidad: data.discapacidad.value,
+                                        nivel_estudios: data.estudios.value,
+                                        especialidad:
+                                            JSON.stringify(specialtyArray),
+                                        formacion_complementaria:
+                                            data.formacion_comp,
+                                        experiencia_laboral: data.experiencia,
+                                        disponibilidad:
+                                            data.disponibilidad.value,
+                                        carnet: JSON.stringify(carnetArray),
+                                        vehiculo: data.vehiculo.value,
+                                        localidad: data.localidad.value,
+                                        necesidad_formativa: data.necesidades
+                                            ? JSON.stringify(necesidadesArray)
+                                            : '[]',
+                                        observaciones: data.observaciones
+                                            ? data.observaciones
+                                            : '',
+                                        programa_oal: data.programa?.value,
+                                        año_programa_oal: data.yearPrograma,
+                                        programa_oal_2: data.programa2?.value,
+                                        año_programa_oal_2: data.yearPrograma2,
+                                        programa_oal_3: data.programa3?.value,
+                                        año_programa_oal_3: data.yearPrograma3,
+                                    };
+                                    //Petición POST para crear el usuario, primero se crea. Luego se añaden los documentos.
+                                    axios
+                                        .post('/usuario_oal', newData)
+                                        .then((response) => {
+                                            let usuario_id =
+                                                response.data.usuario.id;
+                                            router.post(
+                                                '/usuario_oal/adddocs',
+                                                {
+                                                    id: usuario_id,
+                                                    docs: data.documentos,
+                                                },
+                                                {
+                                                    preserveScroll: true, // Mantiene la posición del scroll
+                                                    preserveState: false, // Conserva el estado del componente
+                                                },
+                                            );
+                                        });
                                 }
                             });
-                        //Formateo en arrays de especialidades y carnets (selects multiples)
-                        let specialtyArray = [];
-                        for (const element of data.especialidad) {
-                            specialtyArray.push(element.value);
-                        }
-                        let carnetArray = [];
-                        for (const element of data.carnet) {
-                            carnetArray.push(element.value);
-                        }
-                        let necesidadesArray = [];
-                        if (data.necesidades) {
-                            for (const element of data.necesidades) {
-                                necesidadesArray.push(element.value);
-                            }
-                        }
-                        //Formateo en JSON para enviarlo al backend con la estructura del model UsuarioOAL
-                        let newData = {
-                            nombre: data.nombre,
-                            apellidos: data.apellidos,
-                            sexo: data.sexo.value,
-                            edad: formatoFechaSimple(data.edad),
-                            telefono: data.telefono,
-                            dni: data.dni,
-                            fecha_activacion: formatoFechaSimple(
-                                data.fecha_activacion,
-                            ),
-                            ocupacion: data.ocupacion1.value,
-                            ocupacion2: data.ocupacion2?.value,
-                            ocupacion3: data.ocupacion3?.value,
-                            discapacidad: data.discapacidad.value,
-                            nivel_estudios: data.estudios.value,
-                            especialidad: JSON.stringify(specialtyArray),
-                            formacion_complementaria: data.formacion_comp,
-                            experiencia_laboral: data.experiencia,
-                            disponibilidad: data.disponibilidad.value,
-                            carnet: JSON.stringify(carnetArray),
-                            vehiculo: data.vehiculo.value,
-                            localidad: data.localidad.value,
-                            necesidad_formativa: data.necesidades
-                                ? JSON.stringify(necesidadesArray)
-                                : '[]',
-                            observaciones: data.observaciones
-                                ? data.observaciones
-                                : '',
-                            programa_oal: data.programa?.value,
-                            año_programa_oal: data.yearPrograma,
-                            programa_oal_2: data.programa2?.value,
-                            año_programa_oal_2: data.yearPrograma2,
-                            programa_oal_3: data.programa3?.value,
-                            año_programa_oal_3: data.yearPrograma3,
-                        };
-                        //Petición POST para crear el usuario, primero se crea. Luego se añaden los documentos.
-                        axios.post('/usuario_oal', newData).then((response) => {
-                            let usuario_id = response.data.usuario.id;
-                            router.post(
-                                '/usuario_oal/adddocs',
-                                {
-                                    id: usuario_id,
-                                    docs: data.documentos,
-                                },
-                                {
-                                    preserveScroll: true, // Mantiene la posición del scroll
-                                    preserveState: false, // Conserva el estado del componente
-                                },
-                            );
-                        });
                     })}
                     noValidate
                 >
