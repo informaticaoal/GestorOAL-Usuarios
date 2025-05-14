@@ -5,11 +5,3 @@
 body {
     font-family: "Reddit Sans", sans-serif !important;
 }
-
-.table-responsive {
-    transform: rotateX(180deg);
-}
-
-.table-responsive > .table {
-    transform: rotateX(180deg);
-}
