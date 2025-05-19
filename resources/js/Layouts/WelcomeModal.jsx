@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
     const version = '1.0.0';
-    const appVersion = localStorage.getItem('appVersion');
-    const firstTime = localStorage.getItem('firstTime');
 
     useEffect(() => {
+        const appVersion = localStorage.getItem('appVersion');
+        const firstTime = localStorage.getItem('firstTime');
         if (firstTime === null) {
             setIsFirstTime(true);
             localStorage.setItem('firstTime', 'true');
