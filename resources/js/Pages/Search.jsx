@@ -92,14 +92,8 @@ export default function Search() {
                                 fecha_activacion: data.fecha_activacion
                                     ? formatoFechaSimple(data.fecha_activacion)
                                     : null,
-                                ocupacion: data.ocupacion1
-                                    ? data.ocupacion1.value
-                                    : null,
-                                ocupacion2: data.ocupacion2
-                                    ? data.ocupacion2?.value
-                                    : null,
-                                ocupacion3: data.ocupacion3
-                                    ? data.ocupacion3?.value
+                                ocupacion: data.ocupacion
+                                    ? data.ocupacion.value
                                     : null,
                                 discapacidad: data.discapacidad
                                     ? data.discapacidad.value
@@ -359,13 +353,13 @@ export default function Search() {
                                 </Form.Group>
                                 <Form.Group
                                     className="mb-3"
-                                    controlId="formOcupacion1"
+                                    controlId="formOcupacion"
                                 >
                                     <Form.Label className="fs-4">
-                                        Ocupacion 1
+                                        Ocupacion
                                     </Form.Label>
                                     <Controller
-                                        name="ocupacion1"
+                                        name="ocupacion"
                                         control={control}
                                         render={({ field }) => (
                                             <Select
@@ -380,60 +374,7 @@ export default function Search() {
                                         )}
                                     />
                                     <Form.Text className="text-danger">
-                                        {errors.ocupacion1?.message}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formOcupacion2"
-                                >
-                                    <Form.Label className="fs-4">
-                                        Ocupacion 2
-                                    </Form.Label>
-                                    <Controller
-                                        name="ocupacion2"
-                                        control={control}
-                                        render={({ field }) => (
-                                            <Select
-                                                {...field}
-                                                isClearable={true}
-                                                options={ocupacionOptions}
-                                                placeholder="Selecciona una profesión"
-                                                noOptionsMessage={() =>
-                                                    'No se ha encontrado dicha profesión'
-                                                }
-                                            />
-                                        )}
-                                    />
-                                    <Form.Text className="text-danger">
-                                        {errors.ocupacion2?.message}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="formOcupacion3"
-                                >
-                                    <Form.Label className="fs-4">
-                                        Ocupacion 3
-                                    </Form.Label>
-                                    <Controller
-                                        name="ocupacion3"
-                                        control={control}
-                                        render={({ field }) => (
-                                            <Select
-                                                id="ocupacion1"
-                                                {...field}
-                                                isClearable={true}
-                                                options={ocupacionOptions}
-                                                placeholder="Selecciona una profesión"
-                                                noOptionsMessage={() =>
-                                                    'No se ha encontrado dicha profesión'
-                                                }
-                                            />
-                                        )}
-                                    />
-                                    <Form.Text className="text-danger">
-                                        {errors.ocupacion3?.message}
+                                        {errors.ocupacion?.message}
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group
@@ -523,8 +464,6 @@ export default function Search() {
                                         rows={3}
                                     />
                                 </Form.Group>
-                            </div>
-                            <div className="container mx-5">
                                 <Form.Group
                                     className="mb-3"
                                     controlId="formExperiencia"
@@ -539,6 +478,8 @@ export default function Search() {
                                         rows={3}
                                     />
                                 </Form.Group>
+                            </div>
+                            <div className="container mx-5">
                                 <Form.Group
                                     className="mb-3"
                                     controlId="formPrograma"

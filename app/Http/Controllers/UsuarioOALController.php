@@ -196,13 +196,9 @@ class UsuarioOALController extends Controller
                 }
             }
             if (isset($search['ocupacion']) && !empty($search['ocupacion'])) {
-                $usuarios->where('ocupacion', 'like', '%'.$search['ocupacion'].'%');
-            }
-            if (isset($search['ocupacion2']) && !empty($search['ocupacion2'])) {
-                $usuarios->where('ocupacion2', 'like', '%'.$search['ocupacion2'].'%');
-            }
-            if (isset($search['ocupacion3']) && !empty($search['ocupacion3'])) {
-                $usuarios->where('ocupacion3', 'like', '%'.$search['ocupacion3'].'%');
+                $usuarios->where('ocupacion', 'like', '%'.$search['ocupacion'].'%')
+                          ->orWhere('ocupacion2', 'like', '%'.$search['ocupacion'].'%')
+                          ->orWhere('ocupacion3', 'like', '%'.$search['ocupacion'].'%');
             }
             if (isset($search['nivel_estudios']) && !empty($search['nivel_estudios'])) {
                 $usuarios->where('nivel_estudios', 'like', '%'.$search['nivel_estudios'].'%');
