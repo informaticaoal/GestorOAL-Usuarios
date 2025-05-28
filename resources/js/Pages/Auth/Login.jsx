@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, useForm } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 
 export default function Login({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -20,6 +21,25 @@ export default function Login({ status }) {
             onFinish: () => reset('password'),
         });
     };
+
+    const [capsLockOn, setCapsLockOn] = useState(false);
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            setCapsLockOn(
+                event.getModifierState && event.getModifierState('CapsLock'),
+            );
+        };
+
+        // Escuchar eventos de teclado
+        document.addEventListener('keydown', handleKeyPress);
+        document.addEventListener('keyup', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('keyup', handleKeyPress);
+        };
+    }, []);
 
     return (
         <GuestLayout>
@@ -61,6 +81,12 @@ export default function Login({ status }) {
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
                     />
+
+                    {capsLockOn && (
+                        <div className="text-danger mt-1 text-sm font-medium">
+                            ⚠️ Bloq Mayus ACTIVADO
+                        </div>
+                    )}
 
                     <InputError message={errors.password} className="mt-2" />
                 </div>
