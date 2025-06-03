@@ -1335,7 +1335,11 @@ export default function ModifyUserFormSearch({
                     </thead>
                     <tbody>
                         {usuariosOAL.map((usuario) => (
-                            <tr key={usuario.id} id={usuario.id}>
+                            <tr
+                                key={usuario.id}
+                                id={usuario.id}
+                                style={{ cursor: 'pointer' }}
+                            >
                                 <td onClick={modificarUsuario(usuario.id)}>
                                     {usuario.id}
                                 </td>
