@@ -7,13 +7,15 @@ export default function WelcomeModal() {
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
         const firstTime = localStorage.getItem('firstTime');
+        // Comprueba si es la primera vez que se accede a la aplicación
         if (firstTime === null) {
             setIsFirstTime(true);
             localStorage.setItem('firstTime', 'true');
         } else {
             setIsFirstTime(false);
         }
-
+        // Comprueba si la versión de la aplicación ha cambiado aunque no sea la primera vez
+        // que se accede a la aplicación
         if (appVersion != version || firstTime === 'true') {
             setIsFirstTime(true);
             localStorage.setItem('firstTime', 'true');
