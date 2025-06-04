@@ -83,8 +83,14 @@ export default function Login({ status }) {
                     />
 
                     {capsLockOn && (
-                        <div className="text-danger mt-1 text-sm font-medium">
-                            ⚠️ Bloq Mayus ACTIVADO
+                        <div className="mt-1 text-sm">
+                            <i className="bi bi-exclamation-triangle-fill text-warning me-1"></i>
+                            <span
+                                className="text-danger fw-bold"
+                                style={{ fontVariant: 'small-caps' }}
+                            >
+                                BLOQ MAYUS Activado
+                            </span>
                         </div>
                     )}
 
