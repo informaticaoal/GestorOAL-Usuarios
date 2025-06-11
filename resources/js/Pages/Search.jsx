@@ -61,6 +61,12 @@ export default function Search() {
                         onSubmit={handleSubmit((data) => {
                             let carnetArray = [];
                             let specialtyArray = [];
+                            let ocupacionArray = [];
+                            if (data.ocupacion) {
+                                for (const element of data.ocupacion) {
+                                    ocupacionArray.push(element.value);
+                                }
+                            }
                             if (data.especialidad) {
                                 for (const element of data.especialidad) {
                                     specialtyArray.push(element.value);
@@ -93,7 +99,7 @@ export default function Search() {
                                     ? formatoFechaSimple(data.fecha_activacion)
                                     : null,
                                 ocupacion: data.ocupacion
-                                    ? data.ocupacion.value
+                                    ? ocupacionArray
                                     : null,
                                 discapacidad: data.discapacidad
                                     ? data.discapacidad.value
@@ -370,6 +376,7 @@ export default function Search() {
                                                 noOptionsMessage={() =>
                                                     'No se ha encontrado dicha profesión'
                                                 }
+                                                isMulti
                                             />
                                         )}
                                     />
