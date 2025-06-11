@@ -1309,14 +1309,22 @@ export default function ModifyUserFormSearch({
                             <th>Teléfono</th>
                             <th>DNI/NIE</th>
                             <th>Fecha de activación</th>
-                            <th>Ocupación 1</th>
-                            <th>Ocupación 2</th>
-                            <th>Ocupación 3</th>
+                            <th style={{ minWidth: '150px' }}>Ocupación 1</th>
+                            <th style={{ minWidth: '150px' }}>Ocupación 2</th>
+                            <th style={{ minWidth: '150px' }}>Ocupación 3</th>
                             <th>Discapacidad</th>
-                            <th>Nivel de estudios</th>
-                            <th>Especialidades</th>
-                            <th>Formación complementaria</th>
-                            <th>Experiencia laboral</th>
+                            <th style={{ minWidth: '200px' }}>
+                                Nivel de estudios
+                            </th>
+                            <th style={{ minWidth: '210px' }}>
+                                Especialidades
+                            </th>
+                            <th style={{ minWidth: '210px' }}>
+                                Formación complementaria
+                            </th>
+                            <th style={{ minWidth: '210px' }}>
+                                Experiencia laboral
+                            </th>
                             <th>Programa</th>
                             <th>Año Programa</th>
                             <th>Programa 2</th>
