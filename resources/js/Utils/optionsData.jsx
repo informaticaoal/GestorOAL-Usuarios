@@ -13,6 +13,10 @@ export const ocupacionOptions = [
         value: 'Administrativo/a personal',
         label: 'Administrativo/a personal',
     },
+    {
+        value: 'Administrativo/a en general',
+        label: 'Administrativo/a en general',
+    },
     { value: 'Agente comercial', label: 'Agente comercial' },
     {
         value: 'Agente forestal y medioambiental',
@@ -37,8 +41,16 @@ export const ocupacionOptions = [
         label: 'Analista de laboratorio de química industrial',
     },
     {
-        value: 'Apoyo a la gestión administrativa (aux adtvo)',
-        label: 'Apoyo a la gestión administrativa (aux adtvo)',
+        value: 'Animador/a de actividades fisico-deportivas',
+        label: 'Animador/a de actividades fisico-deportivas',
+    },
+    {
+        value: 'Arqueólogo/a de campo',
+        label: 'Arqueólogo/a de campo',
+    },
+    {
+        value: 'Asistente/a de equipos de investigación biomédica',
+        label: 'Asistente/a de equipos de investigación biomédica',
     },
     {
         value: 'Auditor/a de ciberseguridad',
@@ -150,12 +162,20 @@ export const ocupacionOptions = [
         label: 'Conductor/a maquinaria de transporte de tierras',
     },
     {
+        value: 'Conservador/a de patrimonio histórico',
+        label: 'Conservador/a de patrimonio histórico',
+    },
+    {
         value: 'Consultor/a de ciberseguridad',
         label: 'Consultor/a de ciberseguridad',
     },
     {
         value: 'Controlador/a de accesos',
         label: 'Controlador/a de accesos',
+    },
+    {
+        value: 'Coordinador/a de actividades polideportivas',
+        label: 'Coordinador/a de actividades polideportivas',
     },
     { value: 'Cuidador/a', label: 'Cuidador/a' },
     {
@@ -169,6 +189,10 @@ export const ocupacionOptions = [
     {
         value: 'Cuidador/a de niños en guarderías',
         label: 'Cuidador/a de niños en guarderías',
+    },
+    {
+        value: 'Cuidador/a externo/a',
+        label: 'Cuidador/a externo/a',
     },
     { value: 'Delineante', label: 'Delineante' },
     {
@@ -261,6 +285,10 @@ export const ocupacionOptions = [
         label: 'Director de biblioteca',
     },
     {
+        value: 'Director/a de comunicación',
+        label: 'Director/a de comunicación',
+    },
+    {
         value: 'Diseñador de establecimientos y espacios comerciales',
         label: 'Diseñador de establecimientos y espacios comerciales',
     },
@@ -278,6 +306,35 @@ export const ocupacionOptions = [
         label: 'Diseñador/a gráfico 2D y 3D de videojuegos (Game Artist)',
     },
     { value: 'Diseñador/a web', label: 'Diseñador/a web' },
+    {
+        value: 'Docente de educación infantil',
+        label: 'Docente de educación infantil',
+    },
+    {
+        value: 'Docente de educación primaria',
+        label: 'Docente de educación primaria',
+    },
+    {
+        value: 'Docente de educación secundaria',
+        label: 'Docente de educación secundaria',
+    },
+    {
+        value: 'Docente de formación profesional',
+        label: 'Docente de formación profesional',
+    },
+    {
+        value: 'Docente de idiomas',
+        label: 'Docente de idiomas',
+    },
+    {
+        value: 'Docente de música',
+        label: 'Docente de música',
+    },
+    {
+        value: 'Docente de universidad',
+        label: 'Docente de universidad',
+    },
+    { value: 'Editor/a', label: 'Editor/a' },
     { value: 'Educador/a social', label: 'Educador/a social' },
     {
         value: 'Electricista de mantenimiento y reparación electrodomésticos',
@@ -360,13 +417,19 @@ export const ocupacionOptions = [
         value: 'Instalador y reparador de sistemas de climatización',
         label: 'Instalador y reparador de sistemas de climatización',
     },
+    {
+        value: 'Investigador/a arqueológico/a en universidades y/o centros especializados',
+        label: 'Investigador/a arqueológico/a en universidades y/o centros especializados',
+    },
     { value: 'Interno/a', label: 'Interno/a' },
     { value: 'Jardinero/a en general', label: 'Jardinero/a en general' },
     { value: 'Jefe de obra', label: 'Jefe de obra' },
+    { value: 'Jefe de prensa', label: 'Jefe de prensa' },
     {
         value: 'Limpiadores de vehículos',
         label: 'Limpiadores de vehículos',
     },
+    { value: 'Locutor/a', label: 'Locutor/a' },
     { value: 'Logopeda', label: 'Logopeda' },
     {
         value: 'Maestro/a de educación especial',
@@ -469,6 +532,10 @@ export const ocupacionOptions = [
         label: 'Montador de placas de energía solar o renovables',
     },
     { value: 'Mozo/a de almacén', label: 'Mozo/a de almacén' },
+    {
+        value: 'Museólogo/a',
+        label: 'Museólogo/a',
+    },
     {
         value: 'Operador/a de línea de matadero',
         label: 'Operador/a de línea de matadero',
@@ -588,6 +655,10 @@ export const ocupacionOptions = [
         value: 'Programador/a web',
         label: 'Programador/a web',
     },
+    {
+        value: 'Promotor/a de actividades fisico-deportivas',
+        label: 'Promotor/a de actividades fisico-deportivas',
+    },
     { value: 'Psicólogo/a', label: 'Psicólogo/a' },
     { value: 'Publicista', label: 'Publicista' },
     { value: 'Publicista de marketing', label: 'Publicista de marketing' },
@@ -597,6 +668,10 @@ export const ocupacionOptions = [
     { value: 'Recepcionista de oficina', label: 'Recepcionista de oficina' },
     { value: 'Recepcionista de hotel', label: 'Recepcionista de hotel' },
     { value: 'Recogedor de residuos', label: 'Recogedor de residuos' },
+    {
+        value: 'Redactor/a',
+        label: 'Redactor/a',
+    },
     { value: 'Repartidor/a', label: 'Repartidor/a' },
     {
         value: 'Reparador de periféricos de sistemas microinformáticos',
@@ -615,8 +690,45 @@ export const ocupacionOptions = [
         value: 'Responsable de pruebas de videojuegos (Game Tester)',
         label: 'Responsable de pruebas de videojuegos (Game Tester)',
     },
+    {
+        value: 'Responsable técnico/a de archivos de historias clínicas',
+        label: 'Responsable técnico/a de archivos de historias clínicas',
+    },
+    {
+        value: 'Responsable técnico/a de codificación de documentación sanitaria',
+        label: 'Responsable técnico/a de codificación de documentación sanitaria',
+    },
+    {
+        value: 'Responsable técnico/a de evaluación y control de calidad de la prestación sanitaria',
+        label: 'Responsable técnico/a de evaluación y control de calidad de la prestación sanitaria',
+    },
+    {
+        value: 'Responsable técnico/a de gestión de procesos administrativo-clínicos',
+        label: 'Responsable técnico/a de gestión de procesos administrativo-clínicos',
+    },
+    {
+        value: 'Responsable técnico/a de sistemas de información asistencial sanitaria',
+        label: 'Responsable técnico/a de sistemas de información asistencial sanitaria',
+    },
+    {
+        value: 'Responsable técnico/a de tratamiento y diseño documental sanitario',
+        label: 'Responsable técnico/a de tratamiento y diseño documental sanitario',
+    },
+    {
+        value: 'Reportero/a',
+        label: 'Reportero/a',
+    },
+    {
+        value: 'Reportero/a gráfico',
+        label: 'Reportero/a gráfico',
+    },
     { value: 'Sastre', label: 'Sastre' },
     { value: 'Secretario/a', label: 'Secretario/a' },
+    {
+        value: 'Secretario/a de servicios sanitarios',
+        label: 'Secretario/a de servicios sanitarios',
+    },
+    { value: 'Social Media Manager', label: 'Social Media Manager' },
     { value: 'Socorrista', label: 'Socorrista' },
     {
         value: 'Soldador/a de estructuras metálicas ligeras',
