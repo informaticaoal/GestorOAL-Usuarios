@@ -447,6 +447,7 @@ export const ocupacionOptions = [
         value: 'Manipulador/a de frutas y hortalizas',
         label: 'Manipulador/a de frutas y hortalizas',
     },
+    { value: 'Mantenedor/a de edificios', label: 'Mantenedor/a de edificios', },
     { value: 'Masajista deportivo', label: 'Masajista deportivo' },
     { value: 'Mecánico/a de automóviles', label: 'Mecánico/a de automóviles' },
     {
