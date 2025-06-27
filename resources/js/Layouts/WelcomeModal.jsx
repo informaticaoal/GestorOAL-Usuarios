@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.0.0';
+    const version = '1.1.0';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -49,8 +49,11 @@ export default function WelcomeModal() {
                         <br />
                         {/* Detalles */}
                         <i>
-                            En esta versión, se ha mejorado{' '}
-                            <strong>la búsqueda por ocupación</strong>.
+                            En esta versión, se ha añadido{' '}
+                            <strong>
+                                exportación por PDF a tus búsquedas
+                            </strong>
+                            , y con posibilidad de seleccionar de parámetros a exportar.
                         </i>
                     </p>
                     <button

@@ -20,6 +20,7 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
+import PDFGenerator from '@/Components/Views/PDFGenerator.jsx';
 
 export default function Search() {
     const {
@@ -802,11 +803,13 @@ export default function Search() {
                 </div>
 
                 {search && (
-                    <ModifyUserFormSearch
-                        contadorUsuarios={contadorUsuarios}
-                        usuariosOAL={usuariosOAL}
-                        usuariosPDF={usuariosPDF}
-                    />
+                    <>
+                        <PDFGenerator usuarios={usuariosPDF}/>
+                        <ModifyUserFormSearch
+                            contadorUsuarios={contadorUsuarios}
+                            usuariosOAL={usuariosOAL}
+                        />
+                    </>
                 )}
             </AuthenticatedLayout>
         </>

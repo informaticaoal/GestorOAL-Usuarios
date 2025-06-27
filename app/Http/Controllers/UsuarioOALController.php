@@ -50,7 +50,7 @@ class UsuarioOALController extends Controller
     {
 
         $usuario = UsuarioOAL::create($request->all());
-        
+
         if (auth()->check()) {
             $usuario->added_by_user = auth()->user()->name;
             $usuario->save();
@@ -89,7 +89,7 @@ class UsuarioOALController extends Controller
         $usuarioOAL = UsuarioOAL::find($id);
         $usuarioOAL->update($request->all());
         return to_route('search');
-        
+
     }
 
     /**
@@ -143,16 +143,21 @@ class UsuarioOALController extends Controller
         }
     }
 
-    public function createPDF(){
-        $usuarios = UsuarioOAL::latest()->get();
-        $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => false]);
-        return $pdf->download('usuariosListado.pdf');
-    }
+//    public function createPDF(){
+//        $usuarios = UsuarioOAL::latest()->get();
+//        $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => false]);
+//        return $pdf->download('usuariosListado.pdf');
+//    }
 
-    public function createPdfFromSearch(Request $request){
-        $usuarios = $request->all();
-        $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => true]);
-        return $pdf->download('usuariosBusqueda.pdf');
+    public function createPDF(Request $request){
+        $requestContent = $request->all();
+        $usuarios = json_decode($requestContent['usuariosFormatted']);
+        $options = $requestContent['data'];
+        if (empty($usuarios) || empty(array_filter($options))) {
+            return response()->json(['error' => 'No hay datos para generar el PDF'], 400);
+        }
+        $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'options' => $options]);
+        return $pdf->download('usuariosFiltrados.pdf');
     }
 
     public function searchUsers(Request $request){
@@ -184,8 +189,8 @@ class UsuarioOALController extends Controller
                         }
                         break;
                     case 'entre':
-                        if (isset($edadData['minEdad'], $edadData['maxEdad']) && 
-                            is_numeric($edadData['minEdad']) && 
+                        if (isset($edadData['minEdad'], $edadData['maxEdad']) &&
+                            is_numeric($edadData['minEdad']) &&
                             is_numeric($edadData['maxEdad'])) {
                             $usuarios->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') <= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['minEdad']])
                                    ->whereRaw("STR_TO_DATE(edad, '%d/%m/%Y') >= DATE_SUB(CURDATE(), INTERVAL ? YEAR)", [(int)$edadData['maxEdad']]);
@@ -268,9 +273,9 @@ class UsuarioOALController extends Controller
             }
             $usuarios->orderBy('created_at', 'desc');
 
-            
+
             $result = $usuarios->get();
-            return response()->json(['usuarios' => $result, 'contador' => $usuarios->count(), 'usuariosPDF' => $usuarios->get()]);
+            return response()->json(['usuarios' => $result, 'contador' => $usuarios->count(), 'usuariosPDF' => $result]);
         }
 
         public function importExcel(Request $request) {
@@ -281,7 +286,7 @@ class UsuarioOALController extends Controller
                     Excel::import(new UsuarioOALImport, $file);
                 } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
                     $failures = $e->failures();
-        
+
                     foreach ($failures as $failure) {
                         $failure->row(); // row that went wrong
                         $failure->attribute(); // either heading key (if using heading row concern) or column index

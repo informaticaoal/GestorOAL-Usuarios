@@ -8,10 +8,10 @@
     <body>
         <style>
             @page {
-                size: A4 landscape; /* Cambiado a horizontal para mejor distribución */
+                size: A3 landscape; /* Cambiado a horizontal para mejor distribución */
                 margin: 10mm;
             }
-            
+
             body {
                 margin: 0;
                 width: 100%;
@@ -23,16 +23,16 @@
                 overflow-x: auto;
                 padding: 10mm;
             }
-            
+
             table {
-                
+
                 border-collapse: collapse;
                 width: 100%;
                 background-color: #fff;
                 table-layout: fixed;
                 font-size: 8pt;
             }
-            
+
             th, td {
                 border: 0.5pt solid #ddd;
                 padding: 2mm;
@@ -43,117 +43,155 @@
                 word-wrap: break-word; /* Permite que las palabras se rompan */
                 white-space: normal; /* Permite múltiples líneas */
             }
-
-            /* Ajustamos los anchos para compensar el texto multilínea */
-            th:nth-child(1), td:nth-child(1) { width: 8%; min-height: 20mm; } /* Nombre */
-            th:nth-child(2), td:nth-child(2) { width: 10%; min-height: 20mm; } /* Apellidos */
-            th:nth-child(3), td:nth-child(3) { width: 7%; min-height: 20mm; } /* Sexo */
-            th:nth-child(4), td:nth-child(4) { width: 8%; min-height: 20mm; } /* Fecha nacimiento */
-            th:nth-child(5), td:nth-child(5) { width: 8%; min-height: 20mm; } /* Teléfono */
-            th:nth-child(6), td:nth-child(6) { width: 8%; min-height: 20mm; } /* DNI */ 
-            th:nth-child(7), td:nth-child(7) { width: 8%; min-height: 20mm; } /* Ocupación 1 */
-            th:nth-child(8), td:nth-child(8) { width: 8%; min-height: 20mm; } /* Ocupación 2 */
-            th:nth-child(9), td:nth-child(9) { width: 8%; min-height: 20mm; } /* Ocupación 3 */
-            th:nth-child(10), td:nth-child(10) { width: 6%; min-height: 20mm; } /* Discapacidad */
-            th:nth-child(11), td:nth-child(11) { width: 7%; min-height: 20mm; } /* Estudios */
-            th:nth-child(12), td:nth-child(12) { width: 9%; min-height: 20mm; } /* Disponibilidad */
-            th:nth-child(13), td:nth-child(13) { width: 5%; min-height: 20mm; } /* Carnet */
-            th:nth-child(14), td:nth-child(14) { width: 7%; min-height: 20mm; } /* Localidad */
-            th:nth-child(15), td:nth-child(15) { width: 10%; min-height: 20mm; } /* Observaciones */
-
-            th {
-                background-color: #f2f2f2;
-                font-weight: bold;
-                position: sticky;
-                top: 0;
-            }
-
-            tr:nth-child(even) {
-                background-color: #f9f9f9;
-            }
-
-            @media print {
-                .table-container {
-                    padding: 0;
-                }
-                
-                table {
-                    page-break-inside: auto;
-                }
-                
-                tr {
-                    page-break-inside: avoid;
-                    page-break-after: auto;
-                }
-                
-                thead {
-                    display: table-header-group;
-                }
-            }
         </style>
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Sexo</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Teléfono</th>
-                        <th>DNI/NIE</th>
-                        <th>Ocupación 1</th>
-                        <th>Ocupación 2</th>
-                        <th>Ocupación 3</th>
-                        <th>Discapacidad</th>
-                        <th>Estudios</th>
-                        <th>Disponibilidad</th>
-                        <th>Carnet</th>
-                        <th>Localidad</th>
-                        <th>Observaciones</th>
+                        @if(filter_var($options['checkNombre'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Nombre</th>
+                        @endif
+                        @if(filter_var($options['checkApellidos'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Apellidos</th>
+                        @endif
+                        @if(filter_var($options['checkSexo'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Sexo</th>
+                        @endif
+                        @if(filter_var($options['checkEdad'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Fecha nacimiento</th>
+                        @endif
+                        @if(filter_var($options['checkTelefono'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Teléfono</th>
+                        @endif
+                        @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
+                            <th>DNI/NIE</th>
+                        @endif
+                        @if(filter_var($options['checkActivationDate'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Fecha activación</th>
+                        @endif
+                            @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Fecha activación</th>
+                            @endif
+                            @if(filter_var($options['checkOcupacion'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Ocupación 1</th>
+                                <th>Ocupación 2</th>
+                                <th>Ocupación 3</th>
+                            @endif
+                            @if(filter_var($options['checkDiscapacidad'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Discapacidad</th>
+                            @endif
+                            @if(filter_var($options['checkEstudios'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Nivel estudios</th>
+                            @endif
+                            @if(filter_var($options['checkEspecialidad'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Especialidades</th>
+                            @endif
+                            @if(filter_var($options['checkComplementaria'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Formación complementaria</th>
+                            @endif
+                            @if(filter_var($options['checkExperiencia'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Experiencia laboral</th>
+                            @endif
+                            @if(filter_var($options['checkProgramas'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Programa OAL 1</th>
+                                <th>Año Programa 1</th>
+                                <th>Programa OAL 2</th>
+                                <th>Año Programa 2</th>
+                                <th>Programa OAL 3</th>
+                                <th>Año Programa 3</th>
+                            @endif
+                            @if(filter_var($options['checkDispo'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Disponibilidad</th>
+                            @endif
+                            @if(filter_var($options['checkCarnet'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Carnet</th>
+                            @endif
+                            @if(filter_var($options['checkVehiculo'], FILTER_VALIDATE_BOOLEAN))
+                                <th>¿Vehículo propio?</th>
+                            @endif
+                            @if(filter_var($options['checkLocalidad'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Localidad</th>
+                            @endif
+                            @if(filter_var($options['checkNecesidades'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Necesidades formativas</th>
+                            @endif
+                            @if(filter_var($options['checkObservaciones'], FILTER_VALIDATE_BOOLEAN))
+                                <th>Observaciones</th>
+                            @endif
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($fromSearch == true)
                         @foreach ($usuarios as $usuario)
                         <tr>
-                            <td>{{ $usuario['nombre'] }}</td>
-                            <td>{{ $usuario['apellidos'] }}</td>
-                            <td>{{ $usuario['sexo'] }}</td>
-                            <td>{{ $usuario['edad'] }}</td>
-                            <td>{{ $usuario['telefono'] }}</td>
-                            <td>{{ $usuario['dni'] }}</td>
-                            <td>{{ $usuario['ocupacion'] }}</td>
-                            <td>{{ $usuario['ocupacion2'] }}</td>
-                            <td>{{ $usuario['ocupacion3'] }}</td>
-                            <td>{{ $usuario['discapacidad'] }}</td>
-                            <td>{{ $usuario['estudios'] }}</td>
-                            <td>{{ $usuario['disponibilidad'] }}</td>
-                            <td>{{ explode(" ", $usuario['carnet'])[0] }}</td>
-                            <td>{{ explode("-", $usuario['localidad'])[0] }}</td>
-                            <td>{{ $usuario['observaciones'] }}</td>
+                            @if(filter_var($options['checkNombre'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->nombre }}</td>
+                            @endif
+                            @if(filter_var($options['checkApellidos'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->apellidos }}</td>
+                            @endif
+                            @if(filter_var($options['checkSexo'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->sexo }}</td>
+                            @endif
+                            @if(filter_var($options['checkEdad'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->edad }}</td>
+                            @endif
+                            @if(filter_var($options['checkTelefono'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->telefono }}</td>
+                            @endif
+                            @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->dni }}</td>
+                            @endif
+                            @if(filter_var($options['checkActivationDate'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->fecha_activacion }}</td>
+                            @endif
+                            @if(filter_var($options['checkOcupacion'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->ocupacion }}</td>
+                                <td>{{ $usuario->ocupacion2 }}</td>
+                                <td>{{ $usuario->ocupacion3 }}</td>
+                            @endif
+                            @if(filter_var($options['checkDiscapacidad'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->discapacidad }}</td>
+                            @endif
+                            @if(filter_var($options['checkEstudios'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->nivel_estudios }}</td>
+                            @endif
+                            @if(filter_var($options['checkEspecialidad'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->especialidad}}</td>
+                            @endif
+                            @if(filter_var($options['checkComplementaria'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->formacion_complementaria }}</td>
+                            @endif
+                            @if(filter_var($options['checkExperiencia'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->experiencia_laboral }}</td>
+                            @endif
+                            @if(filter_var($options['checkProgramas'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->programa_oal }}</td>
+                                <td>{{ $usuario->año_programa_oal }}</td>
+                                <td>{{ $usuario->programa_oal_2 }}</td>
+                                <td>{{ $usuario->año_programa_oal_2 }}</td>
+                                <td>{{ $usuario->programa_oal_3 }}</td>
+                                <td>{{ $usuario->año_programa_oal_3 }}</td>
+                            @endif
+                            @if(filter_var($options['checkDispo'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->disponibilidad }}</td>
+                            @endif
+                            @if(filter_var($options['checkCarnet'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->carnet }}</td>
+                            @endif
+                            @if(filter_var($options['checkVehiculo'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->vehiculo }}</td>
+                            @endif
+                            @if(filter_var($options['checkLocalidad'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->localidad }}</td>
+                            @endif
+                            @if(filter_var($options['checkNecesidades'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->necesidad_formativa }}</td>
+                            @endif
+                            @if(filter_var($options['checkObservaciones'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->observaciones }}</td>
+                            @endif
                         </tr>
                         @endforeach
-                    @else
-                        @foreach ($usuarios as $usuario)
-                        <tr>
-                            <td>{{ $usuario->nombre }}</td>
-                            <td>{{ $usuario->apellidos }}</td>
-                            <td>{{ $usuario->sexo }}</td>
-                            <td>{{ $usuario->edad }}</td>
-                            <td>{{ $usuario->telefono }}</td>
-                            <td>{{ $usuario->dni }}</td>
-                            <td>{{ $usuario->ocupacion }}</td>
-                            <td>{{ $usuario->ocupacion2 }}</td>
-                            <td>{{ $usuario->ocupacion3 }}</td>
-                            <td>{{ $usuario->discapacidad }}</td>
-                            <td>{{ $usuario->estudios }}</td>
-                            <td>{{ $usuario->disponibilidad }}</td>
-                            <td>{{ $usuario->carnet }}</td>
-                            <td>{{ explode("-", $usuario->localidad)[0] }}</td>
-                            <td>{{ $usuario->observaciones }}</td>
-                        </tr>
-                        @endforeach
-                    @endif
                 </tbody>
             </table>
         </div>

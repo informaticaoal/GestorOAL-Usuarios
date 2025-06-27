@@ -17,9 +17,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/generatePdf', [UsuarioOALController::class, 'createPdf'])->name('PDFView')->middleware(['auth', 'verified']);
+Route::any('/generatePDF', [UsuarioOALController::class, 'createPDF'])->middleware(['auth', 'verified']);
 
-Route::get('/search/generatePdf', [UsuarioOALController::class, 'createPdfFromSearch'])->middleware(['auth', 'verified']);
+//Route::get('/search/generatePdf', [UsuarioOALController::class, 'createPdfFromSearch'])->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', [UsuarioOALController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

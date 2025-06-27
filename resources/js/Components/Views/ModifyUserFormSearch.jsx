@@ -21,7 +21,6 @@ import NavLink from '../NavLink';
 export default function ModifyUserFormSearch({
     usuariosOAL,
     contadorUsuarios,
-    usuariosPDF,
 }) {
     const {
         register: register2,
@@ -34,7 +33,6 @@ export default function ModifyUserFormSearch({
     const { handleSubmit: handleSubmit3 } = useForm();
 
     const { errors } = formState;
-
     function formatearFecha(fecha) {
         // Separamos la fecha en día, mes y año usando el carácter "/"
         const [dia, mes, anio] = fecha.split('/');
@@ -1494,17 +1492,6 @@ export default function ModifyUserFormSearch({
                     </tbody>
                 </Table>
             </div>
-            <Container className="d-flex justify-content-center d-none mb-4">
-                <Form
-                    onSubmit={handleSubmit3(() => {
-                        router.get(`/search/generatePdf`, usuariosPDF);
-                    })}
-                >
-                    <Button variant="info" type="submit" size="lg">
-                        Descargar PDF
-                    </Button>
-                </Form>
-            </Container>
         </>
     );
 }
