@@ -69,9 +69,6 @@
                         @if(filter_var($options['checkActivationDate'], FILTER_VALIDATE_BOOLEAN))
                             <th>Fecha activación</th>
                         @endif
-                            @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
-                                <th>Fecha activación</th>
-                            @endif
                             @if(filter_var($options['checkOcupacion'], FILTER_VALIDATE_BOOLEAN))
                                 <th>Ocupación 1</th>
                                 <th>Ocupación 2</th>
