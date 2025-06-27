@@ -1,4 +1,3 @@
-import { router } from '@inertiajs/react';
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
@@ -18,20 +17,31 @@ export default function PDFGenerator({ usuarios }) {
                     onSubmit={handleSubmit((data) => {
                         console.log(data);
                         let usuariosFormatted = JSON.stringify(usuarios);
-                        axios.post('/generatePDF', {
-                            usuariosFormatted,
-                            data,
-                        }, {
-                            responseType: 'blob',
-                        }).then((response) => {
-                            const url = window.URL.createObjectURL(new Blob([response.data]));
-                            const link = document.createElement('a');
-                            link.href = url;
-                            link.setAttribute('download', 'usuariosFiltrados.pdf'); // Nombre del archivo
-                            document.body.appendChild(link);
-                            link.click();
-                            link.parentNode.removeChild(link);
-                        });
+                        axios
+                            .post(
+                                '/generatePDF',
+                                {
+                                    usuariosFormatted,
+                                    data,
+                                },
+                                {
+                                    responseType: 'blob',
+                                },
+                            )
+                            .then((response) => {
+                                const url = window.URL.createObjectURL(
+                                    new Blob([response.data]),
+                                );
+                                const link = document.createElement('a');
+                                link.href = url;
+                                link.setAttribute(
+                                    'download',
+                                    'usuariosFiltrados.pdf',
+                                ); // Nombre del archivo
+                                document.body.appendChild(link);
+                                link.click();
+                                link.parentNode.removeChild(link);
+                            });
                     })}
                 >
                     <div className="justify-content-center flex flex-row flex-wrap gap-4 pb-4">
