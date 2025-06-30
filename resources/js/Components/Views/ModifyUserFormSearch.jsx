@@ -1333,7 +1333,7 @@ export default function ModifyUserFormSearch({
                             <th>Carnet</th>
                             <th>Vehículo</th>
                             <th>Localidad</th>
-                            <th>Necesidad formativa</th>
+                            <th style={{ minWidth: '210px' }}>Necesidad formativa</th>
                             <th>Observaciones</th>
                             <th>Añadido por</th>
                             <th>¿Eliminar?</th>
