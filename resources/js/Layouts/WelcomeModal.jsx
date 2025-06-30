@@ -16,7 +16,7 @@ export default function WelcomeModal() {
         }
         // Comprueba si la versión de la aplicación ha cambiado aunque no sea la primera vez
         // que se accede a la aplicación
-        if (appVersion != version || firstTime === 'true') {
+        if (appVersion !== version || firstTime === 'true') {
             setIsFirstTime(true);
             localStorage.setItem('firstTime', 'true');
             localStorage.setItem('appVersion', version);
