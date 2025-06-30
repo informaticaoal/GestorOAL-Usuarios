@@ -2,7 +2,6 @@ import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 export default function PDFGenerator({ usuarios }) {
-    console.log(usuarios);
 
     const { register, handleSubmit } = useForm();
     return (
@@ -15,7 +14,6 @@ export default function PDFGenerator({ usuarios }) {
                 <Form
                     className="flex flex-col items-center justify-center"
                     onSubmit={handleSubmit((data) => {
-                        console.log(data);
                         let usuariosFormatted = JSON.stringify(usuarios);
                         axios
                             .post(
