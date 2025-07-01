@@ -12,7 +12,7 @@ import {
 } from '@/Utils/optionsData';
 import { router, useForm as useFormInertia } from '@inertiajs/react';
 import { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -29,9 +29,6 @@ export default function ModifyUserFormSearch({
         handleSubmit: handleSubmit2,
         setValue: setValue2,
     } = useForm();
-
-    const { handleSubmit: handleSubmit3 } = useForm();
-
     const { errors } = formState;
     function formatearFecha(fecha) {
         // Separamos la fecha en día, mes y año usando el carácter "/"
@@ -1333,7 +1330,9 @@ export default function ModifyUserFormSearch({
                             <th>Carnet</th>
                             <th>Vehículo</th>
                             <th>Localidad</th>
-                            <th style={{ minWidth: '210px' }}>Necesidad formativa</th>
+                            <th style={{ minWidth: '210px' }}>
+                                Necesidad formativa
+                            </th>
                             <th>Observaciones</th>
                             <th>Añadido por</th>
                             <th>¿Eliminar?</th>

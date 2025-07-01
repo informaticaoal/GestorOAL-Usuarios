@@ -37,7 +37,7 @@ export default function CreateUserForm() {
 
     return (
         <>
-            <div className="container" id="createUsuario">
+            <div className="container mt-4" id="createUsuario">
                 {/* IMPORTADOR DE EXCEL, HACE FALTA ACTUALIZAR POR LOS NUEVOS CAMPOS AÑADIDOS. */}
                 {/*<div className="container my-5">*/}
                 {/*    <h2 className="my-3 text-center">Importar Excel</h2>*/}
