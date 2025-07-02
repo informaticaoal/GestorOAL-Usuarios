@@ -829,7 +829,6 @@ export default function CreateUserForm() {
                     </div>
                 </Form>
             </div>
-            ;
         </>
     );
 }
