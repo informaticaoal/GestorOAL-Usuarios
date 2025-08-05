@@ -196,6 +196,10 @@ export const ocupacionOptions = [
     },
     { value: 'Delineante', label: 'Delineante' },
     {
+        value: 'Delegado/a comercial de productos hospitalarios y farmacéuticos',
+        label: 'Delegado/a comercial de productos hospitalarios y farmacéuticos',
+    },
+    {
         value: 'Dependiente/a de carnicería y charcutería',
         label: 'Dependiente/a de carnicería y charcutería',
     },
@@ -447,7 +451,7 @@ export const ocupacionOptions = [
         value: 'Manipulador/a de frutas y hortalizas',
         label: 'Manipulador/a de frutas y hortalizas',
     },
-    { value: 'Mantenedor/a de edificios', label: 'Mantenedor/a de edificios', },
+    { value: 'Mantenedor/a de edificios', label: 'Mantenedor/a de edificios' },
     { value: 'Masajista deportivo', label: 'Masajista deportivo' },
     { value: 'Mecánico/a de automóviles', label: 'Mecánico/a de automóviles' },
     {
@@ -605,6 +609,18 @@ export const ocupacionOptions = [
     {
         value: 'Personal de limpieza en general',
         label: 'Personal de limpieza en general',
+    },
+    {
+        value: 'Personal técnico en equipos de radioelectrología médica',
+        label: 'Personal técnico en equipos de radioelectrología médica',
+    },
+    {
+        value: 'Personal técnico en protección radiológica',
+        label: 'Personal técnico en protección radiológica',
+    },
+    {
+        value: 'Personal técnico en radiología de investigación y experimentación',
+        label: 'Personal técnico en radiología de investigación y experimentación',
     },
     { value: 'Pinche de cocina', label: 'Pinche de cocina' },
     { value: 'Podadores', label: 'Podadores' },
@@ -863,6 +879,14 @@ export const ocupacionOptions = [
     {
         value: 'Técnico/a en teleasistencia',
         label: 'Técnico/a en teleasistencia',
+    },
+    {
+        value: 'Técnico/a especialista en medicina nuclear',
+        label: 'Técnico/a especialista en medicina nuclear',
+    },
+    {
+        value: 'Técnico/a especialista en radiodiagnóstico',
+        label: 'Técnico/a especialista en radiodiagnóstico',
     },
     { value: 'Trabajador/a social', label: 'Trabajador/a social' },
     { value: 'Tractoristas', label: 'Tractoristas' },
