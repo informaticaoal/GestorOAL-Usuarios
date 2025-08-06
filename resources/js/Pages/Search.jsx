@@ -804,7 +804,7 @@ export default function Search() {
 
                 {search && (
                     <>
-                        <PDFGenerator usuarios={usuariosPDF}/>
+                        <PDFGenerator usuarios={usuariosPDF} />
                         <ModifyUserFormSearch
                             contadorUsuarios={contadorUsuarios}
                             usuariosOAL={usuariosOAL}

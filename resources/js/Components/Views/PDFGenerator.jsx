@@ -5,7 +5,10 @@ export default function PDFGenerator({ usuarios }) {
 
     const { register, handleSubmit } = useForm();
     return (
-        <div className="flex-column container flex items-center justify-center">
+        <div
+            className="flex-column container flex items-center justify-center"
+            id="pdfGenerator"
+        >
             <h1 className="my-4 text-2xl font-bold">
                 Seleccione qué campos quiere imprimir en PDF
             </h1>

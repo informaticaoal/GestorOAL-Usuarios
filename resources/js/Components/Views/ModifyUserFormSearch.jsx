@@ -318,7 +318,9 @@ export default function ModifyUserFormSearch({
                 document
                     .getElementById('searchUsuarios')
                     .setAttribute('style', 'display: none !important');
-
+                document
+                    .getElementById('pdfGenerator')
+                    .setAttribute('style', 'display: none !important');
                 window.scrollTo(0, 0);
 
                 document
