@@ -623,6 +623,10 @@ export const ocupacionOptions = [
         label: 'Personal técnico en radiología de investigación y experimentación',
     },
     { value: 'Pinche de cocina', label: 'Pinche de cocina' },
+    {
+        value: 'Pintor de edificios y construcciones',
+        label: 'Pintor de edificios y construcciones',
+    },
     { value: 'Podadores', label: 'Podadores' },
     {
         value: 'Preparador de despojos',
