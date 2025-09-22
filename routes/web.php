@@ -25,6 +25,8 @@ Route::get('/dashboard', [UsuarioOALController::class, 'index'])->middleware(['a
 
 Route::get('/search', [UsuarioOALController::class, 'search'])->middleware(['auth', 'verified'])->name('search');
 
+Route::get('/excel', [UsuarioOALController::class, 'excelIndex'])->middleware(['auth', 'verified'])->name('excelIndex');
+
 Route::resource('usuario_oal', UsuarioOALController::class)->middleware(['auth', 'verified']);
 
 Route::get('/usuarioGestor/all', [UserController::class, 'getAll'])->middleware(['auth', 'verified']);

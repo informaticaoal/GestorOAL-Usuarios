@@ -35,6 +35,11 @@ class UsuarioOALController extends Controller
         });
         return inertia("Search");
     }
+
+    public function excelIndex()
+    {
+        return inertia("Excel");
+    }
     /**
      * Show the form for creating a new resource.
      */

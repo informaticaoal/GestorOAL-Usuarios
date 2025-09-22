@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@source "../**/*.blade.php";
+@source "../**/*.jsx";
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+
+@plugin "daisyui";
+
 body {
     font-family: "Reddit Sans", sans-serif !important;
 }

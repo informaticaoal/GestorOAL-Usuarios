@@ -38,35 +38,6 @@ export default function CreateUserForm() {
     return (
         <>
             <div className="container mt-4" id="createUsuario">
-                {/* IMPORTADOR DE EXCEL, HACE FALTA ACTUALIZAR POR LOS NUEVOS CAMPOS AÑADIDOS. */}
-                {/*<div className="container my-5">*/}
-                {/*    <h2 className="my-3 text-center">Importar Excel</h2>*/}
-                {/*    <Form*/}
-                {/*        className="border-bottom w-50 d-flex flex-column justify-content-center mx-auto pb-4"*/}
-                {/*        autoComplete="off"*/}
-                {/*        encType="multipart/form-data"*/}
-                {/*        onSubmit={handleSubmitImport((data) => {*/}
-                {/*            router.post(`/usuario/import`, data.excel);*/}
-                {/*        })}*/}
-                {/*    >*/}
-                {/*        <Form.Group className="mb-3" controlId="formExcel">*/}
-                {/*            <Form.Control*/}
-                {/*                {...registerImport('excel')}*/}
-                {/*                type="file"*/}
-                {/*                multiple={true}*/}
-                {/*                accept=".xls, .xlsx"*/}
-                {/*            />*/}
-                {/*        </Form.Group>*/}
-                {/*        <Button*/}
-                {/*            block*/}
-                {/*            variant="outline-success"*/}
-                {/*            className="w-50 mx-auto"*/}
-                {/*            type="submit"*/}
-                {/*        >*/}
-                {/*            Importar archivo*/}
-                {/*        </Button>*/}
-                {/*    </Form>*/}
-                {/*</div>*/}
                 <Form
                     className="border-bottom pb-4"
                     autoComplete="off"
