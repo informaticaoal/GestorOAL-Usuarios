@@ -155,7 +155,8 @@ export default function Search() {
                                     ? data.addedBy.value
                                     : null,
                                 socialmedia:
-                                    data.socialmedia === undefined
+                                    data.socialmedia === undefined ||
+                                    data.socialmedia === null
                                         ? 'Indiferente'
                                         : data.socialmedia.value === 'Sí'
                                           ? 1
