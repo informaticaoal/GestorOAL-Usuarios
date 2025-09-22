@@ -107,7 +107,11 @@ export default function CreateUserForm() {
                                         año_programa_oal_2: data.yearPrograma2,
                                         programa_oal_3: data.programa3?.value,
                                         año_programa_oal_3: data.yearPrograma3,
+                                        socialmedia: data.socialmedia
+                                            ? true
+                                            : false,
                                     };
+
                                     //Petición POST para crear el usuario, primero se crea. Luego se añaden los documentos.
                                     axios
                                         .post('/usuario_oal', newData)
@@ -775,6 +779,20 @@ export default function CreateUserForm() {
                                 />
                             </Form.Group>
                         </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <Form.Group
+                            className="fs-5 mb-3"
+                            controlId="form-socialmedia"
+                        >
+                            <Form.Check // prettier-ignore
+                                type="checkbox"
+                                id={`default-checkbox`}
+                                label={`¿El usuario proviene de redes sociales?`}
+                                {...register('socialmedia')}
+                            />
+                        </Form.Group>
                     </div>
 
                     <div className="d-flex justify-content-center">

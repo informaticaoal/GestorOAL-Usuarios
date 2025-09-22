@@ -54,7 +54,7 @@ class UsuarioOALImport implements ToModel, WithChunkReading, WithBatchInserts, S
             'año_programa_oal_2' => $row[28],
             'programa_oal_3' => $row[29],
             'año_programa_oal_3' => $row[30],
-
+            'socialmedia' => $row[31],
         ]);
     }
 

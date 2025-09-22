@@ -41,13 +41,6 @@ class UsuarioOALController extends Controller
     {
         return inertia("Excel");
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -65,20 +58,10 @@ class UsuarioOALController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(UsuarioOAL $usuarioOAL)
-    {
-        //
-    }
+    public function getSocialMedia($id) {
+        $socialmedia = \DB::table('usuario_o_a_l_s')->where('id', $id)->value('socialmedia');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UsuarioOAL $usuarioOAL)
-    {
-        //
+        return response()->json(['socialmedia' => $socialmedia]);
     }
 
     /**
@@ -276,6 +259,9 @@ class UsuarioOALController extends Controller
                 foreach ($search['necesidad_formativa'] as $key => $value) {
                     $usuarios->where('necesidad_formativa', 'like', '%'.$value.'%');
                 }
+            }
+            if (isset($search['socialmedia']) && $search['socialmedia'] !== 'Indiferente') {
+                $usuarios->where('socialmedia', $search['socialmedia']);
             }
             $usuarios->orderBy('created_at', 'desc');
 

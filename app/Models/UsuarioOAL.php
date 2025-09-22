@@ -38,6 +38,7 @@ class UsuarioOAL extends Model
         'año_programa_oal_2',
         'programa_oal_3',
         'año_programa_oal_3',
+        'socialmedia',
     ];
 
     public function documents() {

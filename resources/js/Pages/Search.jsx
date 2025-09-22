@@ -1,4 +1,5 @@
 import ModifyUserFormSearch from '@/Components/Views/ModifyUserFormSearch';
+import PDFGenerator from '@/Components/Views/PDFGenerator.jsx';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import OALHeaderLayout from '@/Layouts/SearchHeader';
 import {
@@ -20,7 +21,6 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
-import PDFGenerator from '@/Components/Views/PDFGenerator.jsx';
 
 export default function Search() {
     const {
@@ -154,6 +154,12 @@ export default function Search() {
                                 added_by_user: data.addedBy
                                     ? data.addedBy.value
                                     : null,
+                                socialmedia:
+                                    data.socialmedia === undefined
+                                        ? 'Indiferente'
+                                        : data.socialmedia.value === 'Sí'
+                                          ? 1
+                                          : 0,
                             };
 
                             let edadData = {
@@ -780,6 +786,29 @@ export default function Search() {
                                                 placeholder="Quién ha añadido el usuario"
                                                 noOptionsMessage={() =>
                                                     'No se encuentran usuarios.'
+                                                }
+                                            />
+                                        )}
+                                    />
+                                </Form.Group>
+                                <Form.Group
+                                    className="mb-3"
+                                    controlId="formVehiculo"
+                                >
+                                    <Form.Label className="fs-4">
+                                        ¿Proviene el usuario de redes sociales?
+                                    </Form.Label>
+                                    <Controller
+                                        name="socialmedia"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                {...field}
+                                                isClearable={true}
+                                                options={vehiculoOptions}
+                                                placeholder="¿El usuario proviene de redes sociales?"
+                                                noOptionsMessage={() =>
+                                                    'Se ha introducido un valor erróneo'
                                                 }
                                             />
                                         )}

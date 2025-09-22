@@ -33,6 +33,8 @@ Route::resource('usuario_oal', UsuarioOALController::class)->middleware(['auth',
 
 Route::get('/usuarioGestor/all', [UserController::class, 'getAll'])->middleware(['auth', 'verified']);
 
+Route::get('/usuario_oal/{id}/getsocialmedia', [UsuarioOALController::class, 'getSocialMedia'])->middleware(['auth', 'verified']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.1.1';
+    const version = '1.1.2';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -52,7 +52,13 @@ export default function WelcomeModal() {
                             En esta versión, se ha añadido{' '}
                             <strong>importador-exportador de Excel </strong>
                             para poder realizar copias de seguridad con mayor
-                            facilidad.
+                            facilidad. <br />
+                            <br />
+                            También se ha añadido{' '}
+                            <strong>un campo nuevo</strong> para poder
+                            especificar los usuarios que provengan de{' '}
+                            <strong>redes sociales</strong>, así como filtralos
+                            por este campo.
                         </i>
                     </p>
                     <button

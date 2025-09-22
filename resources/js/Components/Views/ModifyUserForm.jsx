@@ -67,7 +67,6 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                 const carnetResponse = await axios.get(
                     `/usuario_oal/${idUsuario}/carnet`,
                 );
-
                 const carnetDB = JSON.parse(carnetResponse.data.carnet);
                 const necesidadFormativaResponse = await axios.get(
                     `/usuario_oal/${idUsuario}/necesidad-formativa`,
@@ -312,6 +311,15 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     }
                 });
 
+                await axios
+                    .get(`/usuario_oal/${idUsuario}/getsocialmedia`)
+                    .then((response) => {
+                        setValue2(
+                            'socialmedia',
+                            response.data.socialmedia === 1 ? true : false,
+                        );
+                    });
+
                 document
                     .getElementById('createUsuario')
                     .setAttribute('style', 'display: none !important');
@@ -434,6 +442,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             año_programa_oal_2: data.año_programa_oal_2,
                             programa_oal_3: data.programa_oal_3,
                             año_programa_oal_3: data.año_programa_oal_3,
+                            socialmedia: data.socialmedia ? 1 : 0,
                         };
 
                         await router.put(
@@ -1237,6 +1246,31 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     </div>
 
                     <div className="d-flex justify-content-center">
+                        <Form.Group
+                            className="fs-5 mb-3"
+                            controlId="form-socialmedia"
+                        >
+                            <Controller
+                                name="socialmedia"
+                                control={control2}
+                                defaultValue={false}
+                                render={({ field }) => (
+                                    <Form.Check
+                                        type="checkbox"
+                                        id="default-checkbox"
+                                        label="¿El usuario proviene de redes sociales?"
+                                        checked={field.value || false}
+                                        onChange={(e) => {
+                                            const isChecked = e.target.checked;
+                                            field.onChange(isChecked);
+                                        }}
+                                    />
+                                )}
+                            />
+                        </Form.Group>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
                         <Form.Group className="mb-3" controlId="form-Files">
                             <Form.Label className="fs-4 fst-italic">
                                 Documentos (opcional)
@@ -1342,7 +1376,9 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 <th>Carnet</th>
                                 <th>Vehículo</th>
                                 <th>Localidad</th>
-                                <th style={{ minWidth: '210px' }}>Necesidad formativa</th>
+                                <th style={{ minWidth: '210px' }}>
+                                    Necesidad formativa
+                                </th>
                                 <th>Observaciones</th>
                                 <th>Añadido por</th>
                                 <th>¿Eliminar?</th>
