@@ -20,26 +20,20 @@ class UserSeeder extends Seeder
         // ]);
 
         // DB::table('users')->insert([
-        //     'name' => 'Yolanda',
-        //     'email' => 'orienta1@oalhuetortajar.com',
-        //     'password' => bcrypt('OAL_12345'),
-        // ]);
-
-        // DB::table('users')->insert([
-        //     'name' => 'AiramSandra',
-        //     'email' => 'a@a.com',
-        //     'password' => bcrypt('OAL_12345'),
-        // ]);
-
-        // DB::table('users')->insert([
         //     'name' => 'Carolina',
         //     'email' => 'carolina.oalht@gmail.com',
         //     'password' => bcrypt('OAL_12345'),
         // ]);
 
-         DB::table('users')->insert([
-             'name' => 'Susana',
-             'email' => 'susana.orienta@huetortajar.com',
+        //  DB::table('users')->insert([
+        //      'name' => 'Susana',
+        //      'email' => 'susana.orienta@huetortajar.com',
+        //      'password' => bcrypt('OAL_12345'),
+        //  ]);
+
+        DB::table('users')->insert([
+             'name' => 'Nerea',
+             'email' => 'nerea@huetortajar.com',
              'password' => bcrypt('OAL_12345'),
          ]);
     }
