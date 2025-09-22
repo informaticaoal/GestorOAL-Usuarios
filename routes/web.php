@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 Route::any('/generatePDF', [UsuarioOALController::class, 'createPDF'])->middleware(['auth', 'verified']);
 
-//Route::get('/search/generatePdf', [UsuarioOALController::class, 'createPdfFromSearch'])->middleware(['auth', 'verified']);
+Route::get('/excel/export', [UsuarioOALController::class, 'exportExcel'])->middleware(['auth', 'verified'])->name('exportExcel');
+
+Route::post('/excel/import', [UsuarioOALController::class, 'importExcel'])->middleware(['auth', 'verified'])->name('importExcel');
 
 Route::get('/dashboard', [UsuarioOALController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -36,8 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::post('/usuario/import', [UsuarioOALController::class, 'importExcel'])->middleware(['auth', 'verified']);
 
 Route::get('/usuario/{id}/edad', [UsuarioOALController::class, 'getEdad'])->middleware(['auth', 'verified']);
 

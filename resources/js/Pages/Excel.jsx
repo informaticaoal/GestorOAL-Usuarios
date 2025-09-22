@@ -1,6 +1,6 @@
+import ExcelOptions from '@/Components/Views/ExcelOptions.jsx';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import { Head } from '@inertiajs/react';
-import ExcelOptions from '@/Components/Views/ExcelOptions.jsx';
 
 export default function Excel() {
     return (
@@ -8,7 +8,7 @@ export default function Excel() {
             <AuthenticatedLayout>
                 <Head title="Exportar/Importar" />
 
-                <ExcelOptions/>
+                <ExcelOptions />
             </AuthenticatedLayout>
         </>
     );

@@ -12,6 +12,7 @@ use App\Http\Controllers\DocumentosUsuariosController;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsuarioOALImport;
 use Inertia\Inertia;
+use App\Exports\UsuarioOALExport;
 
 class UsuarioOALController extends Controller
 {
@@ -283,23 +284,16 @@ class UsuarioOALController extends Controller
             return response()->json(['usuarios' => $result, 'contador' => $usuarios->count(), 'usuariosPDF' => $result]);
         }
 
-        public function importExcel(Request $request) {
-            $files = $request->file();
-            foreach ($files as $file) {
-                try {
-                    //Si el archivo tiene algun error, no se completará la importación.
-                    Excel::import(new UsuarioOALImport, $file);
-                } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                    $failures = $e->failures();
-
-                    foreach ($failures as $failure) {
-                        $failure->row(); // row that went wrong
-                        $failure->attribute(); // either heading key (if using heading row concern) or column index
-                        $failure->errors(); // Actual error messages from Laravel validator
-                        $failure->values(); // The values of the row that has failed.
-                    }
-                }
+        public function exportExcel() {
+            return Excel::download(new UsuarioOALExport, 'usuariosOAL.xlsx');
         }
-        // return to_route('dashboard');
-    }
+
+        public function importExcel(Request $request) {
+
+            $file = $request->file('file')[0];
+
+            Excel::import(new UsuarioOALImport, $file);
+
+            return to_route('dashboard');
+        }
 }

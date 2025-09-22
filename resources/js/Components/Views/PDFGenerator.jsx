@@ -2,7 +2,6 @@ import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 export default function PDFGenerator({ usuarios }) {
-
     const { register, handleSubmit } = useForm();
     return (
         <div
