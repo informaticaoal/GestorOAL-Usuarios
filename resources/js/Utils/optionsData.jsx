@@ -637,6 +637,10 @@ export const ocupacionOptions = [
         label: 'Preparados de materias primas',
     },
     {
+        value: 'Prevención y control de plagas',
+        label: 'Prevención y control de plagas',
+    },
+    {
         value: 'Profesionales de la acupuntura, naturopatía, medicina tradicional china',
         label: 'Profesionales de la acupuntura, naturopatía, medicina tradicional china',
     },
@@ -6395,6 +6399,7 @@ export const carnetOptions = [
     { value: 'Moto A2 (max 35 kw)', label: 'Moto A2 (max 35 kw)' },
     { value: 'Coche B', label: 'Coche B' },
     { value: 'Coche B+E (- 3500kg)', label: 'Coche B+E (- 3500kg)' },
+    { value: 'Camiones C', label: 'Camiones C' },
     { value: 'Camiones C1 (- 7500kg)', label: 'Camiones C1 (- 7500kg)' },
     {
         value: 'Camiones C2',
