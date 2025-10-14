@@ -6455,8 +6455,16 @@ export const localidadOptions = [
         label: '18102 - Ambroz (Vegas del Genil)',
     },
     {
+        value: '29200 - Antequera',
+        label: '29200 - Antequera',
+    },
+    {
         value: '18240 - Anzola (Pinos Puente)',
         label: '18240 - Anzola (Pinos Puente)',
+    },
+    {
+        value: '29300 - Archidona',
+        label: '29300 - Archidona',
     },
     { value: '18126 - Arenas del Rey', label: '18126 - Arenas del Rey' },
     { value: '18100 - Armilla', label: '18100 - Armilla' },
@@ -6569,6 +6577,10 @@ export const localidadOptions = [
     { value: '18512 - Huéneja', label: '18512 - Huéneja' },
     { value: '18830 - Huéscar', label: '18830 - Huéscar' },
     {
+        value: '29314 - Huertas del Río',
+        label: '29314 - Huertas del Río',
+    },
+    {
         value: '18183 - Huétor de Santillán',
         label: '18183 - Huétor de Santillán',
     },
@@ -6673,8 +6685,20 @@ export const localidadOptions = [
     { value: '18630 - Villa de Otura', label: '18630 - Villa de Otura' },
     { value: '18659 - Villamena', label: '18659 - Villamena' },
     {
+        value: '29315 - Villanueva de Tapia',
+        label: '29315 - Villanueva de Tapia',
+    },
+    {
         value: '18539 - Villanueva de las Torres',
         label: '18539 - Villanueva de las Torres',
+    },
+    {
+        value: '29312 - Villanueva del Rosario',
+        label: '29312 - Villanueva del Rosario',
+    },
+    {
+        value: '29313 - Villanueva del Trabuco',
+        label: '29313 - Villanueva del Trabuco',
     },
     {
         value: '18369 - Villanueva Mesía',
