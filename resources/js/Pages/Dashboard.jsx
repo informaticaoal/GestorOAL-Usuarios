@@ -1,7 +1,7 @@
 import CreateUserForm from '@/Components/Views/CreateUserForm';
 import ModifyUserForm from '@/Components/Views/ModifyUserForm';
+import WelcomeModal from '@/Components/WelcomeModal';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import WelcomeModal from '@/Layouts/WelcomeModal';
 import { Head } from '@inertiajs/react';
 
 const Dashboard = ({ usuariosOAL, contadorUsuarios }) => {
