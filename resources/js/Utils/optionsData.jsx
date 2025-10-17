@@ -309,6 +309,10 @@ export const ocupacionOptions = [
         value: 'Diseñador/a gráfico 2D y 3D de videojuegos (Game Artist)',
         label: 'Diseñador/a gráfico 2D y 3D de videojuegos (Game Artist)',
     },
+    {
+        value: 'Diseñador/a industrial',
+        label: 'Diseñador/a industrial',
+    },
     { value: 'Diseñador/a web', label: 'Diseñador/a web' },
     {
         value: 'Docente de educación infantil',
@@ -396,6 +400,10 @@ export const ocupacionOptions = [
     {
         value: 'Hacker ético',
         label: 'Hacker ético',
+    },
+    {
+        value: 'Ingeniero industrial',
+        label: 'Ingeniero industrial',
     },
     {
         value: 'Instalador/a de electrodomésticos',
