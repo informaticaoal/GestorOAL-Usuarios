@@ -6418,8 +6418,28 @@ export const carnetOptions = [
         label: 'Camiones C+E',
     },
     {
+        value: 'Camiones C1+E',
+        label: 'Camiones C1+E',
+    },
+    {
+        value: 'Vehículos CAP',
+        label: 'Vehículos CAP',
+    },
+    {
         value: 'Autobuses D',
         label: 'Autobuses D',
+    },
+    {
+        value: 'Autobuses D1',
+        label: 'Autobuses D1',
+    },
+    {
+        value: 'Autobuses D+E',
+        label: 'Autobuses D+E',
+    },
+    {
+        value: 'Autobuses D1+E',
+        label: 'Autobuses D1+E',
     },
     {
         value: 'Mercancías peligrosas',
