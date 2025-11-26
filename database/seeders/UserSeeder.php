@@ -42,5 +42,17 @@ class UserSeeder extends Seeder
         //      'email' => 'isaias@oalhuetortajar.com',
         //      'password' => bcrypt('OAL_12345'),
         //  ]);
+
+        DB::table('users')->insert([
+             'name' => 'Fabiola',
+             'email' => 'fabiola@oalhuetortajar.com',
+             'password' => bcrypt('OAL_12345'),
+         ]);
+
+         DB::table('users')->insert([
+             'name' => 'Nazaret',
+             'email' => 'nazaret@oalhuetortajar.com',
+             'password' => bcrypt('OAL_12345'),
+         ]);
     }
 }
