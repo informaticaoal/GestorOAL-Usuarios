@@ -331,6 +331,10 @@ export const ocupacionOptions = [
         label: 'Docente de formación profesional',
     },
     {
+        value: 'Docente de formación profesional para el empleo',
+        label: 'Docente de formación profesional para el empleo',
+    },
+    {
         value: 'Docente de idiomas',
         label: 'Docente de idiomas',
     },
