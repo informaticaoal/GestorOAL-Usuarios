@@ -263,6 +263,12 @@ class UsuarioOALController extends Controller
             if (isset($search['socialmedia']) && $search['socialmedia'] !== 'Indiferente') {
                 $usuarios->where('socialmedia', $search['socialmedia']);
             }
+            if (isset($search['formacion_complementaria']) && !empty($search['formacion_complementaria'])) {
+                $usuarios->where('formacion_complementaria', 'like', '%'.$search['formacion_complementaria'].'%');
+            }
+            if (isset($search['experiencia_laboral']) && !empty($search['experiencia_laboral'])) {
+                $usuarios->where('experiencia_laboral', 'like', '%'.$search['experiencia_laboral'].'%');
+            }
             $usuarios->orderBy('created_at', 'desc');
 
 
