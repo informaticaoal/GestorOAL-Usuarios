@@ -17,7 +17,7 @@ import {
 } from '@/Utils/optionsData';
 import { Head, usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -44,6 +44,19 @@ export default function Search() {
     const [edadRange, setEdadRange] = useState(false);
 
     const actualYear = new Date().getFullYear();
+
+    // Scroll automático cuando se completa la búsqueda
+    useEffect(() => {
+        if (search && usuariosOAL.length > 0) {
+            // Usamos setTimeout para asegurar que el DOM se haya actualizado
+            setTimeout(() => {
+                const elemento = document.getElementById('listado-usuarios');
+                if (elemento) {
+                    elemento.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+    }, [search, usuariosOAL]);
 
     const formatoFechaSimple = (fechaISO) => {
         const [anio, mes, dia] = fechaISO.split('-');

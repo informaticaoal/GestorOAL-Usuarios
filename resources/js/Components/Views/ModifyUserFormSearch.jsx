@@ -1326,7 +1326,9 @@ export default function ModifyUserFormSearch({
                 </Form>
             </div>
             <div className="container-fluid my-5">
-                <h2 className="text-center">Listado de Usuarios</h2>
+                <h2 className="text-center" id="listado-usuarios">
+                    Listado de Usuarios
+                </h2>
                 <h3 className="my-3 text-center">
                     Usuarios registrados: {contadorUsuarios}
                 </h3>
