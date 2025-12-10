@@ -162,6 +162,11 @@ class UsuarioOALController extends Controller
             if (isset($search['telefono']) && !empty($search['telefono'])) {
                 $usuarios->where('telefono', 'like', '%'.$search['telefono'].'%');
             }
+
+            if (isset($search['email']) && !empty($search['email'])) {
+                $usuarios->where('email', 'like', '%'.$search['email'].'%');
+            }
+
             if (isset($search['dni']) && !empty($search['dni'])) {
                 $usuarios->where('dni', 'like', '%'.$search['dni'].'%');
             }

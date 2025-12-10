@@ -87,6 +87,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     'sexo',
                     'edad',
                     'telefono',
+                    'email',
                     'dni',
                     'fecha_activacion',
                     'ocupacion1',
@@ -109,8 +110,8 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                     'localidad',
                     'necesidad_formativa',
                     'observaciones',
-                    'usuarioId',
                     'documentos',
+                    'usuarioId',
                 ];
 
                 // Se recorre los campos y en cada caso, actua para rellenarlo con datos.
@@ -196,6 +197,11 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             break;
                         case 'telefono':
                             setValue2('telefono', elementText);
+                            form.querySelector(`[name="${field}"]`).value =
+                                elementText;
+                            break;
+                        case 'email':
+                            setValue2('email', elementText);
                             form.querySelector(`[name="${field}"]`).value =
                                 elementText;
                             break;
@@ -415,6 +421,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             sexo: data.sexo,
                             edad: formatoFechaSimple(data.edad),
                             telefono: data.telefono,
+                            email: data.email ? data.email : '',
                             dni: data.dni,
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
@@ -579,6 +586,19 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 />
                                 <Form.Text className="text-danger">
                                     {errors.telefono?.message}
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formEmail">
+                                <Form.Label className="fs-4">
+                                    Correo electrónico (opcional)
+                                </Form.Label>
+                                <Form.Control
+                                    {...register2('email')}
+                                    type="email"
+                                    className="mx-auto"
+                                />
+                                <Form.Text className="text-danger">
+                                    {errors.email?.message}
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formDni">
@@ -1342,6 +1362,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 <th>Sexo</th>
                                 <th>Edad</th>
                                 <th>Teléfono</th>
+                                <th style={{ minWidth: '210px' }}>Email</th>
                                 <th>DNI/NIE</th>
                                 <th>Fecha de activación</th>
                                 <th style={{ minWidth: '150px' }}>
@@ -1408,6 +1429,9 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                     </td>
                                     <td onClick={modificarUsuario(usuario.id)}>
                                         {usuario.telefono}
+                                    </td>
+                                    <td onClick={modificarUsuario(usuario.id)}>
+                                        {usuario.email}
                                     </td>
                                     <td onClick={modificarUsuario(usuario.id)}>
                                         {usuario.dni}

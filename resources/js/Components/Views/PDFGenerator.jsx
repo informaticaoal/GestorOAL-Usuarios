@@ -122,6 +122,21 @@ export default function PDFGenerator({ usuarios }) {
                         </div>
                         <div className="form-check">
                             <input
+                                {...register('checkEmail')}
+                                className="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="checkEmail"
+                            />
+                            <label
+                                className="form-check-label"
+                                htmlFor="checkEmail"
+                            >
+                                Correo electrónico
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input
                                 {...register('checkDNI')}
                                 className="form-check-input"
                                 type="checkbox"

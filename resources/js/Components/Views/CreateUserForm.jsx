@@ -76,6 +76,7 @@ export default function CreateUserForm() {
                                         sexo: data.sexo.value,
                                         edad: formatoFechaSimple(data.edad),
                                         telefono: data.telefono,
+                                        email: data.email ? data.email : '',
                                         dni: data.dni,
                                         fecha_activacion: formatoFechaSimple(
                                             data.fecha_activacion,
@@ -238,8 +239,21 @@ export default function CreateUserForm() {
                                     className="mx-auto"
                                     required
                                 />
-                                <Form.Text className="text-danger">
+                                <Form.Text className="text-danger fst-italic">
                                     {errors.telefono?.message}
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formEmail">
+                                <Form.Label className="fs-4">
+                                    Correo electrónico (opcional)
+                                </Form.Label>
+                                <Form.Control
+                                    {...register('email')}
+                                    type="email"
+                                    className="mx-auto"
+                                />
+                                <Form.Text className="text-danger">
+                                    {errors.email?.message}
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formDni">

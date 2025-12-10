@@ -108,6 +108,7 @@ export default function Search() {
                                     ? data.edadSelect.value
                                     : null,
                                 telefono: data.telefono ? data.telefono : null,
+                                email: data.email ? data.email : null,
                                 dni: data.dni ? data.dni : null,
                                 fecha_activacion: data.fecha_activacion
                                     ? formatoFechaSimple(data.fecha_activacion)
@@ -342,6 +343,22 @@ export default function Search() {
                                     />
                                     <Form.Text className="text-danger">
                                         {errors.telefono?.message}
+                                    </Form.Text>
+                                </Form.Group>
+                                <Form.Group
+                                    className="mb-3"
+                                    controlId="formEmail"
+                                >
+                                    <Form.Label className="fs-4">
+                                        Correo electrónico
+                                    </Form.Label>
+                                    <Form.Control
+                                        {...register('email')}
+                                        type="email"
+                                        className="mx-auto"
+                                    />
+                                    <Form.Text className="text-danger">
+                                        {errors.email?.message}
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group

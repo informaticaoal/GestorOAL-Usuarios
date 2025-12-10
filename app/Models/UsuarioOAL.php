@@ -18,6 +18,7 @@ class UsuarioOAL extends Model
         'edad',
         'fecha_activacion',
         'telefono',
+        'email',
         'ocupacion',
         'ocupacion2',
         'ocupacion3',
