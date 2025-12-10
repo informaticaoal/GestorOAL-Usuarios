@@ -63,6 +63,9 @@
                         @if(filter_var($options['checkTelefono'], FILTER_VALIDATE_BOOLEAN))
                             <th>Teléfono</th>
                         @endif
+                        @if(filter_var($options['checkEmail'], FILTER_VALIDATE_BOOLEAN))
+                            <th>Teléfono</th>
+                        @endif
                         @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
                             <th>DNI/NIE</th>
                         @endif
@@ -134,6 +137,9 @@
                             @endif
                             @if(filter_var($options['checkTelefono'], FILTER_VALIDATE_BOOLEAN))
                                 <td>{{ $usuario->telefono }}</td>
+                            @endif
+                            @if(filter_var($options['checkEmail'], FILTER_VALIDATE_BOOLEAN))
+                                <td>{{ $usuario->email }}</td>
                             @endif
                             @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
                                 <td>{{ $usuario->dni }}</td>
