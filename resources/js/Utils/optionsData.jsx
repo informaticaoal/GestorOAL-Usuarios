@@ -19,6 +19,10 @@ export const ocupacionOptions = [
     },
     { value: 'Agente comercial', label: 'Agente comercial' },
     {
+        value: 'Agente de viajes',
+        label: 'Agente de viajes',
+    },
+    {
         value: 'Agente forestal y medioambiental',
         label: 'Agente forestal y medioambiental',
     },
@@ -355,6 +359,10 @@ export const ocupacionOptions = [
     {
         value: 'Electromecánica en general',
         label: 'Electromecánica en general',
+    },
+    {
+        value: 'Empleado/a administrativo/a con tareas de atención al cliente',
+        label: 'Empleado/a administrativo/a con tareas de atención al cliente',
     },
     {
         value: 'Empleado/a de contabilidad',
@@ -716,8 +724,16 @@ export const ocupacionOptions = [
     },
     { value: 'Reponedor/a', label: 'Reponedor/a' },
     {
+        value: 'Responsable de calidad',
+        label: 'Responsable de calidad',
+    },
+    {
         value: 'Responsable de informática',
         label: 'Responsable de informática',
+    },
+    {
+        value: 'Responsable de PRL',
+        label: 'Responsable de PRL',
     },
     {
         value: 'Responsable del proceso de creación del videojuego (Game Designer)',
