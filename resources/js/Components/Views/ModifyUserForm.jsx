@@ -11,6 +11,7 @@ import {
     vehiculoOptions,
 } from '@/Utils/optionsData';
 import { Link, router, useForm as useFormInertia } from '@inertiajs/react';
+import axios from 'axios';
 import { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
@@ -323,6 +324,15 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                         setValue2(
                             'socialmedia',
                             response.data.socialmedia === 1 ? true : false,
+                        );
+                    });
+
+                await axios
+                    .get(`/usuario_oal/${idUsuario}/getdocente`)
+                    .then((response) => {
+                        setValue2(
+                            'docente',
+                            response.data.docente === 1 ? true : false,
                         );
                     });
 
@@ -1263,6 +1273,31 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 />
                             </Form.Group>
                         </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <Form.Group
+                            className="fs-5 mb-3"
+                            controlId="form-docente"
+                        >
+                            <Controller
+                                name="docente"
+                                control={control2}
+                                defaultValue={false}
+                                render={({ field }) => (
+                                    <Form.Check
+                                        type="checkbox"
+                                        id="default-checkbox"
+                                        label="¿El usuario es docente?"
+                                        checked={field.value || false}
+                                        onChange={(e) => {
+                                            const isChecked = e.target.checked;
+                                            field.onChange(isChecked);
+                                        }}
+                                    />
+                                )}
+                            />
+                        </Form.Group>
                     </div>
 
                     <div className="d-flex justify-content-center">

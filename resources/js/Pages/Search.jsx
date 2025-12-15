@@ -175,6 +175,13 @@ export default function Search() {
                                         : data.socialmedia.value === 'Sí'
                                           ? 1
                                           : 0,
+                                docente:
+                                    data.docente === undefined ||
+                                    data.docente === null
+                                        ? 'Indiferente'
+                                        : data.docente.value === 'Sí'
+                                          ? 1
+                                          : 0,
                             };
 
                             let edadData = {
@@ -824,7 +831,30 @@ export default function Search() {
                                 </Form.Group>
                                 <Form.Group
                                     className="mb-3"
-                                    controlId="formVehiculo"
+                                    controlId="formDocente"
+                                >
+                                    <Form.Label className="fs-4">
+                                        ¿Es el usuario un docente?
+                                    </Form.Label>
+                                    <Controller
+                                        name="docente"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                {...field}
+                                                isClearable={true}
+                                                options={vehiculoOptions}
+                                                placeholder="¿Es el usuario un docente?"
+                                                noOptionsMessage={() =>
+                                                    'Se ha introducido un valor erróneo'
+                                                }
+                                            />
+                                        )}
+                                    />
+                                </Form.Group>
+                                <Form.Group
+                                    className="mb-3"
+                                    controlId="formSocialMedia"
                                 >
                                     <Form.Label className="fs-4">
                                         ¿Proviene el usuario de redes sociales?

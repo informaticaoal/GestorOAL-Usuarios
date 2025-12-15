@@ -64,6 +64,12 @@ class UsuarioOALController extends Controller
         return response()->json(['socialmedia' => $socialmedia]);
     }
 
+    public function getDocente($id) {
+        $docente = \DB::table('usuario_o_a_l_s')->where('id', $id)->value('docente');
+
+        return response()->json(['docente' => $docente]);
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -267,6 +273,9 @@ class UsuarioOALController extends Controller
             }
             if (isset($search['socialmedia']) && $search['socialmedia'] !== 'Indiferente') {
                 $usuarios->where('socialmedia', $search['socialmedia']);
+            }
+            if (isset($search['docente']) && $search['docente'] !== 'Indiferente') {
+                $usuarios->where('docente', $search['docente']);
             }
             if (isset($search['formacion_complementaria']) && !empty($search['formacion_complementaria'])) {
                 $usuarios->where('formacion_complementaria', 'like', '%'.$search['formacion_complementaria'].'%');

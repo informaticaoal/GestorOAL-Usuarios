@@ -111,6 +111,7 @@ export default function CreateUserForm() {
                                         socialmedia: data.socialmedia
                                             ? true
                                             : false,
+                                        docente: data.docente ? true : false,
                                     };
 
                                     //Petición POST para crear el usuario, primero se crea. Luego se añaden los documentos.
@@ -797,10 +798,24 @@ export default function CreateUserForm() {
 
                     <div className="d-flex justify-content-center">
                         <Form.Group
+                            className="fs-5 fst-italic fw-bold mb-3"
+                            controlId="form-docente"
+                        >
+                            <Form.Check
+                                type="checkbox"
+                                id={`default-checkbox`}
+                                label={`¿El usuario es docente?`}
+                                {...register('docente')}
+                            />
+                        </Form.Group>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <Form.Group
                             className="fs-5 mb-3"
                             controlId="form-socialmedia"
                         >
-                            <Form.Check // prettier-ignore
+                            <Form.Check
                                 type="checkbox"
                                 id={`default-checkbox`}
                                 label={`¿El usuario proviene de redes sociales?`}

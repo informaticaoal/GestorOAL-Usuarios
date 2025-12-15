@@ -330,6 +330,15 @@ export default function ModifyUserFormSearch({
                         );
                     });
 
+                await axios
+                    .get(`/usuario_oal/${idUsuario}/getdocente`)
+                    .then((response) => {
+                        setValue2(
+                            'docente',
+                            response.data.docente === 1 ? true : false,
+                        );
+                    });
+
                 document
                     .getElementById('searchUsuarios')
                     .setAttribute('style', 'display: none !important');
@@ -1261,6 +1270,31 @@ export default function ModifyUserFormSearch({
                                 />
                             </Form.Group>
                         </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <Form.Group
+                            className="fs-5 mb-3"
+                            controlId="form-docente"
+                        >
+                            <Controller
+                                name="docente"
+                                control={control2}
+                                defaultValue={false}
+                                render={({ field }) => (
+                                    <Form.Check
+                                        type="checkbox"
+                                        id="default-checkbox"
+                                        label="¿El usuario es docente?"
+                                        checked={field.value || false}
+                                        onChange={(e) => {
+                                            const isChecked = e.target.checked;
+                                            field.onChange(isChecked);
+                                        }}
+                                    />
+                                )}
+                            />
+                        </Form.Group>
                     </div>
 
                     <div className="d-flex justify-content-center">
