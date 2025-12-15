@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.1.3';
+    const version = '1.1.4';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -50,14 +50,14 @@ export default function WelcomeModal() {
                         {/* Detalles */}
                         <i>
                             En esta versión, se ha añadido{' '}
+                            <strong>un nuevo campo de docente </strong>
+                            para poder gestionar si un usuario es docente o no.
+                            <br />
+                            <br />
                             <strong>
-                                un nuevo campo de correo electrónico{' '}
+                                ¡Felices fiestas y feliz año nuevo (que luego no
+                                os vuelvo a ver hasta el 2 de enero 😉)!
                             </strong>
-                            para guardar dichos usuarios que proporcionen el
-                            suyo.
-                            <br />
-                            <br />
-                            <strong>¡Felices fiestas!</strong>
                         </i>
                     </p>
                     <button
