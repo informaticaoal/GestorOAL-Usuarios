@@ -55,8 +55,8 @@ export default function WelcomeModal() {
                             <br />
                             <br />
                             <strong>
-                                ¡Felices fiestas y feliz año nuevo (que luego no
-                                os vuelvo a ver hasta el 2 de enero 😉)!
+                                ¡Feliz año 2026! Mucha alegría y poca carga de
+                                trabajo! 😚
                             </strong>
                         </i>
                     </p>
