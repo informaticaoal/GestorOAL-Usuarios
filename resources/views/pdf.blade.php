@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Document</title> <!-- Added title for the document -->
+        <title>Generación PDF</title>
     </head>
     <body>
         <style>
             @page {
-                size: A3 landscape; /* Cambiado a horizontal para mejor distribución */
+                size: A3 landscape;
                 margin: 10mm;
             }
 
@@ -64,7 +64,7 @@
                             <th>Teléfono</th>
                         @endif
                         @if(filter_var($options['checkEmail'], FILTER_VALIDATE_BOOLEAN))
-                            <th>Teléfono</th>
+                            <th>Correo electrónico</th>
                         @endif
                         @if(filter_var($options['checkDNI'], FILTER_VALIDATE_BOOLEAN))
                             <th>DNI/NIE</th>
