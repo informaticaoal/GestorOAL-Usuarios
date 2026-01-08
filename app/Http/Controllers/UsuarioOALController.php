@@ -138,12 +138,6 @@ class UsuarioOALController extends Controller
         }
     }
 
-//    public function createPDF(){
-//        $usuarios = UsuarioOAL::latest()->get();
-//        $pdf = Pdf::loadView('pdf', ['usuarios' => $usuarios, 'fromSearch' => false]);
-//        return $pdf->download('usuariosListado.pdf');
-//    }
-
     public function createPDF(Request $request){
         $requestContent = $request->all();
         $usuarios = json_decode($requestContent['usuariosFormatted']);
@@ -158,6 +152,7 @@ class UsuarioOALController extends Controller
     public function searchUsers(Request $request){
             $search = $request->all()['newData'];
             $edadData = $request->all()['edadData'];
+            $fechaData = $request->all()['fechaData'];
             $usuarios = UsuarioOAL::query();
             if (isset($search['nombre']) && !empty($search['nombre'])) {
                 $usuarios->where('nombre', 'like', '%'.$search['nombre'].'%');
@@ -240,7 +235,25 @@ class UsuarioOALController extends Controller
                 $usuarios->where('sexo', 'like', '%'.$search['sexo'].'%');
             }
             if (isset($search['fecha_activacion']) && !empty($search['fecha_activacion'])) {
-                $usuarios->where('fecha_activacion', 'like', '%'.$search['fecha_activacion'].'%');
+                switch ($search['fecha_activacion']) {
+                    case 'antes':
+                        if (isset($fechaData['fechaSelected']) && !empty($fechaData['fechaSelected'])) {
+                            $usuarios->whereRaw("STR_TO_DATE(fecha_activacion, '%d/%m/%Y') < STR_TO_DATE(?, '%d/%m/%Y')", [$fechaData['fechaSelected']]);
+                        }
+                        break;
+                    case 'despues':
+                        if (isset($fechaData['fechaSelected']) && !empty($fechaData['fechaSelected'])) {
+                            $usuarios->whereRaw("STR_TO_DATE(fecha_activacion, '%d/%m/%Y') > STR_TO_DATE(?, '%d/%m/%Y')", [$fechaData['fechaSelected']]);
+                        }
+                        break;
+                    case 'entre':
+                        if ((isset($fechaData['fechaRange1']) && !empty($fechaData['fechaRange1'])) && (isset($fechaData['fechaRange2']) && !empty($fechaData['fechaRange2']))) {
+                            $usuarios->whereRaw("STR_TO_DATE(fecha_activacion, '%d/%m/%Y') BETWEEN STR_TO_DATE(?, '%d/%m/%Y') AND STR_TO_DATE(?, '%d/%m/%Y')", [$fechaData['fechaRange1'], $fechaData['fechaRange2']]);
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             if (isset($search['programa_oal']) && !empty($search['programa_oal'])) {
                 $usuarios->where('programa_oal', 'like', '%'.$search['programa_oal'].'%');

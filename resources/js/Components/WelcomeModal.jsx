@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.1.4';
+    const version = '1.1.5';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -49,9 +49,12 @@ export default function WelcomeModal() {
                         <br />
                         {/* Detalles */}
                         <i>
-                            En esta versión, se ha añadido{' '}
-                            <strong>un nuevo campo de docente </strong>
-                            para poder gestionar si un usuario es docente o no.
+                            En esta versión, se ha modificado el campo de fecha
+                            de activación en el buscador para que se pueda
+                            <strong>
+                                filtrar por anterior, posterior o entre dos
+                                fechas.
+                            </strong>
                             <br />
                             <br />
                             <strong>

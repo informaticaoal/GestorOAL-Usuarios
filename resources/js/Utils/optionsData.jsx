@@ -6809,3 +6809,9 @@ export const edadOptions = [
     { value: 'mayor', label: 'Mayor que' },
     { value: 'entre', label: 'Entre' },
 ];
+
+export const fechaActivacionOptions = [
+    { value: 'antes', label: 'Anterior de' },
+    { value: 'despues', label: 'Posterior a' },
+    { value: 'entre', label: 'Entre' },
+];

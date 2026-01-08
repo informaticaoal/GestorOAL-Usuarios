@@ -8,6 +8,7 @@ import {
     disponibilidadOptions,
     edadOptions,
     estudiosOptions,
+    fechaActivacionOptions,
     localidadOptions,
     ocupacionOptions,
     programaOptions,
@@ -42,6 +43,7 @@ export default function Search() {
     const [usuariosOAL, setUsuariosOAL] = useState([]);
     const [usuariosPDF, setUsuariosPDF] = useState([]);
     const [edadRange, setEdadRange] = useState(false);
+    const [fechaRange, setFechaRange] = useState(false);
 
     const actualYear = new Date().getFullYear();
 
@@ -110,8 +112,8 @@ export default function Search() {
                                 telefono: data.telefono ? data.telefono : null,
                                 email: data.email ? data.email : null,
                                 dni: data.dni ? data.dni : null,
-                                fecha_activacion: data.fecha_activacion
-                                    ? formatoFechaSimple(data.fecha_activacion)
+                                fecha_activacion: data.fechaActivacionSelect
+                                    ? data.fechaActivacionSelect.value
                                     : null,
                                 ocupacion: data.ocupacion
                                     ? ocupacionArray
@@ -189,10 +191,23 @@ export default function Search() {
                                 minEdad: data.minEdad,
                                 maxEdad: data.maxEdad,
                             };
+
+                            let fechaData = {
+                                fechaSelected: data.fechaSelected
+                                    ? formatoFechaSimple(data.fechaSelected)
+                                    : null,
+                                fechaRange1: data.fechaRange1
+                                    ? formatoFechaSimple(data.fechaRange1)
+                                    : null,
+                                fechaRange2: data.fechaRange2
+                                    ? formatoFechaSimple(data.fechaRange2)
+                                    : null,
+                            };
                             axios
                                 .post('/usuario/search', {
                                     newData,
                                     edadData,
+                                    fechaData,
                                 })
                                 .then((response) => {
                                     setContadorUsuarios(response.data.contador);
@@ -391,13 +406,70 @@ export default function Search() {
                                     <Form.Label className="fs-4">
                                         Fecha de activación
                                     </Form.Label>
-                                    <input
-                                        {...register('fecha_activacion')}
-                                        id="fecha_activacion"
-                                        className="form-control"
-                                        type="date"
-                                        name="fecha_activacion"
-                                    />
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <Controller
+                                            name="fechaActivacionSelect"
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Select
+                                                    {...field}
+                                                    options={
+                                                        fechaActivacionOptions
+                                                    }
+                                                    isClearable={true}
+                                                    placeholder="Selecciona una opción."
+                                                    noOptionsMessage={() =>
+                                                        'No se ha encontrado dicha opción.'
+                                                    }
+                                                    onChange={(opcion) => {
+                                                        field.onChange(opcion);
+                                                        if (
+                                                            opcion.value ===
+                                                            'entre'
+                                                        ) {
+                                                            setFechaRange(true);
+                                                        } else {
+                                                            setFechaRange(
+                                                                false,
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                            )}
+                                        />
+                                        {fechaRange ? (
+                                            <div className="d-flex justify-content-between">
+                                                <div>
+                                                    <Form.Control
+                                                        className="my-1"
+                                                        type="date"
+                                                        as="input"
+                                                        {...register(
+                                                            'fechaRange1',
+                                                        )}
+                                                    />
+                                                    <Form.Control
+                                                        className="my-1"
+                                                        type="date"
+                                                        as="input"
+                                                        {...register(
+                                                            'fechaRange2',
+                                                        )}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <Form.Control
+                                                    type="date"
+                                                    as="input"
+                                                    {...register(
+                                                        'fechaSelected',
+                                                    )}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
                                     <Form.Text className="text-danger">
                                         {errors.fecha_activacion?.message}
                                     </Form.Text>
