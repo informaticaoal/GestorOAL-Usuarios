@@ -50,7 +50,7 @@ export default function WelcomeModal() {
                         {/* Detalles */}
                         <i>
                             En esta versión, se ha modificado el campo de fecha
-                            de activación en el buscador para que se pueda
+                            de activación en el buscador para que se pueda{' '}
                             <strong>
                                 filtrar por anterior, posterior o entre dos
                                 fechas.
