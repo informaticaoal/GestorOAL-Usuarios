@@ -212,8 +212,7 @@ export default function Search() {
                                 .then((response) => {
                                     setContadorUsuarios(response.data.contador);
                                     setUsuariosOAL(response.data.usuarios);
-                                    //Recordatorio, usuariosPDF no son los usuarios que tengan PDFs, sino para preparar los usuarios
-                                    //encontrados en la búsqueda para exportar a PDF
+                                    //Recordatorio, usuariosPDF son usuarios preparados para ser exportados a PDF
                                     setUsuariosPDF(response.data.usuariosPDF);
                                     setSearch(true);
                                 })

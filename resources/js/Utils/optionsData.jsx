@@ -377,6 +377,10 @@ export const ocupacionOptions = [
         value: 'Encargados de fabricación de productos textiles',
         label: 'Encargados de fabricación de productos textiles',
     },
+    {
+        value: 'Encargado/a de viveros',
+        label: 'Encargado/a de viveros',
+    },
     { value: 'Encofradores', label: 'Encofradores' },
     {
         value: 'Especialista en tratamientos de estética, bienestar y afines',
@@ -6797,6 +6801,10 @@ export const programaOptions = [
     {
         value: 'Proyectos integrales jóvenes',
         label: 'Proyectos integrales jóvenes',
+    },
+    {
+        value: 'Proyectos integrales mayores de 52 años',
+        label: 'Proyectos integrales mayores de 52 años',
     },
     {
         value: 'Proyectos integrales vulnerables',
