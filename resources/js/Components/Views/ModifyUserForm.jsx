@@ -460,6 +460,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             programa_oal_3: data.programa_oal_3,
                             año_programa_oal_3: data.año_programa_oal_3,
                             socialmedia: data.socialmedia ? 1 : 0,
+                            docente: data.docente ? 1 : 0,
                         };
 
                         await router.put(
