@@ -41,7 +41,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
     const regExpTlf = new RegExp(/^\d{9}$/);
     const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
 
-    // Esta funcion se encarga de recoger el usuario seleccionado y preparar el formulario de modificación.
+    //* Esta funcion se encarga de recoger el usuario seleccionado y preparar el formulario de modificación.
     const modificarUsuario = (idUsuario) => async () => {
         if (!idUsuario) {
             return;
@@ -78,9 +78,9 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                 let usuario = document.getElementById(idUsuario);
                 let form = document.getElementById('editUsuario').children[1];
 
-                // Si se va a añadir más campos al formulario, añadir el mismo nombre aquí y
-                // asegura que usuarioId siempre se quede el último para no interferir en el
-                // forEach de más abajo.
+                //! Si se va a añadir más campos a la tabla, añadir el mismo nombre aquí y
+                //! asegura que usuarioId siempre se quede el último para no interferir en el
+                //! forEach de más abajo.
 
                 const fields = [
                     'nombre',
@@ -350,7 +350,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         }
     };
 
-    // Función para convertir la fecha que se pasa (dd/mm/YYYY) a los años que correspondientes.
+    // * Función para convertir la fecha que se pasa (dd/mm/YYYY) a los años que correspondientes.
     const convertirEdad = (fecha) => {
         const partes = fecha.split('/');
         if (partes.length !== 3) return NaN;
@@ -382,7 +382,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         return `${dia.padStart(2, '0')}/${mes.padStart(2, '0')}/${anio}`;
     };
 
-    //Funcion para eliminar al usuario desde UsuarioOALController::destroy
+    //* Funcion para eliminar al usuario desde UsuarioOALController::destroy
     const { delete: destroy } = useFormInertia();
 
     function handleEliminarUsuario(idUsuario) {
@@ -393,7 +393,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         router.delete(`/documento/${idDoc}`, {
             onSuccess: () => {
                 setDocumentos((prevDocs) =>
-                    //Este filtrado permite eliminar del DOM los archivos que hayan sido eliminados.
+                    //* Este filtrado permite eliminar del DOM los archivos que hayan sido eliminados.
                     prevDocs.filter((doc) => doc.id !== idDoc),
                 );
             },

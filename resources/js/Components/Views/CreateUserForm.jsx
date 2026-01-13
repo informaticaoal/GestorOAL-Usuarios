@@ -25,9 +25,6 @@ export default function CreateUserForm() {
 
     const { register, handleSubmit, control, formState } = useForm();
 
-    // const { register: registerImport, handleSubmit: handleSubmitImport } =
-    //     useForm();
-
     const { errors } = formState;
 
     const actualYear = new Date().getFullYear();
