@@ -47,10 +47,10 @@ export default function Search() {
 
     const actualYear = new Date().getFullYear();
 
-    // Scroll automático cuando se completa la búsqueda
+    //* Scroll automático cuando se completa la búsqueda
     useEffect(() => {
         if (search && usuariosOAL.length > 0) {
-            // Usamos setTimeout para asegurar que el DOM se haya actualizado
+            // Usamos setTimeout para darle tiempo al navegador de renderizar el listado antes de hacer scroll
             setTimeout(() => {
                 const elemento = document.getElementById('listado-usuarios');
                 if (elemento) {

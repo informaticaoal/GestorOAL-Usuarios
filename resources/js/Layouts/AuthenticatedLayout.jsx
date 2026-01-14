@@ -40,8 +40,8 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Buscador
                                 </NavLink>
                                 <NavLink
-                                  href={route('excelIndex')}
-                                  active={route().current('excelIndex')}
+                                    href={route('excelIndex')}
+                                    active={route().current('excelIndex')}
                                 >
                                     Exportar/Importar
                                 </NavLink>
