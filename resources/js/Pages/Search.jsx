@@ -845,7 +845,7 @@ export default function Search() {
                                     controlId="formNecesidades"
                                 >
                                     <Form.Label className="fs-4">
-                                        Necesidades formativas (opcional)
+                                        Necesidades formativas
                                     </Form.Label>
                                     <Controller
                                         name="necesidades"
