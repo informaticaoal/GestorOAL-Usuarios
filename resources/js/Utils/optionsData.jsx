@@ -166,6 +166,14 @@ export const ocupacionOptions = [
         label: 'Conductor/a maquinaria de transporte de tierras',
     },
     {
+        value: 'Conserje/a de edificios y comunidades',
+        label: 'Conserje/a de edificios y comunidades',
+    },
+    {
+        value: 'Conserje/a de oficinas y empresas',
+        label: 'Conserje/a de oficinas y empresas',
+    },
+    {
         value: 'Conservador/a de patrimonio histórico',
         label: 'Conservador/a de patrimonio histórico',
     },
