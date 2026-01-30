@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.1.5';
+    const version = '1.1.5.1';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -58,8 +58,14 @@ export default function WelcomeModal() {
                             <br />
                             <br />
                             <strong>
-                                ¡Feliz año 2026! Mucha alegría y poca carga de
-                                trabajo! 😚
+                                Como último día, os dejo un recuerdito.
+                                <a
+                                    target="_blank"
+                                    href="https://www.youtube.com/watch?v=UFsVQ_me0aI"
+                                    rel="noreferrer"
+                                >
+                                    ¡Pínchame!
+                                </a>
                             </strong>
                         </i>
                     </p>
