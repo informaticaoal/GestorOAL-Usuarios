@@ -57,17 +57,7 @@ export default function WelcomeModal() {
                             </strong>
                             <br />
                             <br />
-                            <strong>
-                                Como último día, os dejo un recuerdito.
-                                <br />
-                                <a
-                                    target="_blank"
-                                    href="https://www.youtube.com/watch?v=UFsVQ_me0aI"
-                                    rel="noreferrer"
-                                >
-                                    ¡Pínchame!
-                                </a>
-                            </strong>
+                            <strong></strong>
                         </i>
                     </p>
                     <button
