@@ -22,6 +22,7 @@ export default function CreateUserForm() {
         const [anio, mes, dia] = fechaISO.split('-');
         return `${dia.padStart(2, '0')}/${mes.padStart(2, '0')}/${anio}`;
     };
+    //testing
 
     const { register, handleSubmit, control, formState } = useForm();
 
