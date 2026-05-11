@@ -211,7 +211,7 @@ class UsuarioOALController extends Controller
             }
             if (isset($search['especialidad']) && !empty($search['especialidad'])) {
                 foreach ($search['especialidad'] as $key => $value) {
-                    $usuarios->where('especialidad', 'like', '%'.$value.'%');
+                    $usuarios->orWhere('especialidad', 'like', '%'.$value.'%');
                 }
             }
             if (isset($search['disponibilidad']) && !empty($search['disponibilidad'])) {
@@ -219,7 +219,7 @@ class UsuarioOALController extends Controller
             }
             if (isset($search['carnet']) && !empty($search['carnet'])) {
                 foreach ($search['carnet'] as $key => $value) {
-                    $usuarios->where('carnet', 'like', '%'.$value.'%');
+                    $usuarios->orWhere('carnet', 'like', '%'.$value.'%');
                 }
             }
             if (isset($search['localidad']) && !empty($search['localidad'])) {

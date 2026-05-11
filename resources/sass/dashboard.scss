@@ -1,7 +1,1137 @@
-#createUsuario{
+/* ==========================================================
+   📋 DASHBOARD.SCSS — ESTILOS DE LA PÁGINA DE USUARIOS OAL
+   ==========================================================
+   Tabla de contenidos:
+   1.  VARIABLES Y PALETA DE COLORES
+   2.  LAYOUT Y VISIBILIDAD DE SECCIONES
+   3.  FONDO PRINCIPAL
+   4.  TARJETAS Y CONTENEDORES
+   5.  ENCABEZADOS Y TÍTULOS
+   6.  FORMULARIOS — INPUTS Y LABELS
+   7.  FORMULARIOS — SELECT (react-select)
+   8.  FORMULARIOS — CAMPOS DE FECHA (Date Inputs)
+   9.  FORMULARIOS — CHECKBOXES
+   10. FORMULARIOS — BOTONES
+   11. TABLA DE USUARIOS
+   12. PAGINACIÓN
+   13. DOCUMENTOS ADJUNTOS
+   14. ANIMACIONES Y TRANSICIONES
+   15. ESTILOS ESPECÍFICOS DEL BUSCADOR
+   16. PÁGINA EXPORTAR/IMPORTAR EXCEL
+   17. RESPONSIVE
+   ========================================================== */
+
+/* ==========================================================
+   1.  🎨 VARIABLES Y PALETA DE COLORES OAL
+   ========================================================== */
+:root {
+    --oal-primary:       #4f46e5;
+    --oal-primary-light: #818cf8;
+    --oal-primary-dark:  #3730a3;
+    --oal-secondary:     #64748b;
+    --oal-success:       #10b981;
+    --oal-info:          #06b6d4;
+    --oal-warning:       #f59e0b;
+    --oal-danger:        #ef4444;
+    --oal-dark:          #0f172a;
+    --oal-light:         #f1f5f9;
+
+    --oal-gradient-1:    linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --oal-gradient-2:    linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%);
+    --oal-gradient-3:    linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    --oal-gradient-danger: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    --oal-gradient-bg:   linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #f0f0ff 100%);
+
+    --oal-shadow-sm:     0 1px 3px rgba(79, 70, 229, 0.08);
+    --oal-shadow-md:     0 4px 20px rgba(79, 70, 229, 0.12);
+    --oal-shadow-lg:     0 8px 40px rgba(79, 70, 229, 0.15);
+
+    --oal-radius-sm:     8px;
+    --oal-radius-md:     14px;
+    --oal-radius-lg:     20px;
+    --oal-radius-xl:     28px;
+
+    --oal-transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================
+   2.  📐 LAYOUT Y VISIBILIDAD DE SECCIONES
+   ========================================================== */
+#createUsuario {
     display: inherit !important;
 }
 
-#editUsuario{
+#editUsuario {
     display: none !important;
+}
+
+/* ==========================================================
+   3.  🌈 FONDO PRINCIPAL
+   ========================================================== */
+/* Fondo animado con degradado para toda la página */
+body {
+    background: var(--oal-gradient-bg);
+    position: relative;
+}
+
+/* Círculos decorativos de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Contenedor principal del formulario */
+#createUsuario,
+#editUsuario,
+#searchUsuarios {
+    position: relative;
+    z-index: 1;
+}
+
+#createUsuario > .container,
+#editUsuario > .container,
+#searchUsuarios > .container {
+    max-width: 1400px;
+}
+
+/* ==========================================================
+   4.  🃏 TARJETAS Y CONTENEDORES
+   ========================================================== */
+/* Sección del formulario con efecto glassmorphism */
+#createUsuario .border-bottom,
+#editUsuario .border-bottom,
+#searchUsuarios .border-bottom {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: var(--oal-radius-xl);
+    box-shadow: var(--oal-shadow-md), 0 0 0 1px rgba(79, 70, 229, 0.05);
+    padding: 2.5rem 2rem !important;
+    margin-bottom: 2rem !important;
+    transition: box-shadow var(--oal-transition), transform 0.3s ease;
+}
+
+#createUsuario .border-bottom:hover,
+#editUsuario .border-bottom:hover,
+#searchUsuarios .border-bottom:hover {
+    box-shadow: var(--oal-shadow-lg), 0 0 0 1px rgba(79, 70, 229, 0.08);
+}
+
+/* Columnas del formulario - MISMO ANCHO */
+#createUsuario .d-flex.justify-content-evenly > .container,
+#editUsuario .d-flex.justify-content-evenly > .container,
+#searchUsuarios .d-flex.justify-content-evenly > .container {
+    flex: 1;
+    max-width: 50%;
+}
+
+#createUsuario .d-flex > .container,
+#editUsuario .d-flex > .container,
+#searchUsuarios .d-flex > .container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--oal-radius-md);
+    padding: 1.5rem;
+    margin: 0 0.75rem;
+    transition: all var(--oal-transition);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+#createUsuario .d-flex > .container:hover,
+#editUsuario .d-flex > .container:hover,
+#searchUsuarios .d-flex > .container:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(79, 70, 229, 0.15);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.06);
+}
+
+/* Ajuste para el formulario de creación (usa mx-5 en vez de justify-content-evenly) */
+#createUsuario .d-flex > .container.mx-5,
+#searchUsuarios .d-flex > .container.mx-5 {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* ==========================================================
+   5.  📝 ENCABEZADOS Y TÍTULOS
+   ========================================================== */
+/* Labels de formulario */
+#createUsuario .form-label,
+#editUsuario .form-label,
+#searchUsuarios .form-label {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: var(--oal-dark);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.2px;
+}
+
+/* Labels opcionales */
+#createUsuario .form-label.fst-italic,
+#editUsuario .form-label.fst-italic {
+    font-weight: 500 !important;
+    color: #64748b;
+    font-size: 0.85rem !important;
+}
+
+/* Labels obligatorios: añadir asterisco */
+#createUsuario .form-label.fw-bold::after,
+#editUsuario .form-label.fw-bold::after {
+    content: " *";
+    color: var(--oal-danger);
+    font-weight: 700;
+}
+
+/* Título "Listado de Usuarios" */
+h2.text-center {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--oal-dark);
+    position: relative;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+h2.text-center::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--oal-gradient-1);
+    border-radius: 2px;
+}
+
+/* Subtítulo contador */
+h3.text-center {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--oal-secondary);
+}
+
+/* ==========================================================
+   6.  ⌨️ FORMULARIOS — INPUTS Y LABELS
+   ========================================================== */
+#createUsuario .form-control,
+#editUsuario .form-control,
+#searchUsuarios .form-control {
+    border: 2px solid #e2e8f0;
+    border-radius: var(--oal-radius-sm);
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    transition: all var(--oal-transition);
+    background: #ffffff;
+}
+
+#createUsuario .form-control:focus,
+#editUsuario .form-control:focus,
+#searchUsuarios .form-control:focus {
+    border-color: var(--oal-primary);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    outline: none;
+}
+
+#createUsuario .form-control:hover,
+#editUsuario .form-control:hover,
+#searchUsuarios .form-control:hover {
+    border-color: var(--oal-primary-light);
+}
+
+/* Textarea */
+#createUsuario textarea.form-control,
+#editUsuario textarea.form-control,
+#searchUsuarios textarea.form-control {
+    min-height: 85px;
+    resize: vertical;
+}
+
+/* Mensajes de error */
+#createUsuario .text-danger,
+#editUsuario .text-danger,
+#searchUsuarios .text-danger {
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 500;
+    padding-left: 0.25rem;
+    color: var(--oal-danger) !important;
+}
+
+/* Input tipo number (años) */
+input[type="number"] {
+    border: 2px solid #e2e8f0;
+    border-radius: var(--oal-radius-sm);
+    padding: 0.65rem 1rem;
+    transition: all var(--oal-transition);
+}
+
+input[type="number"]:focus {
+    border-color: var(--oal-primary);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    outline: none;
+}
+
+/* ==========================================================
+   7.  📋 FORMULARIOS — SELECT (react-select)
+   ========================================================== */
+/* Wrapper del Select */
+.css-b62m3t-container,
+.css-13cymwt-control,
+.css-1fdsijx-ValueContainer {
+    transition: all var(--oal-transition);
+}
+
+/* Control del Select */
+.css-13cymwt-control {
+    border: 2px solid #e2e8f0 !important;
+    border-radius: var(--oal-radius-sm) !important;
+    min-height: 44px !important;
+    box-shadow: none !important;
+}
+
+.css-13cymwt-control:hover {
+    border-color: var(--oal-primary-light) !important;
+}
+
+.css-t3ipsp-control {
+    border: 2px solid var(--oal-primary) !important;
+    border-radius: var(--oal-radius-sm) !important;
+    min-height: 44px !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Placeholder del Select */
+.css-1jqq78o-placeholder {
+    font-size: 0.9rem;
+    color: #94a3b8 !important;
+}
+
+/* Menú desplegable del Select */
+.css-1nmdiq5-menu,
+.css-26l3qy-menu {
+    border-radius: var(--oal-radius-sm) !important;
+    box-shadow: var(--oal-shadow-lg) !important;
+    border: 1px solid #e2e8f0 !important;
+    overflow: hidden;
+}
+
+.css-1n7v3ny-option,
+.css-d7l1ni-option {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.9rem !important;
+    transition: background 0.15s ease;
+}
+
+.css-1n7v3ny-option:hover {
+    background: #eef2ff !important;
+}
+
+.css-d7l1ni-option {
+    background: var(--oal-gradient-1) !important;
+    color: #fff !important;
+}
+
+/* Multi-select tags */
+.css-12jo7m5 {
+    border-radius: 6px !important;
+    background: #eef2ff !important;
+    color: var(--oal-primary) !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    padding: 2px 8px !important;
+}
+
+.css-12jo7m5 .css-xb97g8 {
+    color: var(--oal-primary) !important;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.css-12jo7m5 .css-xb97g8:hover {
+    opacity: 1;
+    background: transparent !important;
+}
+
+/* ==========================================================
+   8.  📅 FORMULARIOS — CAMPOS DE FECHA (Date Inputs)
+   ========================================================== */
+/* Contenedores de fecha */
+#formEdad,
+#formFechaActivacion {
+    position: relative;
+}
+
+/* Inputs tipo date — limpios y funcionales */
+input[type="date"].form-control {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--oal-radius-sm);
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all var(--oal-transition);
+    width: 100%;
+    min-height: 44px;
+    box-shadow: none;
+}
+
+input[type="date"].form-control:hover {
+    border-color: var(--oal-primary-light);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.06);
+}
+
+input[type="date"].form-control:focus {
+    outline: none;
+    border-color: var(--oal-primary);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Placeholder */
+input[type="date"].form-control:invalid {
+    color: #94a3b8;
+}
+
+input[type="date"].form-control:valid {
+    color: #1e293b;
+}
+
+/* ==========================================================
+   9.  ✅ FORMULARIOS — CHECKBOXES
+   ========================================================== */
+/* Línea separadora antes de los checkboxes */
+#createUsuario .gap-4.mt-4,
+#editUsuario .gap-4.mt-4 {
+    border-top: 2px dashed #e2e8f0;
+    padding-top: 1.5rem;
+}
+
+/* Checkboxes individuales - MÁS AMPLIOS */
+#createUsuario .form-check,
+#editUsuario .form-check {
+    padding: 1rem 2.5rem 1rem 3.5rem;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--oal-radius-sm);
+    transition: all var(--oal-transition);
+    cursor: pointer;
+    min-width: 360px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#createUsuario .form-check:hover,
+#editUsuario .form-check:hover {
+    border-color: var(--oal-primary);
+    background: #f0f4ff;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.12);
+    transform: translateY(-1px);
+}
+
+#createUsuario .form-check-input,
+#editUsuario .form-check-input {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-left: -2rem !important;
+    margin-right: 0.8rem;
+    cursor: pointer;
+    border: 2.5px solid #94a3b8;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+#createUsuario .form-check-input:checked,
+#editUsuario .form-check-input:checked {
+    background-color: var(--oal-primary);
+    border-color: var(--oal-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+#createUsuario .form-check-label,
+#editUsuario .form-check-label {
+    font-weight: 500;
+    color: var(--oal-dark);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================
+   10. 🎯 FORMULARIOS — BOTONES
+   ========================================================== */
+/* Botón "Añadir usuario" */
+#createUsuario .btn-primary {
+    background: var(--oal-gradient-1) !important;
+    border: none !important;
+    border-radius: var(--oal-radius-md);
+    padding: 0.85rem 3rem;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+    transition: all var(--oal-transition);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+#createUsuario .btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+#createUsuario .btn-primary:hover::before {
+    left: 100%;
+}
+
+#createUsuario .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(79, 70, 229, 0.55);
+}
+
+#createUsuario .btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* Botón "Modificar usuario" */
+#editUsuario .btn-info {
+    background: var(--oal-gradient-2) !important;
+    border: none !important;
+    border-radius: var(--oal-radius-md);
+    padding: 0.85rem 3rem;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    transition: all var(--oal-transition);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+#editUsuario .btn-info::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+#editUsuario .btn-info:hover::before {
+    left: 100%;
+}
+
+#editUsuario .btn-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.55);
+}
+
+/* Botón "Eliminar" en tabla */
+.btn-warning {
+    font-weight: 700 !important;
+    letter-spacing: 0.3px;
+    border-radius: var(--oal-radius-sm) !important;
+    transition: all var(--oal-transition) !important;
+}
+
+.btn-warning:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.5);
+}
+
+/* Botón volver "Añadir usuario" (en edición) */
+#editUsuario .nav-link.fs-3 {
+    font-size: 1rem !important;
+    font-weight: 600;
+    color: var(--oal-primary);
+    background: #ffffff;
+    border: 2px solid var(--oal-primary);
+    border-radius: var(--oal-radius-md);
+    padding: 0.6rem 1.8rem;
+    transition: all var(--oal-transition);
+    text-decoration: none;
+}
+
+#editUsuario .nav-link.fs-3:hover {
+    background: var(--oal-gradient-1);
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.35);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   11. 📊 TABLA DE USUARIOS
+   ========================================================== */
+.table {
+    border-radius: var(--oal-radius-md);
+    overflow: hidden;
+    box-shadow: var(--oal-shadow-sm), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    margin-bottom: 2rem;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.7rem 0.75rem;
+    vertical-align: middle;
+    border-color: #f1f5f9;
+}
+
+.table thead {
+    background: var(--oal-gradient-1);
+    color: #ffffff;
+}
+
+.table thead th {
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: none !important;
+    white-space: nowrap;
+    padding: 0.9rem 0.75rem;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #eef2ff !important;
+    cursor: pointer;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background: #ffffff;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+    background: #f8fafc;
+}
+
+.table-bordered {
+    border-color: #e2e8f0;
+}
+
+/* Scroll horizontal en tabla */
+.container-fluid.my-5 {
+    overflow-x: auto;
+    padding: 0 1rem;
+}
+
+/* ==========================================================
+   12. 🔢 PAGINACIÓN
+   ========================================================== */
+.pagination {
+    gap: 0.3rem;
+}
+
+.pagination-lg .page-link {
+    border-radius: var(--oal-radius-sm) !important;
+    border: 2px solid #e2e8f0;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    color: var(--oal-dark);
+    transition: all var(--oal-transition);
+    margin: 0 2px;
+}
+
+.pagination-lg .page-link:hover {
+    background: var(--oal-gradient-1);
+    color: #ffffff;
+    border-color: var(--oal-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+}
+
+.pagination-lg .page-item.active .page-link {
+    background: var(--oal-gradient-1);
+    border-color: var(--oal-primary);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+}
+
+.pagination-lg .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==========================================================
+   13. 📎 DOCUMENTOS ADJUNTOS
+   ========================================================== */
+/* Enlaces de documentos */
+#editUsuario .d-flex.flex-wrap a[href*="/storage/"] {
+    background: #f0f4ff;
+    color: var(--oal-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--oal-radius-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--oal-transition);
+    border: 1px solid #dbeafe;
+    display: inline-block;
+    margin-bottom: 0.25rem;
+}
+
+#editUsuario .d-flex.flex-wrap a[href*="/storage/"]:hover {
+    background: var(--oal-gradient-1);
+    color: #ffffff;
+    border-color: var(--oal-primary);
+    transform: translateY(-1px);
+}
+
+/* Botón "Eliminar" documento */
+#editUsuario .d-flex.flex-wrap .btn-danger {
+    border-radius: var(--oal-radius-sm);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    transition: all var(--oal-transition);
+}
+
+#editUsuario .d-flex.flex-wrap .btn-danger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Input file */
+#createUsuario input[type="file"],
+#editUsuario input[type="file"] {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--oal-radius-sm);
+    padding: 1.25rem;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: all var(--oal-transition);
+}
+
+#createUsuario input[type="file"]:hover,
+#editUsuario input[type="file"]:hover {
+    border-color: var(--oal-primary);
+    background: #f0f4ff;
+}
+
+/* ==========================================================
+   14. ✨ ANIMACIONES Y TRANSICIONES
+   ========================================================== */
+/* Transición suave al mostrar/ocultar formularios */
+#createUsuario,
+#editUsuario {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Hover sutil en cards de columnas */
+#createUsuario .d-flex > .container:hover,
+#editUsuario .d-flex > .container:hover,
+#searchUsuarios .d-flex > .container:hover {
+    background: #ffffff;
+}
+
+/* ==========================================================
+   15. 🎯 ESTILOS ESPECÍFICOS DEL BUSCADOR
+   ========================================================== */
+
+/* Botón "Buscar usuarios" - Mismo estilo que el índice */
+#searchUsuarios .btn-warning {
+    background: var(--oal-gradient-1) !important;
+    border: none !important;
+    border-radius: var(--oal-radius-md);
+    padding: 0.85rem 3rem;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+    transition: all var(--oal-transition);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+#searchUsuarios .btn-warning::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+#searchUsuarios .btn-warning:hover::before {
+    left: 100%;
+}
+
+#searchUsuarios .btn-warning:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(79, 70, 229, 0.55);
+}
+
+/* Header del buscador - Título badge completo */
+.container.py-3 header {
+    background: transparent;
+    padding: 0;
+    margin: 1.5rem 0 !important;
+    border: none;
+    box-shadow: none;
+}
+
+.container.py-3 header .fs-1 {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    font-size: 2.5rem !important;
+    color: #ffffff;
+    background: var(--oal-gradient-1);
+    padding: 14px 32px;
+    border-radius: 18px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.35);
+}
+
+/* ==========================================================
+   16. � PÁGINA EXPORTAR/IMPORTAR EXCEL
+   ========================================================== */
+#excelPage {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+}
+
+/* Header de la página Excel */
+#excelPage .excel-header {
+    background: transparent;
+    padding: 0;
+    margin: 1.5rem 0 2rem !important;
+}
+
+#excelPage .excel-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background: var(--oal-gradient-1);
+    padding: 14px 32px;
+    border-radius: 18px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.35);
+}
+
+/* Contenedor de las dos tarjetas */
+#excelPage .excel-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Cada tarjeta */
+#excelPage .excel-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--oal-radius-xl);
+    box-shadow: var(--oal-shadow-md), 0 0 0 1px rgba(79, 70, 229, 0.05);
+    padding: 2.5rem 2rem;
+    transition: box-shadow var(--oal-transition), transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#excelPage .excel-card:hover {
+    box-shadow: var(--oal-shadow-lg), 0 0 0 1px rgba(79, 70, 229, 0.08);
+    transform: translateY(-3px);
+}
+
+/* Icono de la tarjeta */
+#excelPage .excel-card-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+#excelPage .export-icon {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+    color: #10b981;
+}
+
+#excelPage .import-icon {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(79, 70, 229, 0.08));
+    color: var(--oal-primary);
+}
+
+/* Título de la tarjeta */
+#excelPage .excel-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--oal-dark);
+    margin-bottom: 0.75rem;
+}
+
+/* Descripción */
+#excelPage .excel-card-desc {
+    font-size: 0.9rem;
+    color: var(--oal-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+}
+
+/* Botones */
+#excelPage .btn-excel {
+    border: none !important;
+    border-radius: var(--oal-radius-md);
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: #ffffff !important;
+    transition: all var(--oal-transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+#excelPage .export-btn {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+#excelPage .export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+}
+
+#excelPage .import-btn {
+    background: var(--oal-gradient-1) !important;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.35);
+}
+
+#excelPage .import-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+}
+
+/* Input file personalizado */
+#excelPage .excel-import-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+#excelPage .excel-file-input {
+    width: 100%;
+}
+
+#excelPage .excel-file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1rem;
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--oal-radius-sm);
+    background: #f8fafc;
+    cursor: pointer;
+    transition: all var(--oal-transition);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--oal-secondary);
+}
+
+#excelPage .excel-file-label:hover {
+    border-color: var(--oal-primary);
+    background: #f0f4ff;
+    color: var(--oal-primary);
+}
+
+#excelPage .excel-file-hidden {
+    display: none;
+}
+
+/* Mensaje de error */
+#excelPage .excel-error {
+    color: var(--oal-danger);
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* Responsive Excel */
+@media (max-width: 768px) {
+    #excelPage .excel-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    #excelPage .excel-title {
+        font-size: 1.6rem !important;
+        padding: 10px 20px !important;
+    }
+    
+    #excelPage .excel-card {
+        padding: 1.75rem 1.5rem;
+    }
+}
+
+/* ==========================================================
+   17. �📱 RESPONSIVE
+   ========================================================== */
+@media (max-width: 1200px) {
+    #createUsuario .form-check,
+    #editUsuario .form-check {
+        min-width: 300px;
+        padding: 0.85rem 2rem 0.85rem 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Columnas a una sola en tablets */
+    #createUsuario .d-flex,
+    #editUsuario .d-flex,
+    #searchUsuarios .d-flex {
+        flex-direction: column;
+    }
+
+    #createUsuario .d-flex > .container,
+    #editUsuario .d-flex > .container,
+    #searchUsuarios .d-flex > .container {
+        margin: 0.5rem 0;
+        padding: 1.25rem;
+        max-width: 100% !important;
+    }
+    
+    #createUsuario .d-flex.justify-content-evenly > .container,
+    #editUsuario .d-flex.justify-content-evenly > .container,
+    #searchUsuarios .d-flex.justify-content-evenly > .container,
+    #createUsuario .d-flex > .container.mx-5,
+    #searchUsuarios .d-flex > .container.mx-5 {
+        max-width: 100% !important;
+    }
+
+    .table thead th {
+        font-size: 0.75rem;
+        padding: 0.6rem 0.5rem;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #createUsuario .border-bottom,
+    #editUsuario .border-bottom,
+    #searchUsuarios .border-bottom {
+        padding: 1.25rem 1rem !important;
+    }
+
+    #createUsuario .form-label,
+    #editUsuario .form-label,
+    #searchUsuarios .form-label {
+        font-size: 0.85rem !important;
+    }
+
+    input[type="date"].form-control {
+        padding: 12px 14px 12px 44px;
+        font-size: 0.9rem;
+        min-height: 48px;
+    }
+
+    input[type="date"].form-control::-webkit-calendar-picker-indicator {
+        width: 22px;
+        height: 22px;
+        left: 10px;
+    }
+
+    h2.text-center {
+        font-size: 1.35rem;
+    }
+
+    /* Checkboxes a full width en móvil */
+    #createUsuario .form-check,
+    #editUsuario .form-check {
+        min-width: 100%;
+    }
+
+    /* Botones más pequeños en móvil */
+    #createUsuario .btn-primary,
+    #editUsuario .btn-info,
+    #searchUsuarios .btn-warning {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Header del buscador responsive */
+    .container.py-3 header .fs-1 {
+        font-size: 1.5rem !important;
+        padding: 10px 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #createUsuario .border-bottom,
+    #editUsuario .border-bottom,
+    #searchUsuarios .border-bottom {
+        padding: 1rem 0.75rem !important;
+        border-radius: var(--oal-radius-md);
+    }
+
+    #createUsuario .d-flex > .container,
+    #editUsuario .d-flex > .container {
+        padding: 1rem;
+    }
+
+    .pagination-lg .page-link {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.85rem;
+    }
 }

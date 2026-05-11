@@ -135,7 +135,7 @@ export default function CreateUserForm() {
                     })}
                     noValidate
                 >
-                    <div className="d-flex">
+                    <div className="d-flex justify-content-evenly">
                         <div className="container mx-5">
                             <Form.Group className="mb-3" controlId="formNombre">
                                 <Form.Label className="fs-4 fw-bold">
@@ -794,9 +794,9 @@ export default function CreateUserForm() {
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center gap-4 mt-4 mb-2">
                         <Form.Group
-                            className="fs-5 fst-italic fw-bold mb-3"
+                            className="fs-5 fst-italic fw-bold mb-0"
                             controlId="form-docente"
                         >
                             <Form.Check
@@ -806,11 +806,9 @@ export default function CreateUserForm() {
                                 {...register('docente')}
                             />
                         </Form.Group>
-                    </div>
 
-                    <div className="d-flex justify-content-center">
                         <Form.Group
-                            className="fs-5 mb-3"
+                            className="fs-5 mb-0"
                             controlId="form-socialmedia"
                         >
                             <Form.Check
