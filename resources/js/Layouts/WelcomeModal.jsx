@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function WelcomeModal() {
     const [isFirstTime, setIsFirstTime] = useState(null);
-    const version = '1.1.5.1';
+    const version = '1.1.6';
 
     useEffect(() => {
         const appVersion = localStorage.getItem('appVersion');
@@ -49,11 +49,11 @@ export default function WelcomeModal() {
                         <br />
                         {/* Detalles */}
                         <i>
-                            En esta versión, se ha modificado el campo de fecha
-                            de activación en el buscador para que se pueda{' '}
+                            En esta versión, se ha modificado las busquedas de
+                            programas para que ahora se busque también con su{' '}
                             <strong>
-                                filtrar por anterior, posterior o entre dos
-                                fechas.
+                                correspondiente año y nombre de programa en
+                                todos los campos.
                             </strong>
                             <br />
                             <br />
