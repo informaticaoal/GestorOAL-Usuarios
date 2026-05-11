@@ -1273,9 +1273,9 @@ export default function ModifyUserFormSearch({
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center gap-4 mt-4 mb-2">
                         <Form.Group
-                            className="fs-5 mb-3"
+                            className="fs-5 mb-0"
                             controlId="form-docente"
                         >
                             <Controller
@@ -1296,11 +1296,9 @@ export default function ModifyUserFormSearch({
                                 )}
                             />
                         </Form.Group>
-                    </div>
 
-                    <div className="d-flex justify-content-center">
                         <Form.Group
-                            className="fs-5 mb-3"
+                            className="fs-5 mb-0"
                             controlId="form-socialmedia"
                         >
                             <Controller
