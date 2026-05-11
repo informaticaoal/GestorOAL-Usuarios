@@ -274,16 +274,16 @@ class UsuarioOALController extends Controller
                 $usuarios->where(function($query) use ($search) {
                     // Búsqueda correlativa: programa_oal con año_programa_oal
                     $query->where(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal', 'like', '%'.$search['programa_oal'].'%')
-                                ->where('año_programa_oal', 'like', '%'.$search['año_programa_oal'].'%');
+                        $subQuery->where('programa_oal', '=', '%'.$search['programa_oal'].'%')
+                                ->where('año_programa_oal', '=', '%'.$search['año_programa_oal'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_2', 'like', '%'.$search['programa_oal'].'%')
-                                ->where('año_programa_oal_2', 'like', '%'.$search['año_programa_oal'].'%');
+                        $subQuery->where('programa_oal_2', '=', '%'.$search['programa_oal'].'%')
+                                ->where('año_programa_oal_2', '=', '%'.$search['año_programa_oal'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_3', 'like', '%'.$search['programa_oal'].'%')
-                                ->where('año_programa_oal_3', 'like', '%'.$search['año_programa_oal'].'%');
+                        $subQuery->where('programa_oal_3', '=', '%'.$search['programa_oal'].'%')
+                                ->where('año_programa_oal_3', '=', '%'.$search['año_programa_oal'].'%');
                     });
                 });
             }
@@ -291,16 +291,16 @@ class UsuarioOALController extends Controller
                 $usuarios->where(function($query) use ($search) {
                     // Búsqueda correlativa: programa_oal_2 con año_programa_oal_2
                     $query->where(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_2', 'like', '%'.$search['programa_oal_2'].'%')
-                                ->where('año_programa_oal_2', 'like', '%'.$search['año_programa_oal_2'].'%');
+                        $subQuery->where('programa_oal_2', '=', '%'.$search['programa_oal_2'].'%')
+                                ->where('año_programa_oal_2', '=', '%'.$search['año_programa_oal_2'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal', 'like', '%'.$search['programa_oal_2'].'%')
-                                ->where('año_programa_oal', 'like', '%'.$search['año_programa_oal_2'].'%');
+                        $subQuery->where('programa_oal', '=', '%'.$search['programa_oal_2'].'%')
+                                ->where('año_programa_oal', '=', '%'.$search['año_programa_oal_2'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_3', 'like', '%'.$search['programa_oal_2'].'%')
-                                ->where('año_programa_oal_3', 'like', '%'.$search['año_programa_oal_2'].'%');
+                        $subQuery->where('programa_oal_3', '=', '%'.$search['programa_oal_2'].'%')
+                                ->where('año_programa_oal_3', '=', '%'.$search['año_programa_oal_2'].'%');
                     });
                 });
             }
@@ -308,16 +308,16 @@ class UsuarioOALController extends Controller
                 $usuarios->where(function($query) use ($search) {
                     // Búsqueda correlativa: programa_oal_3 con año_programa_oal_3
                     $query->where(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_3', 'like', '%'.$search['programa_oal_3'].'%')
-                                ->where('año_programa_oal_3', 'like', '%'.$search['año_programa_oal_3'].'%');
+                        $subQuery->where('programa_oal_3', '=', '%'.$search['programa_oal_3'].'%')
+                                ->where('año_programa_oal_3', '=', '%'.$search['año_programa_oal_3'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal', 'like', '%'.$search['programa_oal_3'].'%')
-                                ->where('año_programa_oal', 'like', '%'.$search['año_programa_oal_3'].'%');
+                        $subQuery->where('programa_oal', '=', '%'.$search['programa_oal_3'].'%')
+                                ->where('año_programa_oal', '=', '%'.$search['año_programa_oal_3'].'%');
                     })
                     ->orWhere(function($subQuery) use ($search) {
-                        $subQuery->where('programa_oal_2', 'like', '%'.$search['programa_oal_3'].'%')
-                                ->where('año_programa_oal_2', 'like', '%'.$search['año_programa_oal_3'].'%');
+                        $subQuery->where('programa_oal_2', '=', '%'.$search['programa_oal_3'].'%')
+                                ->where('año_programa_oal_2', '=', '%'.$search['año_programa_oal_3'].'%');
                     });
                 });
             }
