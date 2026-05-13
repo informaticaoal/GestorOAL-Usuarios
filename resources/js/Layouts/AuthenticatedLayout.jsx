@@ -2,6 +2,7 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
+import axios from 'axios';
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
@@ -76,6 +77,16 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
+
+                                        <Dropdown.Link
+                                            href={'/register'}
+                                            method="get"
+                                            as="button"
+                                            className="hover:bg-dark-stroke hover:font-bold"
+                                        >
+                                            Registrar nuevo gestor
+                                        </Dropdown.Link>
+
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"

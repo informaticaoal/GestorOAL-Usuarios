@@ -11,7 +11,6 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -67,5 +66,9 @@ Route::post('/usuario_oal/search/adddocs', [DocumentosUsuariosController::class,
 Route::delete('/documento/{id}', [DocumentosUsuariosController::class, 'destroy'])->middleware(['auth', 'verified']);
 
 Route::delete('/documento/search/{id}', [DocumentosUsuariosController::class, 'destroyThroughSearch'])->middleware(['auth', 'verified']);
+
+Route::get('/register', [UserController::class, 'register'])->middleware(['auth', 'verified']);
+
+Route::post('/register', [UserController::class, 'create'])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
