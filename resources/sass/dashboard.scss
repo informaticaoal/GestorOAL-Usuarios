@@ -122,9 +122,7 @@ body::after {
 #createUsuario .border-bottom,
 #editUsuario .border-bottom,
 #searchUsuarios .border-bottom {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.96);
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
     border-radius: var(--oal-radius-xl);
     box-shadow: var(--oal-shadow-md), 0 0 0 1px rgba(79, 70, 229, 0.05);
@@ -150,13 +148,11 @@ body::after {
 #createUsuario .d-flex > .container,
 #editUsuario .d-flex > .container,
 #searchUsuarios .d-flex > .container {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: var(--oal-radius-md);
     padding: 1.5rem;
     margin: 0 0.75rem;
-    transition: all var(--oal-transition);
+    transition: background-color var(--oal-transition), border-color var(--oal-transition), box-shadow var(--oal-transition);
     border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
@@ -244,7 +240,7 @@ h3.text-center {
     border-radius: var(--oal-radius-sm);
     padding: 0.65rem 1rem;
     font-size: 0.9rem;
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), box-shadow var(--oal-transition);
     background: #ffffff;
 }
 
@@ -287,7 +283,7 @@ input[type="number"] {
     border: 2px solid #e2e8f0;
     border-radius: var(--oal-radius-sm);
     padding: 0.65rem 1rem;
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), box-shadow var(--oal-transition);
 }
 
 input[type="number"]:focus {
@@ -303,7 +299,7 @@ input[type="number"]:focus {
 .css-b62m3t-container,
 .css-13cymwt-control,
 .css-1fdsijx-ValueContainer {
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), box-shadow var(--oal-transition);
 }
 
 /* Control del Select */
@@ -396,7 +392,7 @@ input[type="date"].form-control {
     font-weight: 500;
     color: #1e293b;
     cursor: pointer;
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), box-shadow var(--oal-transition);
     width: 100%;
     min-height: 44px;
     box-shadow: none;
@@ -439,7 +435,7 @@ input[type="date"].form-control:valid {
     background: #ffffff;
     border: 2px solid #e2e8f0;
     border-radius: var(--oal-radius-sm);
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), background-color var(--oal-transition), box-shadow var(--oal-transition), transform var(--oal-transition);
     cursor: pointer;
     min-width: 360px;
     text-align: left;
@@ -463,7 +459,7 @@ input[type="date"].form-control:valid {
     margin-right: 0.8rem;
     cursor: pointer;
     border: 2.5px solid #94a3b8;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     border-radius: 5px;
     flex-shrink: 0;
     position: relative;
@@ -497,10 +493,11 @@ input[type="date"].form-control:valid {
     font-size: 1rem;
     letter-spacing: 0.8px;
     box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
-    transition: all var(--oal-transition);
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition);
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
+    will-change: transform;
 }
 
 #createUsuario .btn-primary::before {
@@ -538,10 +535,11 @@ input[type="date"].form-control:valid {
     letter-spacing: 0.8px;
     color: #ffffff !important;
     box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-    transition: all var(--oal-transition);
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition);
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
+    will-change: transform;
 }
 
 #editUsuario .btn-info::before {
@@ -569,7 +567,7 @@ input[type="date"].form-control:valid {
     font-weight: 700 !important;
     letter-spacing: 0.3px;
     border-radius: var(--oal-radius-sm) !important;
-    transition: all var(--oal-transition) !important;
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition) !important;
 }
 
 .btn-warning:hover {
@@ -586,7 +584,7 @@ input[type="date"].form-control:valid {
     border: 2px solid var(--oal-primary);
     border-radius: var(--oal-radius-md);
     padding: 0.6rem 1.8rem;
-    transition: all var(--oal-transition);
+    transition: background-color var(--oal-transition), color var(--oal-transition), box-shadow var(--oal-transition), transform var(--oal-transition);
     text-decoration: none;
 }
 
@@ -672,7 +670,7 @@ input[type="date"].form-control:valid {
     padding: 0.6rem 1rem;
     font-weight: 500;
     color: var(--oal-dark);
-    transition: all var(--oal-transition);
+    transition: background-color var(--oal-transition), color var(--oal-transition), border-color var(--oal-transition), transform var(--oal-transition), box-shadow var(--oal-transition);
     margin: 0 2px;
 }
 
@@ -706,7 +704,7 @@ input[type="date"].form-control:valid {
     border-radius: var(--oal-radius-sm);
     font-weight: 500;
     text-decoration: none;
-    transition: all var(--oal-transition);
+    transition: background-color var(--oal-transition), color var(--oal-transition), border-color var(--oal-transition), transform var(--oal-transition);
     border: 1px solid #dbeafe;
     display: inline-block;
     margin-bottom: 0.25rem;
@@ -724,7 +722,7 @@ input[type="date"].form-control:valid {
     border-radius: var(--oal-radius-sm);
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
-    transition: all var(--oal-transition);
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition);
 }
 
 #editUsuario .d-flex.flex-wrap .btn-danger:hover {
@@ -740,7 +738,7 @@ input[type="date"].form-control:valid {
     padding: 1.25rem;
     background: #f8fafc;
     cursor: pointer;
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), background-color var(--oal-transition);
 }
 
 #createUsuario input[type="file"]:hover,
@@ -780,10 +778,11 @@ input[type="date"].form-control:valid {
     letter-spacing: 0.8px;
     color: #ffffff !important;
     box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
-    transition: all var(--oal-transition);
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition);
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
+    will-change: transform;
 }
 
 #searchUsuarios .btn-warning::before {
@@ -864,9 +863,7 @@ input[type="date"].form-control:valid {
 
 /* Cada tarjeta */
 #excelPage .excel-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.96);
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: var(--oal-radius-xl);
     box-shadow: var(--oal-shadow-md), 0 0 0 1px rgba(79, 70, 229, 0.05);
@@ -930,11 +927,12 @@ input[type="date"].form-control:valid {
     font-size: 0.95rem;
     letter-spacing: 0.5px;
     color: #ffffff !important;
-    transition: all var(--oal-transition);
+    transition: transform var(--oal-transition), box-shadow var(--oal-transition);
     display: inline-flex;
     align-items: center;
     gap: 8px;
     text-transform: uppercase;
+    will-change: transform;
 }
 
 #excelPage .export-btn {
@@ -980,7 +978,7 @@ input[type="date"].form-control:valid {
     border-radius: var(--oal-radius-sm);
     background: #f8fafc;
     cursor: pointer;
-    transition: all var(--oal-transition);
+    transition: border-color var(--oal-transition), background-color var(--oal-transition), color var(--oal-transition);
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--oal-secondary);
