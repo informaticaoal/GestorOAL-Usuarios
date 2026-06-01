@@ -207,11 +207,15 @@ class UsuarioOALController extends Controller
                 });
             }
             if (isset($search['nivel_estudios']) && !empty($search['nivel_estudios'])) {
-                $usuarios->where('nivel_estudios', 'like', '%'.$search['nivel_estudios'].'%');
+                $usuarios->where('nivel_estudios', '=', $search['nivel_estudios']);
             }
             if (isset($search['especialidad']) && !empty($search['especialidad'])) {
                 foreach ($search['especialidad'] as $key => $value) {
+                    if ($key === 0) {
+                        $usuarios->where('especialidad', 'like', '%'.$value.'%');
+                    } else {
                     $usuarios->orWhere('especialidad', 'like', '%'.$value.'%');
+                    }
                 }
             }
             if (isset($search['disponibilidad']) && !empty($search['disponibilidad'])) {
