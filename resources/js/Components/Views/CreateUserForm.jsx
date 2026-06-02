@@ -758,7 +758,7 @@ export default function CreateUserForm() {
                                 className="mb-3"
                                 controlId="formNecesidades"
                             >
-                                <Form.Label className="fs-4">
+                                <Form.Label className="fs-4 fst-italic">
                                     Necesidades formativas (opcional)
                                 </Form.Label>
                                 <Controller
@@ -794,7 +794,7 @@ export default function CreateUserForm() {
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center gap-4 mt-4 mb-2">
+                    <div className="d-flex justify-content-center mb-2 mt-4 gap-4">
                         <Form.Group
                             className="fs-5 fst-italic fw-bold mb-0"
                             controlId="form-docente"
@@ -808,7 +808,7 @@ export default function CreateUserForm() {
                         </Form.Group>
 
                         <Form.Group
-                            className="fs-5 mb-0"
+                            className="fs-5 fst-italic mb-0"
                             controlId="form-socialmedia"
                         >
                             <Form.Check
