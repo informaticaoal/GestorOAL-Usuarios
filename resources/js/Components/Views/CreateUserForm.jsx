@@ -10,8 +10,11 @@ import {
     specialtyOptions,
     vehiculoOptions,
 } from '@/Utils/optionsData';
-import { router } from '@inertiajs/react';
+import { auth, db } from '@/firebase.config';
 import axios from 'axios';
+import { signInAnonymously } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -27,6 +30,8 @@ export default function CreateUserForm() {
     const { register, handleSubmit, control, formState } = useForm();
 
     const { errors } = formState;
+    const [isPasswordGenerated, setIsPasswordGenerated] = useState(false);
+    const [generatedPassword, setGeneratedPassword] = useState('');
 
     const actualYear = new Date().getFullYear();
 
@@ -41,9 +46,26 @@ export default function CreateUserForm() {
                     autoComplete="off"
                     encType="multipart/form-data"
                     onSubmit={handleSubmit(async (data) => {
+                        const lowerCaseClave = 'abcdefghijklmnopqrstuvwxyz';
+                        const upperCaseClave = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        const numberClave = '0123456789';
+                        const specialCharClave =
+                            '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+                        const allCharsClave =
+                            lowerCaseClave +
+                            upperCaseClave +
+                            numberClave +
+                            specialCharClave;
+                        let generatedPassword = '';
+                        for (let i = 0; i < 8; i++) {
+                            const randomIndex = Math.floor(
+                                Math.random() * allCharsClave.length,
+                            );
+                            generatedPassword += allCharsClave[randomIndex];
+                        }
                         await axios
                             .get(`/usuario_oal/checkdni/${data.dni}`)
-                            .then((response) => {
+                            .then(async (response) => {
                                 if (response.data.exists) {
                                     alert(
                                         'El DNI introducido ya existe en la base de datos. Si desea modificarlo, por favor, vaya al buscador y seleccionelo.',
@@ -111,23 +133,87 @@ export default function CreateUserForm() {
                                             : false,
                                         docente: data.docente ? true : false,
                                     };
-
+                                    let dataFirebase = {
+                                        nombre: data.nombre,
+                                        apellidos: data.apellidos,
+                                        sexo: data.sexo.value,
+                                        edad: formatoFechaSimple(data.edad),
+                                        telefono: data.telefono,
+                                        email: data.email ? data.email : '',
+                                        dni: data.dni,
+                                        fecha_activacion: formatoFechaSimple(
+                                            data.fecha_activacion,
+                                        ),
+                                        ocupacion: data.ocupacion1.value,
+                                        ocupacion2: data.ocupacion2?.value,
+                                        ocupacion3: data.ocupacion3?.value,
+                                        discapacidad: data.discapacidad.value,
+                                        nivel_estudios: data.estudios.value,
+                                        especialidad:
+                                            JSON.stringify(specialtyArray),
+                                        formacion_complementaria:
+                                            data.formacion_comp,
+                                        experiencia_laboral: data.experiencia,
+                                        disponibilidad:
+                                            data.disponibilidad.value,
+                                        carnet: JSON.stringify(carnetArray),
+                                        vehiculo: data.vehiculo.value,
+                                        localidad: data.localidad.value,
+                                        necesidad_formativa: data.necesidades
+                                            ? JSON.stringify(necesidadesArray)
+                                            : '[]',
+                                        observaciones: data.observaciones
+                                            ? data.observaciones
+                                            : '',
+                                        programa_oal: data.programa?.value,
+                                        año_programa_oal: data.yearPrograma,
+                                        programa_oal_2: data.programa2?.value,
+                                        año_programa_oal_2: data.yearPrograma2,
+                                        programa_oal_3: data.programa3?.value,
+                                        año_programa_oal_3: data.yearPrograma3,
+                                        cv: '',
+                                        clave: generatedPassword,
+                                        estado: 'activo',
+                                    };
+                                    setGeneratedPassword(generatedPassword);
+                                    setIsPasswordGenerated(true);
+                                    try {
+                                        if (!auth.currentUser) {
+                                            await signInAnonymously(auth);
+                                        }
+                                        const docRef = await addDoc(
+                                            collection(db, 'usuarios'),
+                                            dataFirebase,
+                                        );
+                                        console.log(
+                                            'Documento agregado con ID: ',
+                                            docRef.id,
+                                        );
+                                    } catch (error) {
+                                        console.error(
+                                            'Error al agregar el documento: ',
+                                            error,
+                                        );
+                                    }
                                     //Petición POST para crear el usuario, primero se crea. Luego se añaden los documentos.
                                     axios
                                         .post('/usuario_oal', newData)
                                         .then((response) => {
                                             let usuario_id =
                                                 response.data.usuario.id;
-                                            router.post(
-                                                '/usuario_oal/adddocs',
-                                                {
-                                                    id: usuario_id,
-                                                    docs: data.documentos,
-                                                },
-                                                {
-                                                    preserveScroll: true, // Mantiene la posición del scroll
-                                                    preserveState: false, // Conserva el estado del componente
-                                                },
+                                            const formData = new FormData();
+                                            formData.append('id', usuario_id);
+                                            if (data.documentos) {
+                                                for (const doc of data.documentos) {
+                                                    formData.append(
+                                                        'docs[]',
+                                                        doc,
+                                                    );
+                                                }
+                                            }
+                                            axios.post(
+                                                '/usuario_oal/adddocs/ajax',
+                                                formData,
                                             );
                                         });
                                 }
@@ -840,6 +926,17 @@ export default function CreateUserForm() {
                                 Añadir usuario
                             </Button>
                         </div>
+                        {isPasswordGenerated && (
+                            <div
+                                className="alert alert-success my-4 text-xl"
+                                role="alert"
+                            >
+                                La contraseña generada para este usuario es:{' '}
+                                <span className="fw-bold">
+                                    {generatedPassword}
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </Form>
             </div>

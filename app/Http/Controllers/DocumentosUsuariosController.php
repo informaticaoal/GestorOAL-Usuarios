@@ -45,7 +45,29 @@ class DocumentosUsuariosController extends Controller
                 ]);
             }
         }
-        return to_route('dashboard');
+        // return to_route('dashboard');
+    }
+
+    /**
+     * Store documents for a newly created user via a plain AJAX request
+     * (not an Inertia visit), so the calling page is not reloaded/redirected.
+     */
+    public function storeAjax(Request $request)
+    {
+        $usuario = UsuarioOAL::findFullNameByID($request->all()['id']);
+        if (isset($request->all()['docs']) && !empty($request->all()['docs'])) {
+            $dir = Storage::disk('public')->makeDirectory('documentos/' . $usuario);
+            $docs = $request->all()['docs'];
+            foreach ($docs as $doc) {
+                $documentName = $doc->getClientOriginalName();
+                DocumentosUsuarios::create([
+                    'titulo_documento' => $documentName,
+                    'ruta_documento' => $doc->storeAs('documentos/' . $usuario, $documentName, 'public'),
+                    'usuario_id' => $request->all()['id']
+                ]);
+            }
+        }
+        return response()->json(['success' => true]);
     }
 
     public function storeThroughSearch(Request $request)

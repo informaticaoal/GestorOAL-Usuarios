@@ -61,6 +61,8 @@ Route::post('/usuario/search', [UsuarioOALController::class, 'searchUsers'])->mi
 
 Route::post('/usuario_oal/adddocs', [DocumentosUsuariosController::class, 'store'])->middleware(['auth', 'verified']);
 
+Route::post('/usuario_oal/adddocs/ajax', [DocumentosUsuariosController::class, 'storeAjax'])->middleware(['auth', 'verified']);
+
 Route::post('/usuario_oal/search/adddocs', [DocumentosUsuariosController::class, 'storeThroughSearch'])->middleware(['auth', 'verified']);
 
 Route::delete('/documento/{id}', [DocumentosUsuariosController::class, 'destroy'])->middleware(['auth', 'verified']);
