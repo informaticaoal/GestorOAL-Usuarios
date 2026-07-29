@@ -174,6 +174,7 @@ export default function CreateUserForm() {
                                         cv: '',
                                         clave: generatedPassword,
                                         estado: 'activo',
+                                        usertype: 'usuario',
                                     };
                                     setGeneratedPassword(generatedPassword);
                                     setIsPasswordGenerated(true);
