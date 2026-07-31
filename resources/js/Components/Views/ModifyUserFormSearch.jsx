@@ -600,7 +600,6 @@ export default function ModifyUserFormSearch({
                                 data.yearPrograma3,
                             ),
                             cv: '',
-                            clave: generatedPassword,
                             estado: 'activo',
                             usertype: 'usuario',
                             orientador: orientador,
