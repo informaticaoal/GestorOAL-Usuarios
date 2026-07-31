@@ -39,6 +39,10 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
         setValue: setValue2,
     } = useForm();
 
+    const normalizeFieldValue = (value) => {
+        return value === undefined || value === null ? '' : value;
+    };
+
     const { errors } = formState;
 
     function formatearFecha(fecha) {
@@ -498,42 +502,78 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             docente: data.docente ? 1 : 0,
                         };
 
-                        let userDataFirebase = {
-                            nombre: data.nombre,
-                            apellidos: data.apellidos,
-                            sexo: data.sexo,
+                        let dataFirebase = {
+                            nombre: normalizeFieldValue(data.nombre),
+                            apellidos: normalizeFieldValue(data.apellidos),
+                            sexo: normalizeFieldValue(data.sexo?.value),
                             edad: formatoFechaSimple(data.edad),
-                            telefono: data.telefono,
-                            email: data.email ? data.email : '',
-                            dni: data.dni,
+                            telefono: normalizeFieldValue(data.telefono),
+                            email: normalizeFieldValue(
+                                data.email ? data.email : '',
+                            ),
+                            dni: normalizeFieldValue(data.dni),
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
                             ),
-                            ocupacion: data.ocupacion1,
-                            ocupacion2: data.ocupacion2,
-                            ocupacion3: data.ocupacion3,
-                            discapacidad: data.discapacidad,
-                            nivel_estudios: data.estudios,
+                            ocupacion: normalizeFieldValue(
+                                data.ocupacion1?.value,
+                            ),
+                            ocupacion2: normalizeFieldValue(
+                                data.ocupacion2?.value,
+                            ),
+                            ocupacion3: normalizeFieldValue(
+                                data.ocupacion3?.value,
+                            ),
+                            discapacidad: normalizeFieldValue(
+                                data.discapacidad?.value,
+                            ),
+                            nivel_estudios: normalizeFieldValue(
+                                data.estudios?.value,
+                            ),
                             especialidad: JSON.stringify(specialtyArray),
-                            formacion_complementaria: data.formacion_comp,
-                            experiencia_laboral: data.experiencia,
-                            disponibilidad: data.disponibilidad,
+                            formacion_complementaria: normalizeFieldValue(
+                                data.formacion_comp,
+                            ),
+                            experiencia_laboral: normalizeFieldValue(
+                                data.experiencia,
+                            ),
+                            disponibilidad: normalizeFieldValue(
+                                data.disponibilidad?.value,
+                            ),
                             carnet: JSON.stringify(carnetArray),
-                            vehiculo: data.vehiculo,
-                            localidad: data.localidad,
-                            necesidad_formativa:
-                                JSON.stringify(necesidadesArray),
-                            observaciones: data.observaciones
-                                ? data.observaciones
-                                : '',
-                            programa_oal: data.programa_oal,
-                            año_programa_oal: data.año_programa_oal,
-                            programa_oal_2: data.programa_oal_2,
-                            año_programa_oal_2: data.año_programa_oal_2,
-                            programa_oal_3: data.programa_oal_3,
-                            año_programa_oal_3: data.año_programa_oal_3,
+                            vehiculo: normalizeFieldValue(data.vehiculo?.value),
+                            localidad: normalizeFieldValue(
+                                data.localidad?.value,
+                            ),
+                            necesidad_formativa: data.necesidades
+                                ? JSON.stringify(necesidadesArray)
+                                : '[]',
+                            observaciones: normalizeFieldValue(
+                                data.observaciones,
+                            ),
+                            programa_oal: normalizeFieldValue(
+                                data.programa?.value,
+                            ),
+                            año_programa_oal: normalizeFieldValue(
+                                data.yearPrograma,
+                            ),
+                            programa_oal_2: normalizeFieldValue(
+                                data.programa2?.value,
+                            ),
+                            año_programa_oal_2: normalizeFieldValue(
+                                data.yearPrograma2,
+                            ),
+                            programa_oal_3: normalizeFieldValue(
+                                data.programa3?.value,
+                            ),
+                            año_programa_oal_3: normalizeFieldValue(
+                                data.yearPrograma3,
+                            ),
+                            cv: '',
+                            clave: generatedPassword,
                             estado: 'activo',
                             usertype: 'usuario',
+                            orientador: orientador,
                         };
 
                         try {
@@ -550,10 +590,10 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             if (!querySnapshot.empty) {
                                 await setDoc(
                                     querySnapshot.docs[0].ref,
-                                    userDataFirebase,
+                                    dataFirebase,
                                 );
                             } else {
-                                await addDoc(usuariosRef, userDataFirebase);
+                                await addDoc(usuariosRef, dataFirebase);
                             }
                         } catch (error) {
                             console.error(
