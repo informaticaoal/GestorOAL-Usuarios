@@ -40,6 +40,10 @@ export default function CreateUserForm() {
     const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
     const orientador = usePage().props.auth?.user?.name ?? '';
 
+    const normalizeFieldValue = (value) => {
+        return value === undefined || value === null ? '' : value;
+    };
+
     return (
         <>
             <div className="container mt-4" id="createUsuario">
@@ -136,43 +140,85 @@ export default function CreateUserForm() {
                                         docente: data.docente ? true : false,
                                     };
                                     let dataFirebase = {
-                                        nombre: data.nombre,
-                                        apellidos: data.apellidos,
-                                        sexo: data.sexo.value,
+                                        nombre: normalizeFieldValue(
+                                            data.nombre,
+                                        ),
+                                        apellidos: normalizeFieldValue(
+                                            data.apellidos,
+                                        ),
+                                        sexo: normalizeFieldValue(
+                                            data.sexo?.value,
+                                        ),
                                         edad: formatoFechaSimple(data.edad),
-                                        telefono: data.telefono,
-                                        email: data.email ? data.email : '',
-                                        dni: data.dni,
+                                        telefono: normalizeFieldValue(
+                                            data.telefono,
+                                        ),
+                                        email: normalizeFieldValue(
+                                            data.email ? data.email : '',
+                                        ),
+                                        dni: normalizeFieldValue(data.dni),
                                         fecha_activacion: formatoFechaSimple(
                                             data.fecha_activacion,
                                         ),
-                                        ocupacion: data.ocupacion1.value,
-                                        ocupacion2: data.ocupacion2?.value,
-                                        ocupacion3: data.ocupacion3?.value,
-                                        discapacidad: data.discapacidad.value,
-                                        nivel_estudios: data.estudios.value,
+                                        ocupacion: normalizeFieldValue(
+                                            data.ocupacion1?.value,
+                                        ),
+                                        ocupacion2: normalizeFieldValue(
+                                            data.ocupacion2?.value,
+                                        ),
+                                        ocupacion3: normalizeFieldValue(
+                                            data.ocupacion3?.value,
+                                        ),
+                                        discapacidad: normalizeFieldValue(
+                                            data.discapacidad?.value,
+                                        ),
+                                        nivel_estudios: normalizeFieldValue(
+                                            data.estudios?.value,
+                                        ),
                                         especialidad:
                                             JSON.stringify(specialtyArray),
                                         formacion_complementaria:
-                                            data.formacion_comp,
-                                        experiencia_laboral: data.experiencia,
-                                        disponibilidad:
-                                            data.disponibilidad.value,
+                                            normalizeFieldValue(
+                                                data.formacion_comp,
+                                            ),
+                                        experiencia_laboral:
+                                            normalizeFieldValue(
+                                                data.experiencia,
+                                            ),
+                                        disponibilidad: normalizeFieldValue(
+                                            data.disponibilidad?.value,
+                                        ),
                                         carnet: JSON.stringify(carnetArray),
-                                        vehiculo: data.vehiculo.value,
-                                        localidad: data.localidad.value,
+                                        vehiculo: normalizeFieldValue(
+                                            data.vehiculo?.value,
+                                        ),
+                                        localidad: normalizeFieldValue(
+                                            data.localidad?.value,
+                                        ),
                                         necesidad_formativa: data.necesidades
                                             ? JSON.stringify(necesidadesArray)
                                             : '[]',
-                                        observaciones: data.observaciones
-                                            ? data.observaciones
-                                            : '',
-                                        programa_oal: data.programa?.value,
-                                        año_programa_oal: data.yearPrograma,
-                                        programa_oal_2: data.programa2?.value,
-                                        año_programa_oal_2: data.yearPrograma2,
-                                        programa_oal_3: data.programa3?.value,
-                                        año_programa_oal_3: data.yearPrograma3,
+                                        observaciones: normalizeFieldValue(
+                                            data.observaciones,
+                                        ),
+                                        programa_oal: normalizeFieldValue(
+                                            data.programa?.value,
+                                        ),
+                                        año_programa_oal: normalizeFieldValue(
+                                            data.yearPrograma,
+                                        ),
+                                        programa_oal_2: normalizeFieldValue(
+                                            data.programa2?.value,
+                                        ),
+                                        año_programa_oal_2: normalizeFieldValue(
+                                            data.yearPrograma2,
+                                        ),
+                                        programa_oal_3: normalizeFieldValue(
+                                            data.programa3?.value,
+                                        ),
+                                        año_programa_oal_3: normalizeFieldValue(
+                                            data.yearPrograma3,
+                                        ),
                                         cv: '',
                                         clave: generatedPassword,
                                         estado: 'activo',
