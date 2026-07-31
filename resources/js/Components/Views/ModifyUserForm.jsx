@@ -17,6 +17,7 @@ import { signInAnonymously } from 'firebase/auth';
 import {
     addDoc,
     collection,
+    deleteDoc,
     getDocs,
     query,
     setDoc,
@@ -395,8 +396,32 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
     //* Funcion para eliminar al usuario desde UsuarioOALController::destroy
     const { delete: destroy } = useFormInertia();
 
-    function handleEliminarUsuario(idUsuario) {
-        destroy(`/usuario_oal/${idUsuario}`, { preserveScroll: true });
+    async function handleEliminarUsuario(idUsuario, dniUsuario) {
+        try {
+            if (!dniUsuario) {
+                return;
+            }
+
+            if (!auth.currentUser) {
+                await signInAnonymously(auth);
+            }
+
+            const usuariosRef = collection(db, 'usuarios');
+            const q = query(usuariosRef, where('dni', '==', dniUsuario));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                await Promise.all(
+                    querySnapshot.docs.map((docSnapshot) =>
+                        deleteDoc(docSnapshot.ref),
+                    ),
+                );
+            }
+        } catch (error) {
+            console.error('Error al eliminar el usuario de Firebase:', error);
+        } finally {
+            destroy(`/usuario_oal/${idUsuario}`, { preserveScroll: true });
+        }
     }
 
     function handleEliminarDocumento(idDoc) {
@@ -1656,6 +1681,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                                 ) {
                                                     handleEliminarUsuario(
                                                         usuario.id,
+                                                        usuario.dni,
                                                     );
                                                 }
                                             }}
