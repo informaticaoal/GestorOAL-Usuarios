@@ -42,6 +42,17 @@ class UsuarioOALController extends Controller
         return inertia("Excel");
     }
 
+    public function getAll()
+    {
+        $usuarios = UsuarioOAL::all();
+        return response()->json(['usuarios' => $usuarios]);
+    }
+
+    public function exportUsers()
+    {
+        return inertia("ExportUsers");
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -77,6 +88,7 @@ class UsuarioOALController extends Controller
     {
         $usuarioOAL = UsuarioOAL::find($id);
         $usuarioOAL->update($request->all());
+        return redirect()->back();
     }
 
     public function updateThroughSearch($id, Request $request)
@@ -259,21 +271,6 @@ class UsuarioOALController extends Controller
                         break;
                 }
             }
-            // if (isset($search['programa_oal']) && !empty($search['programa_oal'])) {
-            //     $usuarios->where('programa_oal', 'like', '%'.$search['programa_oal'].'%')
-            //     ->orWhere('programa_oal_2', 'like', '%'.$search['programa_oal'].'%')
-            //     ->orWhere('programa_oal_3', 'like', '%'.$search['programa_oal'].'%');
-            // }
-            // if (isset($search['programa_oal_2']) && !empty($search['programa_oal_2'])) {
-            //     $usuarios->where('programa_oal_2', 'like', '%'.$search['programa_oal_2'].'%')
-            //     ->orWhere('programa_oal', 'like', '%'.$search['programa_oal_2'].'%')
-            //     ->orWhere('programa_oal_3', 'like', '%'.$search['programa_oal_2'].'%');
-            // }
-            // if (isset($search['programa_oal_3']) && !empty($search['programa_oal_3'])) {
-            //     $usuarios->where('programa_oal_3', 'like', '%'.$search['programa_oal_3'].'%')
-            //     ->orWhere('programa_oal', 'like', '%'.$search['programa_oal_3'].'%')
-            //     ->orWhere('programa_oal_2', 'like', '%'.$search['programa_oal_3'].'%');
-            // }
             if (isset($search['año_programa_oal']) && !empty($search['año_programa_oal'])) {
                 $usuarios->where(function($query) use ($search) {
                     // Búsqueda correlativa: programa_oal con año_programa_oal

@@ -1,3 +1,4 @@
+import { auth, db } from '@/firebase.config';
 import {
     carnetOptions,
     discaOptions,
@@ -12,6 +13,15 @@ import {
 } from '@/Utils/optionsData';
 import { Link, router, useForm as useFormInertia } from '@inertiajs/react';
 import axios from 'axios';
+import { signInAnonymously } from 'firebase/auth';
+import {
+    addDoc,
+    collection,
+    getDocs,
+    query,
+    setDoc,
+    where,
+} from 'firebase/firestore';
 import { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
@@ -463,10 +473,80 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             docente: data.docente ? 1 : 0,
                         };
 
-                        await router.put(
-                            `/usuario_oal/${data.usuarioId}`,
-                            newData,
-                        );
+                        let userDataFirebase = {
+                            nombre: data.nombre,
+                            apellidos: data.apellidos,
+                            sexo: data.sexo,
+                            edad: formatoFechaSimple(data.edad),
+                            telefono: data.telefono,
+                            email: data.email ? data.email : '',
+                            dni: data.dni,
+                            fecha_activacion: formatoFechaSimple(
+                                data.fecha_activacion,
+                            ),
+                            ocupacion: data.ocupacion1,
+                            ocupacion2: data.ocupacion2,
+                            ocupacion3: data.ocupacion3,
+                            discapacidad: data.discapacidad,
+                            nivel_estudios: data.estudios,
+                            especialidad: JSON.stringify(specialtyArray),
+                            formacion_complementaria: data.formacion_comp,
+                            experiencia_laboral: data.experiencia,
+                            disponibilidad: data.disponibilidad,
+                            carnet: JSON.stringify(carnetArray),
+                            vehiculo: data.vehiculo,
+                            localidad: data.localidad,
+                            necesidad_formativa:
+                                JSON.stringify(necesidadesArray),
+                            observaciones: data.observaciones
+                                ? data.observaciones
+                                : '',
+                            programa_oal: data.programa_oal,
+                            año_programa_oal: data.año_programa_oal,
+                            programa_oal_2: data.programa_oal_2,
+                            año_programa_oal_2: data.año_programa_oal_2,
+                            programa_oal_3: data.programa_oal_3,
+                            año_programa_oal_3: data.año_programa_oal_3,
+                            estado: 'activo',
+                            usertype: 'usuario',
+                        };
+
+                        try {
+                            if (!auth.currentUser) {
+                                await signInAnonymously(auth);
+                            }
+                            const usuariosRef = collection(db, 'usuarios');
+                            const q = query(
+                                usuariosRef,
+                                where('dni', '==', data.dni),
+                            );
+                            const querySnapshot = await getDocs(q);
+
+                            if (!querySnapshot.empty) {
+                                await setDoc(
+                                    querySnapshot.docs[0].ref,
+                                    userDataFirebase,
+                                );
+                            } else {
+                                await addDoc(usuariosRef, userDataFirebase);
+                            }
+                        } catch (error) {
+                            console.error(
+                                'Error al enviar datos a Firebase:',
+                                error,
+                            );
+                        }
+
+                        await new Promise((resolve, reject) => {
+                            router.put(
+                                `/usuario_oal/${data.usuarioId}`,
+                                newData,
+                                {
+                                    onSuccess: () => resolve(),
+                                    onError: (errors) => reject(errors),
+                                },
+                            );
+                        });
 
                         await router.post(
                             '/usuario_oal/adddocs',
@@ -1276,7 +1356,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center gap-4 mt-4 mb-2">
+                    <div className="d-flex justify-content-center mb-2 mt-4 gap-4">
                         <Form.Group
                             className="fs-5 mb-0"
                             controlId="form-docente"

@@ -2,7 +2,6 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
-import axios from 'axios';
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
@@ -46,6 +45,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Exportar/Importar
                                 </NavLink>
+                                <NavLink
+                                    href={route('exportUsers')}
+                                    active={route().current('exportUsers')}
+                                >
+                                    Exportar a Firebase
+                                </NavLink>
                             </div>
                         </div>
 
@@ -77,7 +82,6 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-
                                         <Dropdown.Link
                                             href={'/register'}
                                             method="get"

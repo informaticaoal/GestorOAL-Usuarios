@@ -28,7 +28,11 @@ Route::get('/search', [UsuarioOALController::class, 'search'])->middleware(['aut
 
 Route::get('/excel', [UsuarioOALController::class, 'excelIndex'])->middleware(['auth', 'verified'])->name('excelIndex');
 
+Route::get('/exportusers', [UsuarioOALController::class, 'exportUsers'])->middleware(['auth', 'verified'])->name('exportUsers');
+
 Route::resource('usuario_oal', UsuarioOALController::class)->middleware(['auth', 'verified']);
+
+Route::get('/getallusers', [UsuarioOALController::class, 'getAll'])->middleware(['auth', 'verified']);
 
 Route::get('/usuarioGestor/all', [UserController::class, 'getAll'])->middleware(['auth', 'verified']);
 
