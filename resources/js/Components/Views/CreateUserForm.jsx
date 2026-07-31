@@ -235,10 +235,6 @@ export default function CreateUserForm() {
                                             collection(db, 'usuarios'),
                                             dataFirebase,
                                         );
-                                        console.log(
-                                            'Documento agregado con ID: ',
-                                            docRef.id,
-                                        );
                                     } catch (error) {
                                         console.error(
                                             'Error al agregar el documento: ',

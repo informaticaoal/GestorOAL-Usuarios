@@ -25,15 +25,16 @@ export default function RegisterIndex() {
 
         setPasswordMatchError('');
 
-        console.log('📝 Datos del formulario:', data);
-
-        axios.post('/register', data)
-            .then((response) => {
-                console.log('✅ Usuario registrado:', response.data);
+        axios
+            .post('/register', data)
+            .then(() => {
                 reset();
             })
             .catch((error) => {
-                console.error('❌ Error al registrar usuario:', error.response.data);
+                console.error(
+                    '❌ Error al registrar usuario:',
+                    error.response.data,
+                );
             });
     };
 
@@ -70,10 +71,7 @@ export default function RegisterIndex() {
 
                             <form onSubmit={submit} className="space-y-6">
                                 <div>
-                                    <InputLabel
-                                        htmlFor="name"
-                                        value="Nombre"
-                                    />
+                                    <InputLabel htmlFor="name" value="Nombre" />
 
                                     <TextInput
                                         id="name"
@@ -95,10 +93,7 @@ export default function RegisterIndex() {
                                 </div>
 
                                 <div>
-                                    <InputLabel
-                                        htmlFor="email"
-                                        value="Email"
-                                    />
+                                    <InputLabel htmlFor="email" value="Email" />
 
                                     <TextInput
                                         id="email"
@@ -132,10 +127,7 @@ export default function RegisterIndex() {
                                         className="form-control mt-1 block w-full"
                                         autoComplete="new-password"
                                         onChange={(e) => {
-                                            setData(
-                                                'password',
-                                                e.target.value,
-                                            );
+                                            setData('password', e.target.value);
                                             setPasswordMatchError('');
                                         }}
                                     />
