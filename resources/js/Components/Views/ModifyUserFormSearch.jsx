@@ -1,3 +1,4 @@
+import { auth, db } from '@/firebase.config';
 import {
     carnetOptions,
     discaOptions,
@@ -11,6 +12,15 @@ import {
     vehiculoOptions,
 } from '@/Utils/optionsData';
 import { router, useForm as useFormInertia } from '@inertiajs/react';
+import { signInAnonymously } from 'firebase/auth';
+import {
+    addDoc,
+    collection,
+    getDocs,
+    query,
+    setDoc,
+    where,
+} from 'firebase/firestore';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
@@ -28,6 +38,7 @@ export default function ModifyUserFormSearch({
         control: control2,
         handleSubmit: handleSubmit2,
         setValue: setValue2,
+        getValues: getValues2,
     } = useForm();
     const { errors } = formState;
     function formatearFecha(fecha) {
@@ -38,6 +49,7 @@ export default function ModifyUserFormSearch({
     }
 
     const [documentos, setDocumentos] = useState([]);
+    const [userClave, setUserClave] = useState('');
     const actualYear = new Date().getFullYear();
     const regExpTlf = new RegExp(/^\d{9}$/);
     const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
@@ -50,6 +62,7 @@ export default function ModifyUserFormSearch({
             try {
                 // Para llamar a la base de datos y sacar la fecha,
                 // ya que en la tabla solo se consta la edad actual, no la fecha de nacimiento.
+                setUserClave('');
                 const response = await axios.get(`/usuario/${idUsuario}/edad`);
                 const edadDB = response.data.edad;
                 const responseFechaAct = await axios.get(
@@ -406,6 +419,29 @@ export default function ModifyUserFormSearch({
         });
     }
 
+    const handleCheckPassword = async () => {
+        try {
+            if (!auth.currentUser) {
+                await signInAnonymously(auth);
+            }
+            const usuariosRef = collection(db, 'usuarios');
+            const dni = getValues2('dni');
+            console.log('DNI a verificar:', dni);
+            const q = query(usuariosRef, where('dni', '==', dni));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                setUserClave(
+                    doc.data().clave ? doc.data().clave : 'No hay clave',
+                );
+            });
+        } catch (error) {
+            console.error(
+                'Error al verificar la contraseña en Firebase:',
+                error,
+            );
+        }
+    };
+
     return (
         <>
             <div className="container" id="editUsuario">
@@ -468,10 +504,80 @@ export default function ModifyUserFormSearch({
                             socialmedia: data.socialmedia ? 1 : 0,
                             docente: data.docente ? 1 : 0,
                         };
-                        await router.put(
-                            `/usuario_oal/search/${data.usuarioId}`,
-                            newData,
-                        );
+                        let userDataFirebase = {
+                            nombre: data.nombre,
+                            apellidos: data.apellidos,
+                            sexo: data.sexo,
+                            edad: formatoFechaSimple(data.edad),
+                            telefono: data.telefono,
+                            email: data.email ? data.email : '',
+                            dni: data.dni,
+                            fecha_activacion: formatoFechaSimple(
+                                data.fecha_activacion,
+                            ),
+                            ocupacion: data.ocupacion1,
+                            ocupacion2: data.ocupacion2,
+                            ocupacion3: data.ocupacion3,
+                            discapacidad: data.discapacidad,
+                            nivel_estudios: data.estudios,
+                            especialidad: JSON.stringify(specialtyArray),
+                            formacion_complementaria: data.formacion_comp,
+                            experiencia_laboral: data.experiencia,
+                            disponibilidad: data.disponibilidad,
+                            carnet: JSON.stringify(carnetArray),
+                            vehiculo: data.vehiculo,
+                            localidad: data.localidad,
+                            necesidad_formativa:
+                                JSON.stringify(necesidadesArray),
+                            observaciones: data.observaciones
+                                ? data.observaciones
+                                : '',
+                            programa_oal: data.programa_oal,
+                            año_programa_oal: data.año_programa_oal,
+                            programa_oal_2: data.programa_oal_2,
+                            año_programa_oal_2: data.año_programa_oal_2,
+                            programa_oal_3: data.programa_oal_3,
+                            año_programa_oal_3: data.año_programa_oal_3,
+                            estado: 'activo',
+                            usertype: 'usuario',
+                        };
+
+                        try {
+                            if (!auth.currentUser) {
+                                await signInAnonymously(auth);
+                            }
+                            const usuariosRef = collection(db, 'usuarios');
+                            const q = query(
+                                usuariosRef,
+                                where('dni', '==', data.dni),
+                            );
+                            const querySnapshot = await getDocs(q);
+
+                            if (!querySnapshot.empty) {
+                                await setDoc(
+                                    querySnapshot.docs[0].ref,
+                                    userDataFirebase,
+                                );
+                            } else {
+                                await addDoc(usuariosRef, userDataFirebase);
+                            }
+                        } catch (error) {
+                            console.error(
+                                'Error al enviar datos a Firebase:',
+                                error,
+                            );
+                        }
+
+                        await new Promise((resolve, reject) => {
+                            router.put(
+                                `/usuario_oal/${data.usuarioId}`,
+                                newData,
+                                {
+                                    onSuccess: () => resolve(),
+                                    onError: (errors) => reject(errors),
+                                },
+                            );
+                        });
 
                         await router.post(
                             '/usuario_oal/search/adddocs',
@@ -1273,7 +1379,7 @@ export default function ModifyUserFormSearch({
                         </div>
                     </div>
 
-                    <div className="d-flex justify-content-center gap-4 mt-4 mb-2">
+                    <div className="d-flex justify-content-center mb-2 mt-4 gap-4">
                         <Form.Group
                             className="fs-5 mb-0"
                             controlId="form-docente"
@@ -1375,8 +1481,30 @@ export default function ModifyUserFormSearch({
                                 Modificar usuario
                             </Button>
                         </div>
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            onClick={handleCheckPassword}
+                        >
+                            Comprobar clave de usuario
+                        </Button>
                     </div>
                 </Form>
+                {userClave != '' && userClave != 'No hay clave' ? (
+                    <div className="alert alert-info my-4 text-xl" role="alert">
+                        La clave de este usuario es:{' '}
+                        <span className="fw-bold">{userClave}</span>
+                    </div>
+                ) : (
+                    userClave == 'No hay clave' && (
+                        <div
+                            className="alert alert-danger my-4 text-xl"
+                            role="alert"
+                        >
+                            Este usuario no tiene clave asignada.
+                        </div>
+                    )
+                )}
             </div>
             <div className="container-fluid my-5">
                 <h2 className="text-center" id="listado-usuarios">

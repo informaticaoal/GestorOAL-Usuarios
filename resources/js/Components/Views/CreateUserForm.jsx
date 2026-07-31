@@ -11,6 +11,7 @@ import {
     vehiculoOptions,
 } from '@/Utils/optionsData';
 import { auth, db } from '@/firebase.config';
+import { usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { signInAnonymously } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
@@ -37,6 +38,7 @@ export default function CreateUserForm() {
 
     const regExpTlf = new RegExp(/^\d{9}$/);
     const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
+    const orientador = usePage().props.auth?.user?.name ?? '';
 
     return (
         <>
@@ -175,6 +177,7 @@ export default function CreateUserForm() {
                                         clave: generatedPassword,
                                         estado: 'activo',
                                         usertype: 'usuario',
+                                        orientador: orientador,
                                     };
                                     setGeneratedPassword(generatedPassword);
                                     setIsPasswordGenerated(true);
