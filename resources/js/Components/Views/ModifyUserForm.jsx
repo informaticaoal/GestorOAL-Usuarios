@@ -589,6 +589,7 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 await setDoc(
                                     querySnapshot.docs[0].ref,
                                     dataFirebase,
+                                    { merge: true },
                                 );
                             } else {
                                 await addDoc(usuariosRef, dataFirebase);
