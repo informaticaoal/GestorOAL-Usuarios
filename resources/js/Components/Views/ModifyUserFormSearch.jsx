@@ -454,7 +454,6 @@ export default function ModifyUserFormSearch({
             }
             const usuariosRef = collection(db, 'usuarios');
             const dni = getValues2('dni');
-            console.log('DNI a verificar:', dni);
             const q = query(usuariosRef, where('dni', '==', dni));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
