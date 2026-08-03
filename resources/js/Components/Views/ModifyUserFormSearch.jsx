@@ -601,7 +601,6 @@ export default function ModifyUserFormSearch({
                             cv: '',
                             estado: 'activo',
                             usertype: 'usuario',
-                            orientador: orientador,
                         };
 
                         try {

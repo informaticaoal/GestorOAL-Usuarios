@@ -572,7 +572,6 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             cv: '',
                             estado: 'activo',
                             usertype: 'usuario',
-                            orientador: orientador,
                         };
 
                         try {
