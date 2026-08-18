@@ -41,9 +41,6 @@ export default function ModifyUserFormSearch({
         setValue: setValue2,
         getValues: getValues2,
     } = useForm();
-    const normalizeFieldValue = (value) => {
-        return value === undefined || value === null ? '' : value;
-    };
     const { errors } = formState;
     function formatearFecha(fecha) {
         // Separamos la fecha en día, mes y año usando el carácter "/"
@@ -532,72 +529,38 @@ export default function ModifyUserFormSearch({
                             docente: data.docente ? 1 : 0,
                         };
                         let dataFirebase = {
-                            nombre: normalizeFieldValue(data.nombre),
-                            apellidos: normalizeFieldValue(data.apellidos),
-                            sexo: normalizeFieldValue(data.sexo?.value),
+                            nombre: data.nombre,
+                            apellidos: data.apellidos,
+                            sexo: data.sexo?.value,
                             edad: formatoFechaSimple(data.edad),
-                            telefono: normalizeFieldValue(data.telefono),
-                            email: normalizeFieldValue(
-                                data.email ? data.email : '',
-                            ),
-                            dni: normalizeFieldValue(data.dni),
+                            telefono: data.telefono,
+                            email: data.email ? data.email : '',
+                            dni: data.dni,
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
                             ),
-                            ocupacion: normalizeFieldValue(
-                                data.ocupacion1?.value,
-                            ),
-                            ocupacion2: normalizeFieldValue(
-                                data.ocupacion2?.value,
-                            ),
-                            ocupacion3: normalizeFieldValue(
-                                data.ocupacion3?.value,
-                            ),
-                            discapacidad: normalizeFieldValue(
-                                data.discapacidad?.value,
-                            ),
-                            nivel_estudios: normalizeFieldValue(
-                                data.estudios?.value,
-                            ),
+                            ocupacion: data.ocupacion1?.value,
+                            ocupacion2: data.ocupacion2?.value,
+                            ocupacion3: data.ocupacion3?.value,
+                            discapacidad: data.discapacidad?.value,
+                            nivel_estudios: data.estudios?.value,
                             especialidad: JSON.stringify(specialtyArray),
-                            formacion_complementaria: normalizeFieldValue(
-                                data.formacion_comp,
-                            ),
-                            experiencia_laboral: normalizeFieldValue(
-                                data.experiencia,
-                            ),
-                            disponibilidad: normalizeFieldValue(
-                                data.disponibilidad?.value,
-                            ),
+                            formacion_complementaria: data.formacion_comp,
+                            experiencia_laboral: data.experiencia,
+                            disponibilidad: data.disponibilidad?.value,
                             carnet: JSON.stringify(carnetArray),
-                            vehiculo: normalizeFieldValue(data.vehiculo?.value),
-                            localidad: normalizeFieldValue(
-                                data.localidad?.value,
-                            ),
+                            vehiculo: data.vehiculo?.value,
+                            localidad: data.localidad?.value,
                             necesidad_formativa: data.necesidades
                                 ? JSON.stringify(necesidadesArray)
                                 : '[]',
-                            observaciones: normalizeFieldValue(
-                                data.observaciones,
-                            ),
-                            programa_oal: normalizeFieldValue(
-                                data.programa?.value,
-                            ),
-                            año_programa_oal: normalizeFieldValue(
-                                data.yearPrograma,
-                            ),
-                            programa_oal_2: normalizeFieldValue(
-                                data.programa2?.value,
-                            ),
-                            año_programa_oal_2: normalizeFieldValue(
-                                data.yearPrograma2,
-                            ),
-                            programa_oal_3: normalizeFieldValue(
-                                data.programa3?.value,
-                            ),
-                            año_programa_oal_3: normalizeFieldValue(
-                                data.yearPrograma3,
-                            ),
+                            observaciones: data.observaciones,
+                            programa_oal: data.programa?.value,
+                            año_programa_oal: data.yearPrograma,
+                            programa_oal_2: data.programa2?.value,
+                            año_programa_oal_2: data.yearPrograma2,
+                            programa_oal_3: data.programa3?.value,
+                            año_programa_oal_3: data.yearPrograma3,
                             cv: '',
                             estado: 'activo',
                             usertype: 'usuario',
