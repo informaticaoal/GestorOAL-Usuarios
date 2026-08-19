@@ -14,10 +14,12 @@ import {
 import { router, useForm as useFormInertia } from '@inertiajs/react';
 import { signInAnonymously } from 'firebase/auth';
 import {
+    addDoc,
     collection,
     deleteDoc,
     getDocs,
     query,
+    setDoc,
     where,
 } from 'firebase/firestore';
 import { useState } from 'react';
