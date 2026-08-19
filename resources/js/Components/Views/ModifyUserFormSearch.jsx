@@ -403,6 +403,10 @@ export default function ModifyUserFormSearch({
         return `${dia.padStart(2, '0')}/${mes.padStart(2, '0')}/${anio}`;
     };
 
+    const normalizeFieldValue = (value) => {
+        return value === undefined || value === null ? '' : value;
+    };
+
     //Funcion para eliminar al usuario desde UsuarioOALController::destroy
     const { delete: destroy } = useFormInertia();
 
