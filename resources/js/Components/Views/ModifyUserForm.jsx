@@ -505,31 +505,21 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                         let dataFirebase = {
                             nombre: normalizeFieldValue(data.nombre),
                             apellidos: normalizeFieldValue(data.apellidos),
-                            sexo: normalizeFieldValue(data.sexo?.value),
+                            sexo: normalizeFieldValue(data.sexo),
                             edad: formatoFechaSimple(data.edad),
                             telefono: normalizeFieldValue(data.telefono),
-                            email: normalizeFieldValue(
-                                data.email ? data.email : '',
-                            ),
+                            email: normalizeFieldValue(data.email),
                             dni: normalizeFieldValue(data.dni),
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
                             ),
-                            ocupacion: normalizeFieldValue(
-                                data.ocupacion1?.value,
-                            ),
-                            ocupacion2: normalizeFieldValue(
-                                data.ocupacion2?.value,
-                            ),
-                            ocupacion3: normalizeFieldValue(
-                                data.ocupacion3?.value,
-                            ),
+                            ocupacion: normalizeFieldValue(data.ocupacion1),
+                            ocupacion2: normalizeFieldValue(data.ocupacion2),
+                            ocupacion3: normalizeFieldValue(data.ocupacion3),
                             discapacidad: normalizeFieldValue(
-                                data.discapacidad?.value,
+                                data.discapacidad,
                             ),
-                            nivel_estudios: normalizeFieldValue(
-                                data.estudios?.value,
-                            ),
+                            nivel_estudios: normalizeFieldValue(data.estudios),
                             especialidad: JSON.stringify(specialtyArray),
                             formacion_complementaria: normalizeFieldValue(
                                 data.formacion_comp,
@@ -538,34 +528,26 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                                 data.experiencia,
                             ),
                             disponibilidad: normalizeFieldValue(
-                                data.disponibilidad?.value,
+                                data.disponibilidad,
                             ),
                             carnet: JSON.stringify(carnetArray),
-                            vehiculo: normalizeFieldValue(data.vehiculo?.value),
-                            localidad: normalizeFieldValue(
-                                data.localidad?.value,
-                            ),
+                            vehiculo: normalizeFieldValue(data.vehiculo),
+                            localidad: normalizeFieldValue(data.localidad),
                             necesidad_formativa: data.necesidades
                                 ? JSON.stringify(necesidadesArray)
                                 : '[]',
                             observaciones: normalizeFieldValue(
                                 data.observaciones,
                             ),
-                            programa_oal: normalizeFieldValue(
-                                data.programa?.value,
-                            ),
+                            programa_oal: normalizeFieldValue(data.programa),
                             año_programa_oal: normalizeFieldValue(
                                 data.yearPrograma,
                             ),
-                            programa_oal_2: normalizeFieldValue(
-                                data.programa2?.value,
-                            ),
+                            programa_oal_2: normalizeFieldValue(data.programa2),
                             año_programa_oal_2: normalizeFieldValue(
                                 data.yearPrograma2,
                             ),
-                            programa_oal_3: normalizeFieldValue(
-                                data.programa3?.value,
-                            ),
+                            programa_oal_3: normalizeFieldValue(data.programa3),
                             año_programa_oal_3: normalizeFieldValue(
                                 data.yearPrograma3,
                             ),
