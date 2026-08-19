@@ -14,12 +14,10 @@ import {
 import { router, useForm as useFormInertia } from '@inertiajs/react';
 import { signInAnonymously } from 'firebase/auth';
 import {
-    addDoc,
     collection,
     deleteDoc,
     getDocs,
     query,
-    setDoc,
     where,
 } from 'firebase/firestore';
 import { useState } from 'react';
@@ -155,7 +153,8 @@ export default function ModifyUserFormSearch({
                             break;
                         case 'necesidad_formativa':
                             // eslint-disable-next-line prettier/prettier, no-case-declarations
-                            const necesidadFormativaArray = necesidadFormativaDB;
+                            const necesidadFormativaArray =
+                                necesidadFormativaDB;
                             // eslint-disable-next-line no-case-declarations
                             let selectedNecesidades = [];
 
@@ -528,10 +527,11 @@ export default function ModifyUserFormSearch({
                             socialmedia: data.socialmedia ? 1 : 0,
                             docente: data.docente ? 1 : 0,
                         };
+
                         let dataFirebase = {
                             nombre: data.nombre,
                             apellidos: data.apellidos,
-                            sexo: data.sexo?.value,
+                            sexo: data.sexo,
                             edad: formatoFechaSimple(data.edad),
                             telefono: data.telefono,
                             email: data.email ? data.email : '',
@@ -539,33 +539,33 @@ export default function ModifyUserFormSearch({
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
                             ),
-                            ocupacion: data.ocupacion1?.value,
-                            ocupacion2: data.ocupacion2?.value,
-                            ocupacion3: data.ocupacion3?.value,
-                            discapacidad: data.discapacidad?.value,
-                            nivel_estudios: data.estudios?.value,
+                            ocupacion: data.ocupacion1,
+                            ocupacion2: data.ocupacion2,
+                            ocupacion3: data.ocupacion3,
+                            discapacidad: data.discapacidad,
+                            nivel_estudios: data.estudios,
                             especialidad: JSON.stringify(specialtyArray),
                             formacion_complementaria: data.formacion_comp,
                             experiencia_laboral: data.experiencia,
-                            disponibilidad: data.disponibilidad?.value,
+                            disponibilidad: data.disponibilidad,
                             carnet: JSON.stringify(carnetArray),
-                            vehiculo: data.vehiculo?.value,
-                            localidad: data.localidad?.value,
+                            vehiculo: data.vehiculo,
+                            localidad: data.localidad,
                             necesidad_formativa: data.necesidades
                                 ? JSON.stringify(necesidadesArray)
                                 : '[]',
                             observaciones: data.observaciones,
-                            programa_oal: data.programa?.value,
+                            programa_oal: data.programa,
                             año_programa_oal: data.yearPrograma,
-                            programa_oal_2: data.programa2?.value,
+                            programa_oal_2: data.programa2,
                             año_programa_oal_2: data.yearPrograma2,
-                            programa_oal_3: data.programa3?.value,
+                            programa_oal_3: data.programa3,
                             año_programa_oal_3: data.yearPrograma3,
                             cv: '',
                             estado: 'activo',
                             usertype: 'usuario',
                         };
-
+                        console.log('Datos a enviar a Firebase:', dataFirebase);
                         try {
                             if (!auth.currentUser) {
                                 await signInAnonymously(auth);
