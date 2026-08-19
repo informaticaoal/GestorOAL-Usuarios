@@ -531,38 +531,56 @@ export default function ModifyUserFormSearch({
                         };
 
                         let dataFirebase = {
-                            nombre: data.nombre,
-                            apellidos: data.apellidos,
-                            sexo: data.sexo,
+                            nombre: normalizeFieldValue(data.nombre),
+                            apellidos: normalizeFieldValue(data.apellidos),
+                            sexo: normalizeFieldValue(data.sexo),
                             edad: formatoFechaSimple(data.edad),
-                            telefono: data.telefono,
-                            email: data.email ? data.email : '',
-                            dni: data.dni,
+                            telefono: normalizeFieldValue(data.telefono),
+                            email: normalizeFieldValue(
+                                data.email ? data.email : '',
+                            ),
+                            dni: normalizeFieldValue(data.dni),
                             fecha_activacion: formatoFechaSimple(
                                 data.fecha_activacion,
                             ),
-                            ocupacion: data.ocupacion1,
-                            ocupacion2: data.ocupacion2,
-                            ocupacion3: data.ocupacion3,
-                            discapacidad: data.discapacidad,
-                            nivel_estudios: data.estudios,
+                            ocupacion: normalizeFieldValue(data.ocupacion1),
+                            ocupacion2: normalizeFieldValue(data.ocupacion2),
+                            ocupacion3: normalizeFieldValue(data.ocupacion3),
+                            discapacidad: normalizeFieldValue(
+                                data.discapacidad,
+                            ),
+                            nivel_estudios: normalizeFieldValue(data.estudios),
                             especialidad: JSON.stringify(specialtyArray),
-                            formacion_complementaria: data.formacion_comp,
-                            experiencia_laboral: data.experiencia,
-                            disponibilidad: data.disponibilidad,
+                            formacion_complementaria: normalizeFieldValue(
+                                data.formacion_comp,
+                            ),
+                            experiencia_laboral: normalizeFieldValue(
+                                data.experiencia,
+                            ),
+                            disponibilidad: normalizeFieldValue(
+                                data.disponibilidad,
+                            ),
                             carnet: JSON.stringify(carnetArray),
-                            vehiculo: data.vehiculo,
-                            localidad: data.localidad,
+                            vehiculo: normalizeFieldValue(data.vehiculo),
+                            localidad: normalizeFieldValue(data.localidad),
                             necesidad_formativa: data.necesidades
                                 ? JSON.stringify(necesidadesArray)
                                 : '[]',
-                            observaciones: data.observaciones,
-                            programa_oal: data.programa,
-                            año_programa_oal: data.yearPrograma,
-                            programa_oal_2: data.programa2,
-                            año_programa_oal_2: data.yearPrograma2,
-                            programa_oal_3: data.programa3,
-                            año_programa_oal_3: data.yearPrograma3,
+                            observaciones: normalizeFieldValue(
+                                data.observaciones,
+                            ),
+                            programa_oal: normalizeFieldValue(data.programa),
+                            año_programa_oal: normalizeFieldValue(
+                                data.yearPrograma,
+                            ),
+                            programa_oal_2: normalizeFieldValue(data.programa2),
+                            año_programa_oal_2: normalizeFieldValue(
+                                data.yearPrograma2,
+                            ),
+                            programa_oal_3: normalizeFieldValue(data.programa3),
+                            año_programa_oal_3: normalizeFieldValue(
+                                data.yearPrograma3,
+                            ),
                             cv: '',
                             estado: 'activo',
                             usertype: 'usuario',
