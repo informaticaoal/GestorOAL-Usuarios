@@ -585,8 +585,6 @@ export default function ModifyUserFormSearch({
                             año_programa_oal_3: normalizeFieldValue(
                                 data.yearPrograma3,
                             ),
-                            cv: '',
-                            estado: 'activo',
                             usertype: 'usuario',
                         };
                         console.log('Datos a enviar a Firebase:', dataFirebase);

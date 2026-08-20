@@ -551,8 +551,6 @@ export default function ModifyUserForm({ usuariosOAL, contadorUsuarios }) {
                             año_programa_oal_3: normalizeFieldValue(
                                 data.yearPrograma3,
                             ),
-                            cv: '',
-                            estado: 'activo',
                             usertype: 'usuario',
                         };
 
