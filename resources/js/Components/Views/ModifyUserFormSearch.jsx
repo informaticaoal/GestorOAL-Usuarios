@@ -51,6 +51,16 @@ export default function ModifyUserFormSearch({
 
     const [documentos, setDocumentos] = useState([]);
     const [userClave, setUserClave] = useState('');
+    const [selectedUserId, setSelectedUserId] = useState(null);
+    const [seguimientos, setSeguimientos] = useState([]);
+    const [cargandoSeguimientos, setCargandoSeguimientos] = useState(false);
+    const [mostrarFormularioSeguimiento, setMostrarFormularioSeguimiento] =
+        useState(false);
+    const [fechaSeguimiento, setFechaSeguimiento] = useState('');
+    const [resumenSeguimiento, setResumenSeguimiento] = useState('');
+    const [seguimientoEditandoId, setSeguimientoEditandoId] = useState(null);
+    const [guardandoSeguimiento, setGuardandoSeguimiento] = useState(false);
+    const [errorSeguimiento, setErrorSeguimiento] = useState('');
     const actualYear = new Date().getFullYear();
     const regExpTlf = new RegExp(/^\d{9}$/);
     const regExpDNI = new RegExp(/\d{8}[A-Z]|[A-Z]\d{8}|[A-Z]\d{7}[A-Z]/);
@@ -61,6 +71,13 @@ export default function ModifyUserFormSearch({
             return;
         } else {
             try {
+                setSelectedUserId(idUsuario);
+                setSeguimientos([]);
+                setCargandoSeguimientos(true);
+                setMostrarFormularioSeguimiento(false);
+                setSeguimientoEditandoId(null);
+                setErrorSeguimiento('');
+
                 // Para llamar a la base de datos y sacar la fecha,
                 // ya que en la tabla solo se consta la edad actual, no la fecha de nacimiento.
                 setUserClave('');
@@ -354,6 +371,20 @@ export default function ModifyUserFormSearch({
                         );
                     });
 
+                try {
+                    const seguimientosResponse = await axios.get(
+                        `/usuario_oal/${idUsuario}/seguimientos`,
+                    );
+                    setSeguimientos(seguimientosResponse.data);
+                } catch (error) {
+                    console.error('Error al cargar los seguimientos:', error);
+                    setErrorSeguimiento(
+                        'No se pudieron cargar los seguimientos de este usuario.',
+                    );
+                } finally {
+                    setCargandoSeguimientos(false);
+                }
+
                 document
                     .getElementById('searchUsuarios')
                     .setAttribute('style', 'display: none !important');
@@ -447,6 +478,91 @@ export default function ModifyUserFormSearch({
                 );
             },
         });
+    }
+
+    async function guardarSeguimiento(event) {
+        event.preventDefault();
+        if (!fechaSeguimiento || !resumenSeguimiento.trim()) {
+            setErrorSeguimiento(
+                'Indica una fecha y un resumen para el seguimiento.',
+            );
+            return;
+        }
+
+        setGuardandoSeguimiento(true);
+        setErrorSeguimiento('');
+
+        try {
+            const datosSeguimiento = {
+                fecha_seguimiento: fechaSeguimiento,
+                resumen_seguimiento: resumenSeguimiento.trim(),
+            };
+            const urlSeguimientos = `/usuario_oal/${selectedUserId}/seguimientos`;
+            const response = seguimientoEditandoId
+                ? await axios.put(
+                      `${urlSeguimientos}/${seguimientoEditandoId}`,
+                      datosSeguimiento,
+                  )
+                : await axios.post(urlSeguimientos, datosSeguimiento);
+
+            setSeguimientos((prevSeguimientos) =>
+                [
+                    ...prevSeguimientos.filter(
+                        (seguimiento) => seguimiento.id !== response.data.id,
+                    ),
+                    response.data,
+                ].sort(
+                    (a, b) =>
+                        b.fecha_seguimiento.localeCompare(
+                            a.fecha_seguimiento,
+                        ) || b.id - a.id,
+                ),
+            );
+            setFechaSeguimiento('');
+            setResumenSeguimiento('');
+            setSeguimientoEditandoId(null);
+            setMostrarFormularioSeguimiento(false);
+        } catch (error) {
+            console.error('Error al guardar el seguimiento:', error);
+            setErrorSeguimiento(
+                error.response?.data?.message ||
+                    'No se pudo guardar el seguimiento. Inténtalo de nuevo.',
+            );
+        } finally {
+            setGuardandoSeguimiento(false);
+        }
+    }
+
+    async function eliminarSeguimiento(idSeguimiento) {
+        if (
+            !window.confirm(
+                '¿Seguro que quieres eliminar este seguimiento? Esta acción no se puede deshacer.',
+            )
+        ) {
+            return;
+        }
+
+        setGuardandoSeguimiento(true);
+        setErrorSeguimiento('');
+
+        try {
+            await axios.delete(
+                `/usuario_oal/${selectedUserId}/seguimientos/${idSeguimiento}`,
+            );
+            setSeguimientos((prevSeguimientos) =>
+                prevSeguimientos.filter(
+                    (seguimiento) => seguimiento.id !== idSeguimiento,
+                ),
+            );
+        } catch (error) {
+            console.error('Error al eliminar el seguimiento:', error);
+            setErrorSeguimiento(
+                error.response?.data?.message ||
+                    'No se pudo eliminar el seguimiento. Inténtalo de nuevo.',
+            );
+        } finally {
+            setGuardandoSeguimiento(false);
+        }
     }
 
     const handleCheckPassword = async () => {
@@ -1472,6 +1588,198 @@ export default function ModifyUserFormSearch({
                                 )}
                             />
                         </Form.Group>
+                    </div>
+
+                    <div className="container-fluid my-5">
+                        <div className="justify-content-center my-3 text-center">
+                            <h4 className="fw-bold">Seguimiento del usuario</h4>
+                        </div>
+
+                        <div className="container mb-3">
+                            {seguimientos.length > 0 ? (
+                                <div className="list-group mb-3">
+                                    {seguimientos.map((seguimiento) => (
+                                        <div
+                                            className="list-group-item"
+                                            key={seguimiento.id}
+                                        >
+                                            <div className="fw-bold">
+                                                {new Date(
+                                                    `${seguimiento.fecha_seguimiento}T00:00:00`,
+                                                ).toLocaleDateString('es-ES')}
+                                            </div>
+                                            <div className="small text-muted">
+                                                Técnico:{' '}
+                                                {seguimiento.tecnico?.name ||
+                                                    'No disponible'}
+                                            </div>
+                                            <p className="text-break mb-0">
+                                                {
+                                                    seguimiento.resumen_seguimiento
+                                                }
+                                            </p>
+                                            <div className="d-flex justify-content-end mt-2 gap-2">
+                                                <Button
+                                                    variant="outline-primary"
+                                                    size="sm"
+                                                    type="button"
+                                                    disabled={
+                                                        guardandoSeguimiento ||
+                                                        mostrarFormularioSeguimiento
+                                                    }
+                                                    onClick={() => {
+                                                        setSeguimientoEditandoId(
+                                                            seguimiento.id,
+                                                        );
+                                                        setFechaSeguimiento(
+                                                            seguimiento.fecha_seguimiento,
+                                                        );
+                                                        setResumenSeguimiento(
+                                                            seguimiento.resumen_seguimiento,
+                                                        );
+                                                        setErrorSeguimiento('');
+                                                        setMostrarFormularioSeguimiento(
+                                                            true,
+                                                        );
+                                                    }}
+                                                >
+                                                    Modificar
+                                                </Button>
+                                                <Button
+                                                    variant="outline-danger"
+                                                    size="sm"
+                                                    type="button"
+                                                    disabled={
+                                                        guardandoSeguimiento ||
+                                                        mostrarFormularioSeguimiento
+                                                    }
+                                                    onClick={() =>
+                                                        eliminarSeguimiento(
+                                                            seguimiento.id,
+                                                        )
+                                                    }
+                                                >
+                                                    Eliminar
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : cargandoSeguimientos ? (
+                                <p className="text-muted text-center">
+                                    Cargando seguimientos...
+                                </p>
+                            ) : !errorSeguimiento ? (
+                                <p className="text-muted text-center">
+                                    No hay seguimientos anotados para este
+                                    usuario.
+                                </p>
+                            ) : null}
+
+                            {errorSeguimiento && (
+                                <div
+                                    className="alert alert-danger"
+                                    role="alert"
+                                >
+                                    {errorSeguimiento}
+                                </div>
+                            )}
+
+                            {mostrarFormularioSeguimiento ? (
+                                <div className="rounded border p-3">
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>
+                                            Fecha del seguimiento
+                                        </Form.Label>
+                                        <Form.Control
+                                            type="date"
+                                            value={fechaSeguimiento}
+                                            onChange={(event) =>
+                                                setFechaSeguimiento(
+                                                    event.target.value,
+                                                )
+                                            }
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Resumen</Form.Label>
+                                        <Form.Control
+                                            as="textarea"
+                                            rows={2}
+                                            maxLength={5000}
+                                            value={resumenSeguimiento}
+                                            onChange={(event) =>
+                                                setResumenSeguimiento(
+                                                    event.target.value,
+                                                )
+                                            }
+                                            placeholder="Resumen del seguimiento"
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <div className="d-flex justify-content-center gap-2">
+                                        <Button
+                                            variant="success"
+                                            type="button"
+                                            disabled={guardandoSeguimiento}
+                                            onClick={guardarSeguimiento}
+                                        >
+                                            {guardandoSeguimiento
+                                                ? 'Guardando...'
+                                                : seguimientoEditandoId
+                                                  ? 'Guardar cambios'
+                                                  : 'Guardar seguimiento'}
+                                        </Button>
+                                        <Button
+                                            variant="secondary"
+                                            type="button"
+                                            disabled={guardandoSeguimiento}
+                                            onClick={() => {
+                                                setMostrarFormularioSeguimiento(
+                                                    false,
+                                                );
+                                                setSeguimientoEditandoId(null);
+                                                setFechaSeguimiento('');
+                                                setResumenSeguimiento('');
+                                                setErrorSeguimiento('');
+                                            }}
+                                        >
+                                            Cancelar
+                                        </Button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="d-flex justify-content-center">
+                                    <Button
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => {
+                                            const hoy = new Date();
+                                            const fechaActual = [
+                                                hoy.getFullYear(),
+                                                String(
+                                                    hoy.getMonth() + 1,
+                                                ).padStart(2, '0'),
+                                                String(hoy.getDate()).padStart(
+                                                    2,
+                                                    '0',
+                                                ),
+                                            ].join('-');
+                                            setSeguimientoEditandoId(null);
+                                            setFechaSeguimiento(fechaActual);
+                                            setResumenSeguimiento('');
+                                            setErrorSeguimiento('');
+                                            setMostrarFormularioSeguimiento(
+                                                true,
+                                            );
+                                        }}
+                                    >
+                                        Añadir seguimiento
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="d-flex justify-content-center">

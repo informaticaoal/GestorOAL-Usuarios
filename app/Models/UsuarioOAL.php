@@ -47,6 +47,11 @@ class UsuarioOAL extends Model
         return $this->hasMany(DocumentosUsuarios::class);
     }
 
+    public function seguimientos()
+    {
+        return $this->hasMany(Seguimiento::class, 'usuario_id');
+    }
+
     public static function findFullNameByID($id){
         $usuario = UsuarioOAL::find($id);
         return $usuario ? "{$usuario->dni}-{$usuario->nombre} {$usuario->apellidos}" : null;
