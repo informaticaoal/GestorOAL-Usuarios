@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioOALController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentosUsuariosController;
+use App\Http\Controllers\SeguimientoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,11 @@ Route::get('/excel', [UsuarioOALController::class, 'excelIndex'])->middleware(['
 Route::get('/exportusers', [UsuarioOALController::class, 'exportUsers'])->middleware(['auth', 'verified'])->name('exportUsers');
 
 Route::resource('usuario_oal', UsuarioOALController::class)->middleware(['auth', 'verified']);
+
+Route::get('/usuario_oal/{usuario}/seguimientos', [SeguimientoController::class, 'index'])->middleware(['auth', 'verified']);
+Route::post('/usuario_oal/{usuario}/seguimientos', [SeguimientoController::class, 'store'])->middleware(['auth', 'verified']);
+Route::put('/usuario_oal/{usuario}/seguimientos/{seguimiento}', [SeguimientoController::class, 'update'])->middleware(['auth', 'verified']);
+Route::delete('/usuario_oal/{usuario}/seguimientos/{seguimiento}', [SeguimientoController::class, 'destroy'])->middleware(['auth', 'verified']);
 
 Route::get('/getallusers', [UsuarioOALController::class, 'getAll'])->middleware(['auth', 'verified']);
 
