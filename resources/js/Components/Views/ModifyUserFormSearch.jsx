@@ -39,7 +39,6 @@ export default function ModifyUserFormSearch({
         control: control2,
         handleSubmit: handleSubmit2,
         setValue: setValue2,
-        getValues: getValues2,
     } = useForm();
     const { errors } = formState;
     function formatearFecha(fecha) {
@@ -50,7 +49,6 @@ export default function ModifyUserFormSearch({
     }
 
     const [documentos, setDocumentos] = useState([]);
-    const [userClave, setUserClave] = useState('');
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [seguimientos, setSeguimientos] = useState([]);
     const [cargandoSeguimientos, setCargandoSeguimientos] = useState(false);
@@ -80,7 +78,6 @@ export default function ModifyUserFormSearch({
 
                 // Para llamar a la base de datos y sacar la fecha,
                 // ya que en la tabla solo se consta la edad actual, no la fecha de nacimiento.
-                setUserClave('');
                 const response = await axios.get(`/usuario/${idUsuario}/edad`);
                 const edadDB = response.data.edad;
                 const responseFechaAct = await axios.get(
@@ -564,28 +561,6 @@ export default function ModifyUserFormSearch({
             setGuardandoSeguimiento(false);
         }
     }
-
-    const handleCheckPassword = async () => {
-        try {
-            if (!auth.currentUser) {
-                await signInAnonymously(auth);
-            }
-            const usuariosRef = collection(db, 'usuarios');
-            const dni = getValues2('dni');
-            const q = query(usuariosRef, where('dni', '==', dni));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                setUserClave(
-                    doc.data().clave ? doc.data().clave : 'No hay clave',
-                );
-            });
-        } catch (error) {
-            console.error(
-                'Error al verificar la contraseña en Firebase:',
-                error,
-            );
-        }
-    };
 
     return (
         <>
@@ -1836,30 +1811,8 @@ export default function ModifyUserFormSearch({
                                 Modificar usuario
                             </Button>
                         </div>
-                        <Button
-                            type="button"
-                            variant="secondary"
-                            onClick={handleCheckPassword}
-                        >
-                            Comprobar clave de usuario
-                        </Button>
                     </div>
                 </Form>
-                {userClave != '' && userClave != 'No hay clave' ? (
-                    <div className="alert alert-info my-4 text-xl" role="alert">
-                        La clave de este usuario es:{' '}
-                        <span className="fw-bold">{userClave}</span>
-                    </div>
-                ) : (
-                    userClave == 'No hay clave' && (
-                        <div
-                            className="alert alert-danger my-4 text-xl"
-                            role="alert"
-                        >
-                            Este usuario no tiene clave asignada.
-                        </div>
-                    )
-                )}
             </div>
             <div className="container-fluid my-5">
                 <h2 className="text-center" id="listado-usuarios">

@@ -15,7 +15,6 @@ import { usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { signInAnonymously } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
-import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -31,8 +30,6 @@ export default function CreateUserForm() {
     const { register, handleSubmit, control, formState } = useForm();
 
     const { errors } = formState;
-    const [isPasswordGenerated, setIsPasswordGenerated] = useState(false);
-    const [generatedPassword, setGeneratedPassword] = useState('');
 
     const actualYear = new Date().getFullYear();
 
@@ -52,23 +49,6 @@ export default function CreateUserForm() {
                     autoComplete="off"
                     encType="multipart/form-data"
                     onSubmit={handleSubmit(async (data) => {
-                        const lowerCaseClave = 'abcdefghijklmnopqrstuvwxyz';
-                        const upperCaseClave = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                        const numberClave = '0123456789';
-                        const specialCharClave =
-                            '!@#$%^&*()_+~`|}{[]:;?><,./-=';
-                        const allCharsClave =
-                            lowerCaseClave +
-                            upperCaseClave +
-                            numberClave +
-                            specialCharClave;
-                        let generatedPassword = '';
-                        for (let i = 0; i < 8; i++) {
-                            const randomIndex = Math.floor(
-                                Math.random() * allCharsClave.length,
-                            );
-                            generatedPassword += allCharsClave[randomIndex];
-                        }
                         await axios
                             .get(`/usuario_oal/checkdni/${data.dni}`)
                             .then(async (response) => {
@@ -220,13 +200,10 @@ export default function CreateUserForm() {
                                             data.yearPrograma3,
                                         ),
                                         cv: '',
-                                        clave: generatedPassword,
                                         estado: 'activo',
                                         usertype: 'usuario',
                                         orientador: orientador,
                                     };
-                                    setGeneratedPassword(generatedPassword);
-                                    setIsPasswordGenerated(true);
                                     try {
                                         if (!auth.currentUser) {
                                             await signInAnonymously(auth);
@@ -972,17 +949,6 @@ export default function CreateUserForm() {
                                 Añadir usuario
                             </Button>
                         </div>
-                        {isPasswordGenerated && (
-                            <div
-                                className="alert alert-success my-4 text-xl"
-                                role="alert"
-                            >
-                                La contraseña generada para este usuario es:{' '}
-                                <span className="fw-bold">
-                                    {generatedPassword}
-                                </span>
-                            </div>
-                        )}
                     </div>
                 </Form>
             </div>
