@@ -200,7 +200,9 @@ export default function CreateUserForm() {
                                             data.yearPrograma3,
                                         ),
                                         cv: '',
-                                        estado: 'activo',
+                                        estado: data.trabajando
+                                            ? 'trabajando'
+                                            : 'activo',
                                         usertype: 'usuario',
                                         orientador: orientador,
                                     };
@@ -925,6 +927,18 @@ export default function CreateUserForm() {
                                 id={`default-checkbox`}
                                 label={`¿El usuario proviene de redes sociales?`}
                                 {...register('socialmedia')}
+                            />
+                        </Form.Group>
+
+                        <Form.Group
+                            className="fs-5 fst-italic mb-0"
+                            controlId="form-trabajando"
+                        >
+                            <Form.Check
+                                type="checkbox"
+                                id="trabajando-checkbox"
+                                label="¿El usuario se encuentra trabajando?"
+                                {...register('trabajando')}
                             />
                         </Form.Group>
                     </div>

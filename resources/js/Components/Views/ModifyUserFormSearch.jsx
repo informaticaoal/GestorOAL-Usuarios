@@ -49,6 +49,7 @@ export default function ModifyUserFormSearch({
     }
 
     const [documentos, setDocumentos] = useState([]);
+    const [estadoFirebase, setEstadoFirebase] = useState('');
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [seguimientos, setSeguimientos] = useState([]);
     const [cargandoSeguimientos, setCargandoSeguimientos] = useState(false);
@@ -368,6 +369,33 @@ export default function ModifyUserFormSearch({
                         );
                     });
 
+                // El estado solo existe en Firebase, se busca por DNI para marcar el checkbox de trabajando.
+                let estadoActual = '';
+                try {
+                    if (!auth.currentUser) {
+                        await signInAnonymously(auth);
+                    }
+                    const dniUsuario =
+                        usuario.children[fields.indexOf('dni') + 1].innerText;
+                    const querySnapshot = await getDocs(
+                        query(
+                            collection(db, 'usuarios'),
+                            where('dni', '==', dniUsuario),
+                        ),
+                    );
+                    if (!querySnapshot.empty) {
+                        estadoActual =
+                            querySnapshot.docs[0].data().estado ?? '';
+                    }
+                } catch (error) {
+                    console.error(
+                        'Error al obtener el estado de Firebase:',
+                        error,
+                    );
+                }
+                setEstadoFirebase(estadoActual);
+                setValue2('trabajando', estadoActual === 'trabajando');
+
                 try {
                     const seguimientosResponse = await axios.get(
                         `/usuario_oal/${idUsuario}/seguimientos`,
@@ -678,6 +706,13 @@ export default function ModifyUserFormSearch({
                             ),
                             usertype: 'usuario',
                         };
+
+                        // Solo se toca el estado si se marca trabajando o se desmarca estando trabajando.
+                        if (data.trabajando) {
+                            dataFirebase.estado = 'trabajando';
+                        } else if (estadoFirebase === 'trabajando') {
+                            dataFirebase.estado = 'activo';
+                        }
                         console.log('Datos a enviar a Firebase:', dataFirebase);
                         try {
                             if (!auth.currentUser) {
@@ -1554,6 +1589,29 @@ export default function ModifyUserFormSearch({
                                         type="checkbox"
                                         id="default-checkbox"
                                         label="¿El usuario proviene de redes sociales?"
+                                        checked={field.value || false}
+                                        onChange={(e) => {
+                                            const isChecked = e.target.checked;
+                                            field.onChange(isChecked);
+                                        }}
+                                    />
+                                )}
+                            />
+                        </Form.Group>
+
+                        <Form.Group
+                            className="fs-5 mb-0"
+                            controlId="form-trabajando"
+                        >
+                            <Controller
+                                name="trabajando"
+                                control={control2}
+                                defaultValue={false}
+                                render={({ field }) => (
+                                    <Form.Check
+                                        type="checkbox"
+                                        id="trabajando-checkbox"
+                                        label="¿El usuario se encuentra trabajando?"
                                         checked={field.value || false}
                                         onChange={(e) => {
                                             const isChecked = e.target.checked;
